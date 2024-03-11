@@ -3,13 +3,13 @@ let renderNav = function() {
     <nav>
       <div class="area">
         <div class="logo">
-          <img src="/images/logo.jpg" alt="">
+          <img src="/static/images/logo.jpg" alt="">
           <h1>Nice巴底</h1>
         </div>
         <div class="middle">
           <div class="wrap">
-            <a href="/page/home/home.html">Home</a>
-            <a class="active" href="/page/robott/generateRecipes.html">Robot</a>
+            <a href="/">Home</a>
+            <a class="active" href="/robott/selfList">Robot</a>
             <a href="">Goal</a>
             <a href="">Community</a>
           </div>
