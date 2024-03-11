@@ -1,0 +1,155 @@
+/* article */
+
+article {
+  padding: 10% 15% 5%;
+}
+
+/* switch */
+
+.switch {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.250em;
+  font-weight: bold;
+  margin-bottom: 5%;
+}
+
+.switch a {
+  flex: 5;
+  text-decoration: none;
+  color: #be9871B3;
+  border-bottom: #be9871B3 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+}
+
+.switch .active {
+  color: #6E3D0D;
+  border-bottom: #6E3D0D 3px solid;
+}
+
+/* content */
+
+.content {
+  display: grid;
+  grid-gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+/* AI */
+.AI {
+  border: #D4A373 1px solid;
+  border-radius: 10px;
+  padding: 10%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.add {
+  width: 100%;
+  height: 50%;
+  border: #D4A373 2px solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add i {
+  font-size: 100px;
+  color: #D4A373;
+}
+
+/* ai-recipe-share */
+
+.ai-recipe-share {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+.ai-recipe-share img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+/* title */
+
+.ai-recipe-share .title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5% 0;
+}
+
+.title img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 12%;
+  height: auto;
+  margin-right: 5%;
+}
+
+.title h3 {
+  font-size: 1.563em;
+  font-weight: bold;
+  color: #0B1A2F;
+}
+
+.ai-recipe-share p {
+  color: #495057;
+}
+
+.ai-recipe-share p:nth-of-type(1) {
+  margin-bottom: 5%;
+}
+
+.ai-recipe-share p:nth-of-type(2) {
+  margin-bottom: 10%;
+  line-height: 25px;
+}
+
+/* more */
+
+.more {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.more a:nth-of-type(1) {
+  color: #0B1A2F;
+  font-weight: bold;
+}
+
+.more a:nth-of-type(2) {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 2% 4%;
+  border-radius: 5px;
+  border: none;
+  font-size: 15px;
+}
+
+.more .published {
+  background-color: #86BAA1;
+}
+
+.more .unpublished {
+  background-color: #D4A373;
+}
