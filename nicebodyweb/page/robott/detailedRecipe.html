@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/base/reset.css">
+		<link rel="stylesheet" href="/css/base/global.css">
+		<link rel="stylesheet" href="/css/layout/navbar.css">
+		<link rel="stylesheet" href="/css/layout/footer.css">
+		<link rel="stylesheet" href="/css/robott/shareResults.css">
+		<script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
+		<script src="/components/layout/navbar.js" defer></script>
+  	<script src="/components/layout/footer.js" defer></script>
+		<title>食譜</title>
+	</head>
+
+	<body>
+		<nav id="nav-container"></nav>
+
+		<article>
+			<div class="banner">
+				<img src="/images/food1.png" alt="">
+			</div>
+			
+			<section class="receipe">
+				<div class="wrap">
+					<div class="title">
+						<h1>番茄蛋糖減魔法餐</h1>
+						<div class="like">
+							<i class="fa-solid fa-thumbs-up"></i>
+							<span>99&ensp;</span>
+						</div>
+					</div>
+				
+					<div class="summary">
+						<p>02.04.2024</p>
+						<h2>摘要</h2>
+						<p>
+							「番茄蛋糖減魔法餐」是一道精心設計的午餐，以減醣為主要特色， 主要以新鮮的番茄和有機蛋為食材 , 烹飪時間僅需30分鐘以內。
+							這道料理不僅美味清新 , 更符合營養需求 , 提供豐富的蛋白質，適量的脂肪 , 並極低的糖分。
+							橄欖油的加入使得整體口感更 加豐富。
+							每份約含250卡路里 , 是一款輕盈無負擔的午餐選擇 , 滿足味蕾的同時也保證營養均衡。
+							「番茄蛋糖減魔法餐」讓您在 享受美味的同時輕鬆追求減醣生活 。
+						</p>
+					</div>
+						
+					<div class="content">
+						<h2>食材準備</h2>
+						<ol>
+							<li>新鮮番茄2顆</li>
+							<li>新鮮香菜1把 , 切碎</li>
+							<li>橄欖油2湯匙</li>
+							<li>鹽和胡椒調味</li>
+						</ol>
+
+						<h2>烹調時間</h2>
+						<p>0 ~ 30分鐘</p>
+
+						<h2>料理步驟</h2>
+						<ol>
+							<li>將番茄切成小丁狀備用 。</li>
+							<li>在鍋中用橄欖油加熱，加入切碎的番茄煮至軟爛 。</li>
+							<li>打入蛋，蓋上鍋蓋，用中小火蒸煮約5分鐘，直到蛋白凝固，但蛋黃仍然微嫩。</li>
+							<li>撒上切碎的香菜, 撒上適量的鹽和胡椒調味。</li>
+							<li>輕輕攪拌混合 , 即可上桌享用。</li>
+						</ol>
+
+						<h2>營養配比</h2>
+						<p>每份熱量約250卡路里，蛋白質豐富，脂肪含量適中，糖分極低，是一道減糖又營養豐富的午餐選擇。</p>
+					</div>
+
+					<div class="button">
+						<button>發布食譜</button>
+					</div>
+				</div>
+		</article>
+
+		<footer id="footer-container"></footer>
+
+		<script>
+			window.onload = function() {
+				renderNav();
+				renderFooter();
+			};
+		</script>
+	</body>
+</html>

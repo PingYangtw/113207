@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/base/reset.css">
+  <link rel="stylesheet" href="/css/base/global.css">
+  <link rel="stylesheet" href="/css/layout/navbar.css">
+  <link rel="stylesheet" href="/css/layout/footer.css">
+  <link rel="stylesheet" href="/css/robott/generateRecipes.css">
+
+  <script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
+  <script src="/components/layout/navbar.js" defer></script>
+  <script src="/components/layout/footer.js" defer></script>
+  <title>生成食譜</title>
+</head>
+<body>
+  <nav id="nav-container"></nav>
+
+  <article>
+    <div class="switch">
+      <a class="active generate-recipes" href="/page/robott/generateRecipes.html">生成食譜</a>
+      <a class="recipe-world" href="/page/robott/recipeWorld.html">食譜天地</a>
+    </div>
+
+    <section class="content">
+      <div class="ai-recipe-share AI">
+        <div class="add">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="title">
+          <img src="/images/ai_banana.png" alt="">
+          <h3>Banana營養師</h3>
+        </div>
+        <p>02.04.2024</p>
+        <p>一位極富專業知識的營養專家，他能夠深入理解食材的營養價值和相互作用，為人們提供豐富、均衡且美味的飲食建議。</p>
+      </div>
+
+      <div class="ai-recipe-share">
+        <img src="/images/food2.png" alt="">
+        <div class="title">
+          <img src="/images/user2.png" alt="">
+          <h3>番茄蛋減糖魔法餐</h3>
+        </div>
+        <p>02.04.2024</p>
+        <p>「番茄蛋糖減魔法餐」是一道精心設計的午餐，以減糖為主要特色，主要以新鮮的番茄和有機蛋為食材，烹飪時間僅需30分鐘以內。</p>
+        <div class="more">
+          <a href="/page/robott/detailedRecipe.html">了解更多</a>
+          <a href="" class="published">已發佈</a>
+        </div>
+      </div>
+
+      <div class="ai-recipe-share">
+        <img src="/images/food1.png" alt="">
+        <div class="title">
+          <img src="/images/user1.png" alt="">
+          <h3>纖潤蛤蠣盛宴</h3>
+        </div>
+        <p>02.05.2024</p>
+        <p>這款「海之芳饌 - 蛤蠣湯高纖午餐」結合了新鮮蛤蠣湯的豐富風味，同時滿足您對高纖維的營養需求，是一道營養均衡且美味的午餐選擇。</p>
+        <div class="more">
+          <a href="/page/robott/detailedRecipe.html">了解更多</a>
+          <a href="/page/robott/shareResults.html" class="unpublished">發佈食譜</a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <footer id="footer-container"></footer>
+
+  <script>
+    window.onload = function() {
+      renderNav();
+      renderFooter();
+    };
+  </script>
+</body>
+</html>

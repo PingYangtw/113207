@@ -1,0 +1,164 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1% 0;
+  background-color: #FCFAF1;
+  z-index: 1000;
+  box-shadow: 2px 2px 10px 2px #be987149;
+}
+
+nav .area {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .area .logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #6E3D0D;
+  flex: 1;
+  margin-left: 5%;
+  cursor: pointer;
+}
+
+nav .area .logo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 5%;
+}
+
+nav .middle {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav .middle .wrap {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .middle .wrap a,
+.logSign a {
+  text-decoration: none;
+  color: #6E3D0D;
+}
+
+nav .middle .wrap .active {
+  color: #FFCF56;
+}
+
+nav .middle .icon {
+  display: none;
+}
+
+nav .logSign {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  margin-right: 5%;
+}
+
+nav .logSign :last-child {
+  padding: 3%;
+  border: #6E3D0D 1px solid;
+  border-radius: 10px;
+  margin-left: 5%;
+}
+
+nav .sideBar {
+  display: none;
+}
+
+nav .sideBar a {
+  text-decoration: none;
+  margin: 15px 0px;
+  padding: 0px 50px;
+  cursor: pointer;
+  color: #FCFAF1;
+}
+
+/* X-Large 1440px */
+
+@media screen and (max-width:1440px) {
+  nav .logSign :last-child {
+    padding: 3%;
+  }
+}
+
+/* Large 1200px */
+
+@media screen and (max-width:1200px) {
+  nav .middle .wrap {
+    width: 75%;
+  }
+}
+
+/* Medium 1024px */
+
+@media screen and (max-width:1024px) {
+  nav {
+    padding: 2% 0;
+  }
+
+  nav .area .logo {
+    display: none;
+  }
+
+  nav .middle .wrap {
+    width: 75%;
+  }
+}
+
+/* Small 768px */
+
+@media screen and (max-width:768px) {
+  nav .middle {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  nav .middle .wrap {
+    display: none;
+  }
+
+  nav .middle .icon {
+    display: block;
+    margin-left: 10%;
+    font-size: 25px;
+    color: #6E3D0D;
+    cursor: pointer;
+  }
+
+  nav .middle .icon #closeIcon {
+    display: none;
+  }
+
+  nav .sideBar {
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: sticky;
+    z-index: 0;
+    height: calc(100vh - 80px);
+    left: 0;
+    width: 35%;
+    background-color: #faf7ed;
+    box-shadow: -3px 0px 3px 1px #afafaf34;
+    padding-top: 3%;
+  }
+}
