@@ -1,0 +1,631 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+article {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: #fcfaf1;
+    padding: 0 5% 2.3%;
+}
+
+section {
+    width: 75vw;
+    height: 80vh;
+    padding: 2%;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gray {
+    width: 100%;
+    border-radius: 50px;
+    background-color: #efefef;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 1%;
+}
+
+.green-one {
+    width: 100%;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #86baa1 0%, rgba(219, 219, 219, 0) 26%);
+    height: 14px;
+}
+
+.green-second {
+    width: 100%;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #86baa1 0%, rgba(219, 219, 219, 0) 56%);
+    height: 14px;
+}
+
+.green-three {
+    width: 100%;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #86baa1 0%, rgba(219, 219, 219, 0) 86%);
+    height: 14px;
+}
+
+.green-four {
+    width: 100%;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #86baa1 0%, rgba(219, 219, 219, 0) 116%);
+    height: 14px;
+}
+
+.green-five {
+    width: 100%;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #86baa1 0%, rgba(219, 219, 219, 0) 146%);
+    height: 14px;
+}
+
+.up {
+    height: 100%;
+    width: 100%;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.hide {
+    visibility: hidden;
+  }
+
+
+.top-2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* title */
+
+section .title {
+    align-self: start;
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    font-size: 40px;
+    color: #0b1a2f;
+    font-weight: 400;
+    white-space: nowrap;
+    letter-spacing: 8px;
+    margin: 1% 0 0;
+}
+
+section .title img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 5%;
+}
+
+/* input */
+
+.top .input{
+    width: 100%;
+    letter-spacing: 5px;
+}
+
+.top .input .text-border{
+    border-radius: 10px;
+}
+
+.top .input label{
+    font-size: 18px;
+    color: #111;
+    margin:  1.3% 0;
+    display: block;
+}
+
+.top .input div i.fa{
+    font-size: 16px;
+    color:#888;
+}
+
+.top .input .question{
+    font-size: 22px;
+    padding: 1% 0;
+}
+
+.top .input div{
+    height: 10%;
+}
+
+.top .input div #tag-ip{
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    color:#111;
+    text-indent: 20px;
+    border:1px solid #86BAA1;
+    outline:none;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* tag-list */
+
+section .tag-list{
+    height: 60%;
+    display: flex;
+    gap: 18px;
+    background-color: #d6e1db;
+    border-radius: 10px;
+    padding: 18px;
+    width: 100%;
+    flex-direction: column; /* 新增的屬性 */
+    align-content: flex-start;
+    justify-content: start; 
+    margin-top: 1.5%;
+}
+
+section .tag-list .line{ 
+    height: 2px; 
+    background-color: #00000033;
+    margin: 1% 0;
+}
+
+section .tag-list-item,
+section .tag-list-item2,
+section .tag-list-item3,
+section .tag-list-item4{
+    width: 100%;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap; /* 新增的屬性 */
+    align-content: flex-start; 
+    justify-content: start;
+}
+
+.item,
+.item-select {
+    padding: 1% 2%;
+    height: fit-content;
+    background:#fff;
+    border-radius: 50px;
+    color: #495057;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+    user-select: none;
+    border: none;
+    font-size: 18px;
+}
+
+section .item-select {
+    border: 3px solid #6E3D0D;
+}
+
+/* tag-list-sub */
+section .tag-list-sub{
+    height: 62%;
+    background-color: #d6e1db;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    align-content: flex-start;
+    margin-top: 1%;
+}
+
+section  .tag-list-title{
+    width: 100%;
+    height: 10%;
+    display: flex;  
+    justify-content: start;
+    font-size: 18px;
+    color: #0b1a2f;
+    font-weight: 400;
+    letter-spacing: 8px;
+    align-items: center;
+    margin-left: 1%;
+}
+
+section .tag-list-sub .list-item{
+    width: 100%;
+    align-content: flex-start; 
+    margin-top: 1%;
+}
+
+section .tag-list-title img {
+    width: 30px; /* 設定圖片的寬度 */
+    height: auto; 
+    margin-right: 2%;
+    align-items: center;
+}
+
+section .tag-list-sub .list-item > * {
+    margin-right: 10px; /* 設定元素間的右邊距 */
+    margin-bottom: 1%;
+}
+
+/* tag-list-4 */
+section .tag-list-4{
+    height: 40%;
+    gap: 22px;
+    background-color: #d6e1db;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    align-content: flex-start; 
+    justify-content: start;
+}
+
+section .tag-list-4 .score-item{
+    display: flex;
+    gap: 20px;
+    white-space: nowrap;
+    padding: 0 0 1% 0;
+    align-items: center;
+}
+
+section .tag-list-4 .score-item label {
+    height: 100%;
+}
+
+section .tag-list-4 .score-range{
+    color: rgba(0, 0, 0, 0.5);
+    letter-spacing: 3px;
+    font-size: 17px;
+    padding: 1% 0;
+}
+
+section .tag-list-4 .metric-block{
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+}
+
+section .tag-list-4 .checkbox_class{
+    transform: scale(1.5);
+    background-color: transparent;
+} 
+
+section .tag-list-4 .metric-description{
+    letter-spacing: 2px;
+    margin: auto 0;
+    font-size: 22px;
+    white-space: nowrap;
+}
+
+section .tag-list-4 .score-input{
+    height: 100%;
+    width: 6%;
+    border: none;
+    border-radius: 10px;
+    align-self: stretch;
+    font-size: 20px;
+    text-indent: 10px;
+}
+/* tag-list-group */
+section .tag-list-group{
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* tag-list-class */
+section .tag-list-class{
+    height: 45%;
+    display: flex;
+    gap: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 0.5% 1px 1.4%;
+    width: 100%;
+    flex-wrap: wrap; /* 新增的屬性 */
+    align-content: flex-start; 
+    justify-content: space-between;
+}
+
+section .tag-list-class .type{
+    height: 100%;
+    display: flex;
+    background-color: #d6e1db;
+    border-radius: 10px;
+    width: 18%;
+    flex-wrap: wrap; /* 新增的屬性 */
+    align-content: center; 
+    justify-content: center;
+    border: none;
+    margin: 1% 0 0%;
+    letter-spacing: 8px;
+    align-self: start;
+}
+
+section .tag-list-class .type .wrap {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #495057;
+    font-weight: 400;
+    letter-spacing: 3px;  
+}
+
+
+section .tag-list-class .type .wrap div {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* next */
+
+.next {
+    width: 100%;
+}
+
+.line {
+    background-color: #6e3d0d;
+    height: 1px;
+    margin: 10px 0 0;
+    width: 100%;
+}
+
+.line2 {
+    background-color: #120b0347;
+    height: 1px;
+    margin: 10px 0 0;
+    width: 100%;
+}
+
+.btn {
+    display: flex;
+    margin-top: 1.2%;
+    justify-content: space-between;
+    align-items: center;
+    color: #495057;
+}
+
+.btn i {
+    font-size: 35px;
+    color: #6E3D0D;
+}
+
+.btn .back{
+    height: 11%;
+    width: 1%;
+    padding: 2%;
+}
+
+.next button{
+    justify-content: center;
+    border-radius: 50px;
+    border: none;
+    padding: 1.5% 3%;
+    font-size: 20px;
+    background-color: #e5e5e5;
+    letter-spacing: 3px;
+    justify-content: center;
+}
+
+.next .button-brwon {
+    background-color: #6E3D0D;
+    color: #fff;
+}
+
+/* X-Large 1440px */
+
+@media screen and (max-width:1440px) {
+    article {
+        padding: 0 5% 3%;
+    }
+
+    section {
+        width: 80vw;
+        height: 83vh;
+        padding: 2%;
+    }
+
+}
+
+/* Large 1200px */
+
+@media screen and (max-width:1200px) {
+    article {
+        padding: 0 5% 5%;
+    }
+
+    section {
+        width: 80vw;
+        height: 80vh;
+        padding: 3%;
+    }
+
+    section .tag-list{
+        gap: 25px;
+   }
+
+    section .tag-list-sub{
+        height: 50%;
+        margin-top: 1%;
+    }
+
+    section .tag-list-class .type .wrap {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    section .tag-list-class .type .wrap div {
+        font-weight: bold;
+        font-size: 18px;
+    }
+}
+
+/* Middle 1024px */
+
+@media screen and (max-width:1024px) {
+
+    section {
+        width: 90vw;
+        height: 83vh;
+        padding: 3%;
+    }
+
+    section .tag-list-4 .score-input{
+        width: 15%;
+    }
+
+ 
+}
+
+/* Small 768px */
+
+@media screen and (max-width:768px) {
+    article {
+        padding: 0 5% 8%;
+    }
+
+    section {
+        width: 90vw;
+        padding: 4%;
+    }
+
+    .next button {
+        padding: 2% 4%;
+        font-size: 16px;
+    }
+
+    section .tag-list{
+        margin-top: 2.5%;
+    }
+
+    section .tag-list-sub{
+        height: 65%;
+        margin-top: 2.5%;
+    }
+
+    section .tag-list-sub .list-item{
+        margin-top: 2%;
+    }
+
+    section .tag-list-sub .list-item > * {
+        margin-bottom: 2%;
+    }
+
+    .item,
+    .item-select {
+        padding: 2% 4%;
+    }
+
+    section .tag-list-group{
+        padding: 1% 0;
+    }
+
+    section .tag-list-class{
+        height: 24%;
+    }
+
+    section .tag-list-class .type {
+        width: 30%;
+    }
+
+    section .tag-list-class .type .wrap div {
+        font-size: 16px;
+    }
+
+    section .tag-list-4 .score-input{
+        width: 20%;
+    }
+
+}
+
+/* X-Small 480px */
+
+@media screen and (max-width:480px) {
+    article {
+        padding: 0 2% 8%;
+    }
+
+    section {
+        width: 85vw;
+        height: 87vh;
+        padding: 6%;
+    }
+
+    section .title {
+        gap: 12px;
+        font-size: 30px;
+    }
+    
+
+    section .tag-list{
+        height: 60%;
+        margin-top: 5%;
+    }
+
+    section .tag-list-sub{
+        height: 68%;
+        margin-top: 5%;
+    }
+
+    section .tag-list-sub .list-item{
+        margin-top: 4%;
+    }
+
+    .btn {
+        margin-top: 4%;
+    }
+
+    .btn i {
+        font-size: 30px;
+    }
+    
+    .top .input label{
+        margin:  3% 0;
+    }
+
+    .top .input .question {
+        font-size: 20px;
+    }
+
+    section .tag-list-group{
+        margin-top: 3%;
+    }
+
+
+    section .tag-list-class{
+        height: 20%;
+    }
+
+    section .tag-list-class .type {
+        width: 29%;
+        padding: 2% 0;
+    }
+
+    section .tag-list-class .type .wrap div {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    section .tag-list-4 .score-input{
+        width: 22%;
+    }
+
+}
