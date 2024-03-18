@@ -20,10 +20,14 @@ nav .area .logo {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: #6E3D0D;
   flex: 1;
   margin-left: 5%;
   cursor: pointer;
+}
+
+nav .area .logo h1 {
+  color: #6E3D0D;
+  transition: color 0.3s ease;
 }
 
 nav .area .logo img {
@@ -34,6 +38,8 @@ nav .area .logo img {
   border-radius: 5px;
   margin-right: 5%;
 }
+
+/* middle */
 
 nav .middle {
   flex: 2;
@@ -53,18 +59,18 @@ nav .middle .wrap a,
 .logSign a {
   text-decoration: none;
   color: #6E3D0D;
-}
-
-nav .middle .wrap .active {
-  color: #FFCF56;
+  border-bottom: none;
+  transition: color 0.3s ease;
 }
 
 nav .middle .icon {
   display: none;
 }
 
+/* logSign */
+
 nav .logSign {
-  display: flex;
+  display: none;
   justify-content: flex-end;
   align-items: center;
   flex: 1;
@@ -78,6 +84,41 @@ nav .logSign :last-child {
   margin-left: 5%;
 }
 
+/* alreadyLogin */
+
+nav .alreadyLogin {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  margin-right: 5%;
+}
+
+.alreadyLogin img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 10%;
+  height: auto;
+  cursor: pointer;
+}
+
+.alreadyLogin h3 {
+  font-size: 1em;
+  color: #6E3D0D;
+  margin: 0 5%;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.alreadyLogin i {
+  font-size: 1em;
+  color: #6E3D0D;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* sideBar */
+
 nav .sideBar {
   display: none;
 }
@@ -88,6 +129,14 @@ nav .sideBar a {
   padding: 0px 50px;
   cursor: pointer;
   color: #FCFAF1;
+}
+
+nav .middle .wrap a:hover,
+nav .area .logo h1:hover,
+.logSign a:hover,
+.alreadyLogin h3:hover,
+.alreadyLogin i:hover {
+  color: #FFCF56;
 }
 
 /* X-Large 1440px */
@@ -160,5 +209,13 @@ nav .sideBar a {
     background-color: #faf7ed;
     box-shadow: -3px 0px 3px 1px #afafaf34;
     padding-top: 3%;
+  }
+}
+
+/* X-Small 480px */
+
+@media screen and (max-width:480px) {
+  nav {
+    padding: 5% 0;
   }
 }

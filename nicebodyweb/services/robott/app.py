@@ -25,8 +25,7 @@ def robott_selfList():
     cursor.execute('SELECT cusno FROM public.customer limit 1;')
     
     #取出資料
-    data = cursor.fetchall()    
-    print(data)
+    data = cursor.fetchall()
     #關閉資料庫連線    
     connection.close()
     
@@ -45,8 +44,7 @@ def robott_everyList():
     cursor.execute('SELECT cusno FROM public.customer limit 1;')
     
     #取出資料
-    data = cursor.fetchall()    
-    print(data)
+    data = cursor.fetchall()
     #關閉資料庫連線    
     connection.close()
     
@@ -65,8 +63,7 @@ def robott_selfList_more():
     cursor.execute('SELECT cusno FROM public.customer limit 1;')
     
     #取出資料
-    data = cursor.fetchall()    
-    print(data)
+    data = cursor.fetchall()
     #關閉資料庫連線    
     connection.close()
     
@@ -85,8 +82,7 @@ def robott_everyList_more():
     cursor.execute('SELECT cusno FROM public.customer limit 1;')
     
     #取出資料
-    data = cursor.fetchall()    
-    print(data)
+    data = cursor.fetchall()
     #關閉資料庫連線    
     connection.close()
     
@@ -105,8 +101,7 @@ def robott_share():
     cursor.execute('SELECT cusno FROM public.customer limit 1;')
     
     #取出資料
-    data = cursor.fetchall()    
-    print(data)
+    data = cursor.fetchall()
     #關閉資料庫連線    
     connection.close()
     

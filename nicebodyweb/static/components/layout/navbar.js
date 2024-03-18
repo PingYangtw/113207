@@ -8,10 +8,10 @@ let renderNav = function() {
         </div>
         <div class="middle">
           <div class="wrap">
-            <a href="/">Home</a>
-            <a class="active" href="/robott/selfList">Robot</a>
-            <a href="">Goal</a>
-            <a href="">Community</a>
+            <a href="/" class="nav-link">Home</a>
+            <a href="/robott/selfList" class="nav-link">Robot</a>
+            <a href="" class="nav-link">Goal</a>
+            <a href="" class="nav-link">Community</a>
           </div>
           <div class="icon">
             <i class="fa-solid fa-bars" id="menuIcon"></i>
@@ -22,10 +22,15 @@ let renderNav = function() {
           <a href="">Log in</a>
           <a href="">Sign up</a>
         </div>
+        <div class="alreadyLogin">
+          <img src="/static/images/user1.png" alt="">
+          <h3>Hi yehch</h3>
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
       </div>
       <div class="sideBar" id="sideBar">
         <a href="">Home</a>
-        <a class="active" href="">Robot</a>
+        <a href="">Robot</a>
         <a href="">Goal</a>
         <a href="">Community</a>
       </div>
@@ -33,4 +38,26 @@ let renderNav = function() {
   `;
 
   document.getElementById("nav-container").innerHTML = navStr;
+
+  let navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+
+      navLinks.forEach(link => {
+        link.style.color = '#6E3D0D';
+      });
+
+      link.style.color = '#FFCF56';
+
+      localStorage.setItem('activeLinkId', link.getAttribute('href'));
+    });
+  });
+
+  let activeLinkId = localStorage.getItem('activeLinkId');
+  if (activeLinkId) {
+    let activeLink = document.querySelector(`[href="${activeLinkId}"]`);
+    if (activeLink) {
+      activeLink.style.color = '#FFCF56';
+    }
+  }
 }

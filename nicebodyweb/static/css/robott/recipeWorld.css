@@ -42,41 +42,54 @@ article {
 
 .cooking-time {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   color: #BE9771;
+  width: 40%;
 }
 
 .cooking-time input {
   border: #BE9771 1px solid;
   border-radius: 10px;
-  padding: 2% 4%;
+  padding: 10px 20px;
+  width: 40%;
 }
 
 .cooking-time span {
   text-align: center;
-  width: 100%;
-  white-space: nowrap;
+}
+
+.cooking-time span:nth-of-type(1) {
+  margin-left: 3%;
+}
+
+.cooking-time span:nth-of-type(2) {
+  margin-right: 3%;
+}
+
+.cooking-time span:nth-of-type(3) {
   margin: 0 3%;
 }
 
 .keyword-query {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 55%;
+  position:relative;
+  display:inline-block;
+  width: 60%;
 }
 
 .keyword-query input {
   border: #BE9771 1px solid;
   border-radius: 10px;
-  padding: 1.3% 3%;
-  width: 88%;
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .keyword-query i {
   color: #BE9771;
   cursor: pointer;
+  position: absolute; 
+  right: 10px;
+  top: calc(50% - 0.5em);
 }
 
 /* filter */
@@ -103,7 +116,7 @@ article {
 .content {
   display: grid;
   grid-gap: 50px;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-content: space-between;
   margin-top: 2%;
 }
@@ -178,4 +191,66 @@ article {
   justify-content: flex-end;
   align-items: center;
   color: #D4A373;
+}
+
+/* Large 1200px */
+
+@media screen and (max-width:1200px) {
+  .cooking-time,
+  .keyword-query {
+    width: 50%;
+  }
+}
+
+/* Medium 1024px */
+
+@media screen and (max-width:1024px) {
+  article {
+    padding: 15% 15% 5%;
+  }
+
+  .search {
+    margin: 5% 0 8%;
+  }
+}
+
+/* Small 768px */
+
+@media screen and (max-width:768px) {
+  .switch a {
+    padding: 0 0 2% 0;
+  }
+  
+  .search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+  }
+
+  .cooking-time,
+  .keyword-query {
+    width: 100%;
+  }
+
+  .content {
+    margin-top: 5%;
+  }
+}
+
+/* X-Small 480px */
+
+@media screen and (max-width:480px) {
+  article {
+    padding: 25% 15% 10%;
+  }
+
+  .switch a {
+    padding: 0 0 4% 0;
+  }
+
+  .search {
+    margin: 10% 0 10%;
+  }
 }
