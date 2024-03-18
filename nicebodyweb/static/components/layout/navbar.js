@@ -9,7 +9,7 @@ let renderNav = function() {
         <div class="middle">
           <div class="wrap">
             <a href="/" class="nav-link">Home</a>
-            <a href="/robott/selfList" class="nav-link">Robot</a>
+            <a href="/robott/generateRecipes" class="nav-link">Robot</a>
             <a href="" class="nav-link">Goal</a>
             <a href="" class="nav-link">Community</a>
           </div>
