@@ -2562,13 +2562,6 @@ input, select, textarea {
 
 	@media screen and (max-width: 1680px) {
 
-		/* Basic */
-
-			body, input, textarea, select {
-				font-size: 14pt;
-				line-height: 1.75em;
-			}
-
 		/* Carousel */
 
 			.carousel {

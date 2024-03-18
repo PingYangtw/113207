@@ -29,14 +29,14 @@
 
       <div class="search">
         <div class="cooking-time">
-          <input type="text" placeholder="烹飪時間"><span>分 ~</span>
+          <input type="text" placeholder="烹飪時間"><span>分</span><span>~</span> 
           <input type="text" placeholder="烹飪時間"><span>分</span>
         </div>
 
-        <div class="keyword-query">
+        <label class="keyword-query">
           <input type="text" placeholder="關鍵字查詢">
           <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
+        </label>
       </div>
     </section>
 
@@ -129,8 +129,6 @@
       renderNav();
       renderFooter();
     };
-  
-    renderPage();
 
     document.addEventListener('DOMContentLoaded', function () {
       const menuIcon = document.getElementById('menuIcon');
