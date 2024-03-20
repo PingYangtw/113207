@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/static/css/layout/navbar.css">
   <link rel="stylesheet" href="/static/css/layout/footer.css">
   <link rel="stylesheet" href="/static/css/robott/generateRecipes.css">
-
+  
   <script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
   <script src="/static/components/layout/navbar.js" defer></script>
   <script src="/static/components/layout/footer.js" defer></script>
@@ -28,7 +28,7 @@
     </div>
 
     <section class="content">
-      <div class="ai-recipe-share AI">
+      <a id = "generate-btn" class="ai-recipe-share AI" href="/question/question_n1">
         <div class="add">
           <i class="fa-solid fa-plus"></i>
         </div>
@@ -38,7 +38,7 @@
         </div>
         <p>02.04.2024</p>
         <p>一位極富專業知識的營養專家，他能夠深入理解食材的營養價值和相互作用，為人們提供豐富、均衡且美味的飲食建議。</p>
-      </div>
+      </a>
 
       <div class="ai-recipe-share">
         <img src="/static/images/food2.png" alt="">
@@ -74,6 +74,12 @@
 
   <script>
     window.onload = function() {
+      const continueBtn = document.getElementById('generate-btn');
+
+      continueBtn.addEventListener('click', function () {
+        sessionStorage.removeItem('tagInputValue');
+      });
+
       renderNav();
       renderFooter();
     };

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>測試樣板</title>
     <title>Document</title>
-    <link href="/static/css/question_main.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/static/css/navbar.css">
-    <script src="/js/question_n3_1.js" async></script>
-    <script src="/js/navbar.js"></script>
+    <link href="/static/css/question/question_main.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/css/layout/navbar.css">
+    <script src="/static/js/question/question_n3_1.js" async></script>
+    <script src="/static/components/layout/navbar.js" defer></script>
     <script src="https://kit.fontawesome.com/ff1f69f5b7.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -73,8 +73,12 @@
             <div class="next">
                 <div class="line"></div>
                 <div class="btn">
-                    <i id="back" class="fa-solid fa-circle-arrow-left"></i>
-                    <button id="continue-btn" disabled>繼續</button>
+                    <a id = "back" href="/question/question_n3">
+                        <i class="fa-solid fa-circle-arrow-left"></i>
+                    </a>
+                    <a id="continue-btn" class = "continue-btn">
+                        繼續
+                    </a>
                 </div>
             </div>
         </section>
