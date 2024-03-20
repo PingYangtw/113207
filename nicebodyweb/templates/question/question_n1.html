@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>測試樣板</title>
     <title>Document</title>
-    <link href="/static/css/question_main.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/static/css/navbar.css">
-    <script src="/js/question_n3_1.js" async></script>
-    <script src="/js/navbar.js"></script>
+    <link href="/static/css/question/question_main.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/css/layout/navbar.css">
+    <script src="/static/js/question/question_n1.js" async></script>
+    <script src="/static/components/layout/navbar.js" defer></script>
     <script src="https://kit.fontawesome.com/ff1f69f5b7.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@
             <div class="gray">
                 <div class="green-one"></div>
             </div>
-            
+
             <div class="up">
                 <div class="top">
                     <div class="title">
@@ -35,46 +35,32 @@
                         <div> 營養需求</div>
                     </div>
                     <div class="input">
-                        <p class="question">
+                        <p class = "question">
                             你對於營養需求有特別的偏好嗎？
                         </p>
                         <div>
                             <input type="text" id="tag-ip" class="text-border"
-                            placeholder="例如：牛肉、豬肉、雞肉" />
+                            placeholder="例如：低脂、高蛋白、減糖" />
                         </div>
                     </div>
                 </div>
     
-                <div class="tag-list-sub">
-                    <div class="top-2">
-                        <div class="tag-list-title">
-                            <img
-                                loading="lazy"
-                                srcset="/static/images/question/toast.png"
-                            />
-                            <div>主食類</div>
-                        </div>
+                <div class="tag-list">
+                    <div class="tag-list-item"> </div>
     
-                        <div class="line2"></div> 
-                    </div>
+                    <div class="tag-list-item2"></div>
     
-                    <div class="list-item">
-                        <div class="tag-list-item"> </div>
-    
-                        <div class="tag-list-item2"></div>
-    
-                        <div class="tag-list-item3"></div>
-    
-                        <div class="tag-list-item4"></div>
-                    </div>
-                </div>   
+                    <div class="tag-list-item3"></div>
+                </div>
             </div>
-
+            
             <div class="next">
                 <div class="line"></div>
                 <div class="btn">
-                    <i id="back" class="fa-solid fa-circle-arrow-left"></i>
-                    <button id="continue-btn" disabled>繼續</button>
+                    <i class="fa-solid fa-circle-arrow-left hide"></i>
+                    <a id="continue-btn" class = "continue-btn">
+                        繼續
+                    </a>
                 </div>
             </div>
         </section>

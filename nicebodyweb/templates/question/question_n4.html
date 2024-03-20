@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- <html lang="en"> -->
+<head>
+    <meta charset="UTF-8">
+    <title>測試樣板</title>
+    <title>Document</title>
+    <link href="/static/css/question/question_main.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/css/layout/navbar.css">
+    <script src="/static/js/question/question_n4.js" async></script>
+    <script src="/static/components/layout/navbar.js" defer></script>
+    <script src="https://kit.fontawesome.com/ff1f69f5b7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav id="nav-container"></nav>
+
+    <article>
+        <section>
+            <div class="gray">
+                <div class="green-four"></div>
+            </div>
+            
+            <div class="up">
+                <div class="top">
+                    <div class="title">
+                        <img
+                            loading="lazy"
+                            srcset="/static/images/question/question_banana.png 100w, 
+                            /static/images/question/question_banana.png 200w, 
+                            /static/images/question/question_banana.png 400w, 
+                            /static/images/question/question_banana.png 800w,
+                            /static/images/question/question_banana.png 1200w, 
+                            /static/images/question/question_banana.png 1600w, 
+                            /static/images/question/question_banana.png 2000w,"
+                        />
+                        <div> 營養需求</div>
+                    </div>
+                    <div class="input">
+                        <p class="question">
+                            你對烹飪的時間有特別的考量嗎？
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tag-list-4">
+                    <div class="score-item">
+                        <input type="checkbox" class="checkbox_class" id="checkbox1">
+                        <div class="metric-description">無需求</div>
+                    </div>
+                    <div class="metric-block">
+                        <input type="checkbox" class="checkbox_class" id="checkbox2"> 
+                        <input type="number" class="score-input" min="0" value="0" id="min_1">
+                        <div class="metric-description">分 ~</div>
+                        <input type="number" class="score-input" min="0" value="0" id="max_1">
+                        <div class="metric-description">分</div>
+                    </div>
+                    <div class="score-item">
+                        <input type="checkbox" class="checkbox_class hide">
+                        <div class="score-range">例如：0分~40分</div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="next">
+                <div class="line"></div>
+                <div class="btn">
+                    <a href="/question/question_n3">
+                        <i class="fa-solid fa-circle-arrow-left"></i>
+                    </a>
+                    <a id="continue-btn" class = "continue-btn">
+                        繼續
+                    </a>
+                </div>
+            </div>
+        </section>
+    </article>
+
+    <script>
+        
+            
+        
+    </script>
+</body>
+</html>

@@ -8,11 +8,11 @@ from utils import db
 # def allowed_file(filename):
 #     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ('png', 'jpg', 'jpeg', 'gif')
 
-# 產生營養師服務藍圖
+# 產生機器人服務藍圖
 robott_bp = Blueprint('robott_bp', __name__)
 
 #--------------------------
-# 在營養師服務藍圖加入路由
+# 在機器人服務藍圖加入路由
 #--------------------------
 
 #生成食譜

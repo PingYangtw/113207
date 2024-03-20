@@ -367,10 +367,11 @@ section .tag-list-class .type .wrap {
     color: #495057;
     font-weight: 400;
     letter-spacing: 3px;  
+    text-decoration: none;
 }
 
 
-section .tag-list-class .type .wrap div {
+section .tag-list-class .type .wrap .one {
     font-weight: bold;
     font-size: 20px;
 }
@@ -414,21 +415,28 @@ section .tag-list-class .type .wrap div {
     padding: 2%;
 }
 
-.next a{
+.next .continue-btn{
     justify-content: center;
     border-radius: 50px;
     border: none;
     padding: 1.5% 3%;
-    font-size: 20px;
     background-color: #e5e5e5;
     letter-spacing: 3px;
     justify-content: center;
-    text-decoration: none;
+}
+
+.next .continue-btn button{
+    background-color: transparent; 
+    border: none; 
+    color: inherit; 
+    cursor: pointer;
+    font-size: 20px;
 }
 
 .next .button-brwon {
     background-color: #6E3D0D;
     color: #fff;
+    text-decoration: none;
 }
 
 /* X-Large 1440px */
@@ -473,7 +481,7 @@ section .tag-list-class .type .wrap div {
         justify-content: center;
     }
 
-    section .tag-list-class .type .wrap div {
+    section .tag-list-class .type .wrap .one {
         font-weight: bold;
         font-size: 18px;
     }
@@ -508,7 +516,7 @@ section .tag-list-class .type .wrap div {
         padding: 4%;
     }
 
-    .next .continueBtn {
+    .next .continue-btn {
         padding: 2% 4%;
         font-size: 16px;
     }
@@ -547,7 +555,7 @@ section .tag-list-class .type .wrap div {
         width: 30%;
     }
 
-    section .tag-list-class .type .wrap div {
+    section .tag-list-class .type .wrap .one {
         font-size: 16px;
     }
 
@@ -620,7 +628,7 @@ section .tag-list-class .type .wrap div {
         padding: 2% 0;
     }
 
-    section .tag-list-class .type .wrap div {
+    section .tag-list-class .type .wrap .one {
         font-size: 14px;
         letter-spacing: 2px;
     }
