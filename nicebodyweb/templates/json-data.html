@@ -6,25 +6,6 @@
     <title>Recipe Information</title>
 </head>
 <body>
-    <h1>{{ data[0]['recipe']['title'] }}</h1>
-    <p>{{ data[0]['recipe']['summary'] }}</p>
-
-    <h2>Ingredients:</h2>
-    <ul>
-        {% for ingredient in data[0]['recipe']['prepare'] %}
-        <li>{{ ingredient }}</li>
-        {% endfor %}
-    </ul>
-
-    <h2>Cooking Instructions:</h2>
-    <ol>
-        {% for step in data[0]['recipe']['cookStep'] %}
-        <li>{{ step }}</li>
-        {% endfor %}
-    </ol>
-
-    <p><strong>Cook Time:</strong> {{ data[0]['recipe']['cookTime'] }}</p>
-
-    <p><strong>Nutrition Information:</strong> {{ data[0]['recipe']['nutrition'] }}</p>
+    <h1>{{data}}</h1>
 </body>
 </html>
