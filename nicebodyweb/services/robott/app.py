@@ -42,7 +42,7 @@ def robott_selfList_more():
     #關閉資料庫連線    
     connection.close()
 
-    return render_template('/robott/detailedRecipe.html', data=data)
+    return render_template('/robott/detailedRecipe.html', data='王小明')
 
 #發佈食譜
 @robott_bp.route('/shareResults')

@@ -24,7 +24,7 @@ let renderNav = function() {
         </div>
         <div class="alreadyLogin">
           <img src="/static/images/user1.png" alt="">
-          <h3>Hi yehch</h3>
+          <h3>${messageText}</h3>
           <i class="fa-solid fa-right-from-bracket"></i>
         </div>
       </div>
@@ -38,6 +38,10 @@ let renderNav = function() {
   `;
 
   document.getElementById("nav-container").innerHTML = navStr;
+        
+  // 将新文本节点添加到 id 为 "test" 的元素中
+  testElement.appendChild(newText);
+
 
   let navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
