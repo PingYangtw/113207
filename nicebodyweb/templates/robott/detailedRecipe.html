@@ -28,9 +28,7 @@
 			<section class="receipe">
 				<div class="wrap">
 					<div class="title">
-						{% for d in data %}
-              <h1>{{d[0]}}</h1>
-            {% endfor %}
+              <h1>{{data}}</h1>
 						<div class="like">
 							<i class="fa-solid fa-thumbs-up"></i>
 							<span>99&ensp;</span>
@@ -83,10 +81,13 @@
 		<footer id="footer-container"></footer>
 
 		<script>
+			var messageText = "{{data}}";
+			
 			window.onload = function() {
 				renderNav();
 				renderFooter();
 			};
+			
 		</script>
 	</body>
 </html>
