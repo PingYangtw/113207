@@ -1,10 +1,12 @@
 #-----------------------
 # 匯入模組
 #-----------------------
-from flask import Flask, render_template 
-from openai import OpenAI
 import os
 import time
+import urllib.request
+from flask import Flask, render_template 
+from openai import OpenAI
+from datetime import datetime
 
 #-----------------------
 # 匯入各個服務藍圖
@@ -60,6 +62,18 @@ def json_data():
 
     for message in reversed(messages.data):
         data = message.content[0].text.value
+
+    response = client.images.generate(
+        prompt = "番茄炒蛋，以新鮮番茄和有機蛋為主角，搭配橄欖油，色彩鮮艷，濃淡相間，散發清新氣息。",
+        n = 1,
+        size = "256x256",
+    )
+
+    image_url = response.data[0].url
+
+    file_name = "static/images/openai/" + "image" + datetime.now().strftime('%Y-%m-%d-%H-%M-%S') + ".png"
+    urllib.request.urlretrieve(image_url, file_name)
+
 
     return render_template('/json-data.html',  data=data)
 
