@@ -10,7 +10,7 @@ let renderNav = function() {
           <div class="wrap">
             <a href="/" class="nav-link">Home</a>
             <a href="/robott/generateRecipes" class="nav-link">Robot</a>
-            <a href="" class="nav-link">Goal</a>
+            <a href="/goal/goalMain" class="nav-link">Goal</a>
             <a href="" class="nav-link">Community</a>
           </div>
           <div class="icon">
@@ -38,10 +38,6 @@ let renderNav = function() {
   `;
 
   document.getElementById("nav-container").innerHTML = navStr;
-        
-  // 将新文本节点添加到 id 为 "test" 的元素中
-  testElement.appendChild(newText);
-
 
   let navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
