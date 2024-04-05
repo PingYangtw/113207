@@ -17,14 +17,38 @@ robott_bp = Blueprint('robott_bp', __name__)
 
 #生成食譜
 @robott_bp.route('/generateRecipes')
-def robott_selfList(): 
-    return render_template('/robott/generateRecipes.html')
+def robott_selfList():
+    #取得資料庫連線 
+    connection = db.get_connection() 
+    
+    #產生執行sql命令的物件, 再執行sql   
+    cursor = connection.cursor()     
+    cursor.execute('SELECT cusno FROM public.customer limit 1;')
+    
+    #取出資料
+    data = cursor.fetchall()
+    #關閉資料庫連線    
+    connection.close()
+    
+    return render_template('/robott/generateRecipes.html', data='王小明')
 
 
 #食譜天地
 @robott_bp.route('/recipeWorld')
-def robott_everyList(): 
-    return render_template('/robott/recipeWorld.html')
+def robott_everyList():
+    #取得資料庫連線 
+    connection = db.get_connection() 
+    
+    #產生執行sql命令的物件, 再執行sql   
+    cursor = connection.cursor()     
+    cursor.execute('SELECT cusno FROM public.customer limit 1;')
+    
+    #取出資料
+    data = cursor.fetchall()
+    #關閉資料庫連線    
+    connection.close()
+
+    return render_template('/robott/recipeWorld.html', data='王小明')
 
 
 #生成食譜 > 了解更多 & 食譜天地 > 了解更多
@@ -46,5 +70,17 @@ def robott_selfList_more():
 
 #發佈食譜
 @robott_bp.route('/shareResults')
-def robott_share(): 
-    return render_template('/robott/shareResults.html')
+def robott_share():
+    #取得資料庫連線 
+    connection = db.get_connection() 
+    
+    #產生執行sql命令的物件, 再執行sql   
+    cursor = connection.cursor()     
+    cursor.execute('SELECT cusno FROM public.customer limit 1;')
+    
+    #取出資料
+    data = cursor.fetchall()
+    #關閉資料庫連線    
+    connection.close()
+
+    return render_template('/robott/shareResults.html', data='王小明')

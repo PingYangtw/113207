@@ -20,11 +20,201 @@
   <nav id="nav-container"></nav>
 
   <article>
+    <div class="select">
+      <select>
+        <option>請選擇你的目標</option>
+        <option>Dog</option>
+        <option>Cat</option>
+        <option>Hamster</option>
+        <option>Parrot</option>
+        <option>Spider</option>
+        <option>Goldfish</option>
+      </select>
+    </div>
 
+    <section class="check-in">
+      <div class="top">
+        <div class="title">
+          <i class="fa-regular fa-calendar-check"></i>
+          <h2>每日打卡</h2>
+        </div>
+        <button><i class="fa-solid fa-pen"></i></button>
+      </div>
+
+      <div class="progress-bar">
+        <div class="level">
+          <span>LV.</span>3
+        </div>
+        <form action="test.aspx" method="get">
+          <progress value="0.5"></progress>
+        </form>
+      </div>
+
+      <div class="check-box">
+        <div class="item" id="horns">
+          <input type="checkbox" />
+          <label for="horns">
+            &ensp;
+            <i class="fa-solid fa-droplet"></i>
+            喝水1000公升
+          </label>
+        </div>
+
+        <div class="item" id="horns">
+          <input type="checkbox" />
+          <label for="horns">
+            &ensp;
+            <i class="fa-solid fa-seedling"></i>
+            吃蔬菜
+          </label>
+        </div>
+
+        <div class="item" id="horns">
+          <input type="checkbox" />
+          <label for="horns">
+            &ensp;
+            <i class="fa-solid fa-martini-glass"></i>
+            沒有喝飲料
+          </label>
+        </div>
+
+        <div class="item" id="horns">
+          <input type="checkbox" />
+          <label for="horns">
+            &ensp;
+            <i class="fa-solid fa-cookie-bite"></i>
+            沒有吃零食
+          </label>
+        </div>
+
+        <div class="item" id="horns">
+          <input type="checkbox" />
+          <label for="horns">
+            &ensp;
+            <i class="fa-solid fa-droplet"></i>
+            喝兩瓶水
+          </label>
+        </div>
+
+        <div class="item" id="horns">
+          <input type="checkbox" />
+          <label for="horns">
+            &ensp;
+            <i class="fa-solid fa-apple-whole"></i>
+            吃水果
+          </label>
+        </div>
+
+        <div class="item" id="horns">
+          <input type="checkbox" />
+          <label for="horns">
+            &ensp;
+            <i class="fa-solid fa-martini-glass"></i>
+            沒有喝酒
+          </label>
+        </div>
+
+        <div class="item" id="horns">
+          <input type="checkbox" />
+          <label for="horns">
+            &ensp;
+            <i class="fa-solid fa-cookie-bite"></i>
+            沒有吃宵夜
+          </label>
+        </div>
+
+        <div class="add-check-box">
+          <i class="fa-solid fa-plus"></i>
+          &ensp;
+          新增打卡目標
+        </div>
+      </div>
+    </section>
+
+    <section class="weight_change">
+      <div class="top">
+        <div class="title">
+          <i class="fa-solid fa-chart-line"></i>
+          <h2>體重變化表</h2>
+        </div>
+        <div class="btn">
+          <button><i class="fa-solid fa-plus"></i></button>
+          <button><i class="fa-solid fa-pen"></i></button>
+        </div>
+      </div>
+
+      <div class="input">
+        請輸入今日體重(kg) :&ensp;
+        <input type="text">&ensp;
+        <button><i class="fa-solid fa-check"></i></button>
+      </div>
+
+      <canvas id="myChart"></canvas>
+    </section>
+
+    <section class="contrast">
+      <div class="top">
+        <div class="title">
+          <i class="fa-regular fa-image"></i>
+          <h2>前後對比照</h2>
+        </div>
+        <button>
+          <i class="fa-solid fa-puzzle-piece"></i>
+          生成前後對比照
+        </button>
+      </div>
+
+      <div class="photo">
+        <div class="before">
+          <div class="container">
+            <span class="text">before</span>
+            <div class="background">&nbsp;</div>
+          </div>
+          <label for="beforefileInput" class="custom-input">
+            <input type="file" id="beforefileInput" accept="image/*" onchange="beforepreviewImage(event)">
+            <div class="icon">
+              <i class="fas fa-plus"></i>
+            </div>
+            <img id="beforepreviewImage" src="" alt="">
+          </label>
+          <div class="edit">
+            <div class="right">2024.04.05</div>
+            <div class="left">
+              <button onclick="enableEditing('before')"><i class="fa-solid fa-pen"></i></button>
+              <button onclick="clearImage('before')"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
+        </div>
+      
+        <i class="fa-solid fa-angles-right"></i>
+      
+        <div class="after">
+          <div class="container">
+            <span class="text">after</span>
+            <div class="background">&nbsp;</div>
+          </div>
+          <label for="afterfileInput" class="custom-input">
+            <input type="file" id="afterfileInput" accept="image/*" onchange="afterpreviewImage(event)">
+            <div class="icon">
+              <i class="fas fa-plus"></i>
+            </div>
+            <img id="afterpreviewImage" src="" alt="">
+          </label>
+          <div class="edit">
+            <div class="right">2024.04.05</div>
+            <div class="left">
+              <button onclick="enableEditing('after')"><i class="fa-solid fa-pen"></i></button>
+              <button onclick="clearImage('after')"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </article>
 
   <footer id="footer-container"></footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     let messageText = "{{data}}";
 
@@ -32,6 +222,85 @@
       renderNav();
       renderFooter();
     };
+
+    let chartElement = document.getElementById('myChart');
+    let data = {
+      labels: [
+        '星期一', '星期二', '星期三', '星期四', '星期五' ,'星期六' ,'星期日',
+      ],
+      datasets: [{
+        label: '參加人數',
+        data: [160, 130, 140, 160, 170, 200, 180],
+      }]
+    };
+    new Chart(chartElement, {
+      type: 'line',
+      data: data,
+    });
+
+    let isEditing = {
+      'before': false,
+      'after': false
+    };
+
+    function toggleEdit(type) {
+      const inputLabel = document.querySelector(`.${type} .custom-input`);
+      inputLabel.style.pointerEvents = isEditing[type] ? 'none' : 'auto';
+
+      const editDiv = document.querySelector(`.${type} .edit`);
+      editDiv.style.display = isEditing[type] ? 'flex' : 'none';
+    }
+
+    function enableEditing(type) {
+      isEditing[type] = true;
+      toggleEdit(type);
+
+      const fileInput = document.getElementById(`${type}fileInput`);
+      fileInput.click();
+    }
+
+    function clearImage(type) {
+      const previewImage = document.getElementById(`${type}previewImage`);
+      previewImage.src = "";
+      previewImage.style.display = 'none';
+      const inputLabel = document.querySelector(`.${type} .custom-input`);
+      inputLabel.style.pointerEvents = 'auto';
+      const editDiv = document.querySelector(`.${type} .edit`);
+      editDiv.style.display = 'none';
+      const plusIcon = document.querySelector(`.${type} .icon`);
+      plusIcon.style.display = 'flex';
+      isEditing[type] = false;
+    }
+
+    function beforepreviewImage(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const previewImage = document.getElementById('beforepreviewImage');
+          previewImage.src = e.target.result;
+          previewImage.style.display = 'block';
+          document.querySelector('.before .icon').style.display = 'none';
+          enableEditing('before');
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function afterpreviewImage(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const previewImage = document.getElementById('afterpreviewImage');
+          previewImage.src = e.target.result;
+          previewImage.style.display = 'block';
+          document.querySelector('.after .icon').style.display = 'none';
+          enableEditing('after');
+        }
+        reader.readAsDataURL(file);
+      }
+    }
   </script>
 </body>
 </html>
