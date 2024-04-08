@@ -14,6 +14,8 @@ article > .select > select {
   color: #FFF;
 }
 
+/* check-in */
+
 article > .check-in {
   margin-top: 10%;
 }
@@ -112,24 +114,100 @@ progress::-webkit-progress-value {
   margin-top: 3%;
 }
 
-.fa-droplet {
-  color: #59A5D8;
+/* check dialog */
+
+dialog{
+  border: none;
+  box-shadow: 0 2px 6px #ccc;
+  border-radius: 10px;
+  padding: 2% 4%;
+  width: 30vw;
+  background-color: #FCFAF1;
+  box-sizing: border-box;
+  color: #495057;
 }
 
-.fa-seedling {
-  color: #4AD66D;
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.fa-martini-glass {
-  color: #FF9914;
-}
-
-.fa-cookie-bite {
+dialog h1 {
+  font-size: 1.5em;
+  font-weight: bold;
   color: #BC6C25;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.fa-apple-whole {
-  color: #e5446d;
+
+dialog .content {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
 }
+
+.icons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconbtn {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.iconbtn i {
+  transition: color 0.3s;
+}
+
+dialog .content input {
+  width: 100%;
+  padding: 10px;
+  border: #86BAA1 1px solid;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.save {
+  margin-top: 10%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.save button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: #495057;
+  cursor: pointer;
+  transition: color,background-color 0.3s;
+}
+
+#closecheck:hover,
+#closeweight:hover {
+  background-color: #BC4749;
+  color: #FFF;
+}
+
+#savecheck:hover,
+#saveweight:hover {
+  background-color: #86BAA1;
+  color: #FFF;
+}
+
+/* weight_change */
 
 .weight_change {
   margin-top: 10%;
@@ -158,6 +236,8 @@ canvas {
   margin-top: 5%;
   width: 100%;
 }
+
+/* contrast */
 
 .contrast {
   margin-top: 10%;

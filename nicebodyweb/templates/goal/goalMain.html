@@ -37,7 +37,7 @@
           <i class="fa-regular fa-calendar-check"></i>
           <h2>每日打卡</h2>
         </div>
-        <button><i class="fa-solid fa-pen"></i></button>
+        <button onclick="location.href='/goal/checkList'" type="button"><i class="fa-solid fa-pen"></i></button>
       </div>
 
       <div class="progress-bar">
@@ -122,12 +122,31 @@
           </label>
         </div>
 
-        <div class="add-check-box">
+        <div class="add-check-box" id="opencheck">
           <i class="fa-solid fa-plus"></i>
           &ensp;
           新增打卡目標
         </div>
       </div>
+      <dialog id="check">
+        <h1>新增打卡目標</h1>
+        <div class="content">
+          <h2>icon</h2>
+          <div class="icons">
+            <div class="iconbtn iconbtn-droplet" onclick="changeColor(this)"><i class="fa-solid fa-droplet"></i></div>
+            <div class="iconbtn iconbtn-seedling" onclick="changeColor(this)"><i class="fa-solid fa-seedling"></i></div>
+            <div class="iconbtn iconbtn-martini-glass" onclick="changeColor(this)"><i class="fa-solid fa-martini-glass"></i></div>
+            <div class="iconbtn iconbtn-cookie-bite" onclick="changeColor(this)"><i class="fa-solid fa-cookie-bite"></i></div>
+            <div class="iconbtn iconbtn-apple-whole" onclick="changeColor(this)"><i class="fa-solid fa-apple-whole"></i></div>
+          </div>
+          <h2>打卡目標</h2>
+          <input type="text">
+        </div>
+        <div class="save">
+          <button id="closecheck">close</button>
+          <button id="savecheck">save</button>
+        </div>
+      </dialog>
     </section>
 
     <section class="weight_change">
@@ -137,10 +156,23 @@
           <h2>體重變化表</h2>
         </div>
         <div class="btn">
-          <button><i class="fa-solid fa-plus"></i></button>
-          <button><i class="fa-solid fa-pen"></i></button>
+          <button id="openweight"><i class="fa-solid fa-plus"></i></button>
+          <button onclick="location.href='/goal/weightList'" type="button"><i class="fa-solid fa-pen"></i></button>
         </div>
       </div>
+      <dialog id="weight">
+        <h1>新增體重紀錄</h1>
+        <div class="content">
+          <h2>日期</h2>
+          <input type="date">
+          <h2>體重</h2>
+          <input type="text">
+        </div>
+        <div class="save">
+          <button id="closeweight">close</button>
+          <button id="saveweight">save</button>
+        </div>
+      </dialog>
 
       <div class="input">
         請輸入今日體重(kg) :&ensp;
@@ -222,6 +254,7 @@
       renderFooter();
     };
 
+    // 體重變化表
     let chartElement = document.getElementById('myChart');
     let data = {
       labels: [
@@ -237,6 +270,7 @@
       data: data,
     });
 
+    // 前後對照圖
     let isEditing = {
       'before': false,
       'after': false
@@ -298,6 +332,67 @@
           enableEditing('after');
         }
         reader.readAsDataURL(file);
+      }
+    }
+
+    // 彈跳視窗 新增打卡目標
+    let opencheck=document.getElementById('opencheck');
+    let check=document.getElementById('check');
+    let closecheck=document.getElementById('closecheck');
+    opencheck.addEventListener("click", function(){
+      check.showModal();
+    })
+    closecheck.addEventListener("click", function(){
+      check.close();
+    })
+
+    // 彈跳視窗 新增體重
+    let openweight=document.getElementById('openweight');
+    let weight=document.getElementById('weight');
+    let closeweight=document.getElementById('closeweight');
+    openweight.addEventListener("click", function(){
+      weight.showModal();
+    })
+    closeweight.addEventListener("click", function(){
+      weight.close();
+    })
+
+    // icon變換顏色
+    var lastClickedElement = null;
+
+    function changeColor(element) {
+      var iconName = element.classList[1].replace("iconbtn-", "");
+      element.style.backgroundColor = getColor(iconName);
+      element.querySelector("i").style.color = "#ffffff";
+
+      // Reset color of last clicked element
+      if (lastClickedElement && lastClickedElement !== element) {
+        resetColor(lastClickedElement);
+      }
+      
+      lastClickedElement = element;
+    }
+
+    function resetColor(element) {
+      var iconName = element.classList[1].replace("iconbtn-", "");
+      element.style.backgroundColor = '';
+      element.querySelector("i").style.color = '';
+    }
+
+    function getColor(iconName) {
+      switch(iconName) {
+        case "droplet":
+          return "#59A5D8";
+        case "seedling":
+          return "#4AD66D";
+        case "martini-glass":
+          return "#FF9914";
+        case "cookie-bite":
+          return "#BC6C25";
+        case "apple-whole":
+          return "#e5446d";
+        default:
+          return "#ffffff";
       }
     }
   </script>
