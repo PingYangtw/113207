@@ -42,7 +42,7 @@ def json_data():
     # Execute our run
     run = client.beta.threads.runs.create(
         thread_id=thread.id,
-        assistant_id='asst_vb6Kgql3yMt4FrBWNUGHtwhQ',
+        assistant_id='asst_SrcfhWBYSD0L1CMhGPSpeEoV',
     )
 
     def wait_on_run(run, thread):
