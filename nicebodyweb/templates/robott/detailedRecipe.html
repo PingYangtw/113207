@@ -28,7 +28,7 @@
 			<section class="receipe">
 				<div class="wrap">
 					<div class="title">
-              <h1>{{data}}</h1>
+              <h1>{{data[0]}}</h1>
 						<div class="like">
 							<i class="fa-solid fa-thumbs-up"></i>
 							<span>99&ensp;</span>
@@ -36,14 +36,10 @@
 					</div>
 				
 					<div class="summary">
-						<p>02.04.2024</p>
+						<p>{{data[1]}}</p>
 						<h2>摘要</h2>
 						<p>
-							「番茄蛋糖減魔法餐」是一道精心設計的午餐，以減醣為主要特色， 主要以新鮮的番茄和有機蛋為食材 , 烹飪時間僅需30分鐘以內。
-							這道料理不僅美味清新 , 更符合營養需求 , 提供豐富的蛋白質，適量的脂肪 , 並極低的糖分。
-							橄欖油的加入使得整體口感更 加豐富。
-							每份約含250卡路里 , 是一款輕盈無負擔的午餐選擇 , 滿足味蕾的同時也保證營養均衡。
-							「番茄蛋糖減魔法餐」讓您在 享受美味的同時輕鬆追求減醣生活 。
+							{{data[2]}}
 						</p>
 					</div>
 						
@@ -57,7 +53,7 @@
 						</ol>
 
 						<h2>烹調時間</h2>
-						<p>0 ~ 30分鐘</p>
+						<p>{{data[4]}}</p>
 
 						<h2>料理步驟</h2>
 						<ol>
@@ -69,7 +65,7 @@
 						</ol>
 
 						<h2>營養配比</h2>
-						<p>每份熱量約250卡路里，蛋白質豐富，脂肪含量適中，糖分極低，是一道減糖又營養豐富的午餐選擇。</p>
+						<p>{{data[6]}}</p>
 					</div>
 
 					<div class="button">
@@ -81,7 +77,7 @@
 		<footer id="footer-container"></footer>
 
 		<script>
-			let messageText = "{{data}}";
+			let messageText = "王小明";
 			
 			window.onload = function() {
 				renderNav();
