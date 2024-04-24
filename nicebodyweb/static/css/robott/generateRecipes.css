@@ -43,6 +43,7 @@ article {
 }
 
 /* AI */
+
 .AI {
   border: #D4A373 1px solid;
   border-radius: 10px;
@@ -57,12 +58,13 @@ article {
 
 .add {
   width: 100%;
-  height: 50%;
+  height: 100%;
   border: #D4A373 2px solid;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10%;
 }
 
 .add i {
@@ -84,6 +86,7 @@ article {
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 /* title */
@@ -153,4 +156,36 @@ article {
 
 .more .unpublished {
   background-color: #D4A373;
+}
+
+/* Medium 1024px */
+
+@media screen and (max-width:1024px) {
+  article {
+    padding: 15% 15% 5%;
+  }
+}
+
+/* Small 768px */
+
+@media screen and (max-width:768px) {
+  article {
+    padding: 20% 15% 5%;
+  }
+
+  .content {
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-content: space-between;
+    margin-top: 5%;
+  }
+}
+
+/* X-Small 480px */
+
+@media screen and (max-width:480px) {
+  article {
+    padding: 25% 15% 10%;
+  }
 }
