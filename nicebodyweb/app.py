@@ -12,6 +12,7 @@ import time
 from services.robott.app import robott_bp
 from services.question.app import question_bp
 from services.goal.app import goal_bp
+from services.community.app import community_bp
 
 #-------------------------
 # 產生主程式, 加入主畫面
@@ -72,6 +73,7 @@ def json_data():
 app.register_blueprint(robott_bp, url_prefix='/robott')
 app.register_blueprint(question_bp, url_prefix='/question')
 app.register_blueprint(goal_bp, url_prefix='/goal')
+app.register_blueprint(community_bp, url_prefix='/community')
 
 #-------------------------
 # 啟動主程式
