@@ -388,3 +388,27 @@ canvas {
   color: #FFF;
   cursor: pointer;
 }
+
+/* Medium 1024px */
+
+@media screen and (max-width:1024px) {
+  article {
+    padding: 15% 15% 5%;
+  }
+}
+
+/* Small 768px */
+
+@media screen and (max-width:768px) {
+  article {
+    padding: 20% 15% 5%;
+  }
+}
+
+/* X-Small 480px */
+
+@media screen and (max-width:480px) {
+  article {
+    padding: 25% 15% 10%;
+  }
+}

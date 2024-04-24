@@ -1,0 +1,172 @@
+article {
+    padding: 10% 15% 5%;
+    background-color: #F0EAD2;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title > i,
+.title > h1 {
+    color: #BC6C25;
+    font-size: 1.875em;
+}
+
+.title > i {
+    margin-right: 15px;
+}
+
+/* form */
+
+form {
+    margin: 5% 15% 0;
+    
+}
+
+.pen {
+    margin-bottom: 5%;
+}
+
+.pen > h3 {
+    margin-bottom: 2%;
+}
+
+.pen > input,
+.pen > textarea {
+    width: 100%;
+    padding: 10px;
+    border: hsl(48, 50%, 88%);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.tag {
+    width: 100%;
+    display: grid;
+    grid-gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-content: space-between;
+    margin: 5% 0;
+}
+
+.tag > .pen >h3 {
+    margin-bottom: 5%;
+}
+
+.tag > .pen > select {
+    width: 100%;
+    border-radius: 10px; 
+    padding: 10px;
+    border: none;
+}
+
+.pen .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3%;
+}
+
+.pen .title button {
+    background-color: #86BAA1;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.pen .title button i {
+    color: #FCFAF1;
+}
+
+/*a  upload */
+.a-upload {
+    width: 100%;
+    padding: 4px 10px;
+    height: 40px;
+    line-height: 20px;
+    position: relative;
+    cursor: pointer;
+    color: #495057;
+    background: #FFF;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+}
+  
+.a-upload input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.a-upload i {
+    position: absolute; 
+    right: 10px;
+    top: 10px;
+    transition: color 0.3s ease;
+}
+  
+.a-upload i:hover {
+    color: #000000;
+    background: #FFF;
+    text-decoration: none
+}
+
+.showFileName {
+    margin-top: 10px; /* 可根据需要调整 */
+    font-size: 14px; /* 可根据需要调整 */
+    color: #333; /* 文件名颜色 */
+}
+
+.btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn input {
+    font-size: 1.250em;
+    border: none;
+    background-color: #86BAA1;
+    color: #FCFAF1;
+    padding: 1% 10%;
+    border-radius: 10px;
+}
+
+/* Medium 1024px */
+
+@media screen and (max-width:1024px) {
+    article {
+        padding: 15% 15% 5%;
+    }
+}
+
+/* Small 768px */
+
+@media screen and (max-width:768px) {
+    article {
+        padding: 20% 15% 5%;
+    }
+}
+
+/* X-Small 480px */
+
+@media screen and (max-width:480px) {
+    article {
+        padding: 25% 15% 10%;
+    }
+}

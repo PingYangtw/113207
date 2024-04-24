@@ -231,6 +231,10 @@
 /* Small 768px */
 
 @media screen and (max-width:768px) {
+  article {
+    padding: 20% 15% 5%;
+  }
+
   .button button {
     padding: 2% 4%;
   }

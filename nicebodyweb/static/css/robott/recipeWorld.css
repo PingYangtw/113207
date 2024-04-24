@@ -217,6 +217,10 @@ article {
 /* Small 768px */
 
 @media screen and (max-width:768px) {
+  article {
+    padding: 20% 15% 5%;
+  }
+
   .switch a {
     padding: 0 0 2% 0;
   }
