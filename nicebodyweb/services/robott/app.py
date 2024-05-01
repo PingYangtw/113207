@@ -29,7 +29,6 @@ def robott_selfList():
     return render_template('/robott/generateRecipes.html', data=data)
 
 
-
 #食譜天地
 @robott_bp.route('/recipeWorld')
 def robott_everyList():
