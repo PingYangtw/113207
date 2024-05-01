@@ -42,7 +42,7 @@
 
       {% for d in data%}
       <div class="ai-recipe-share">
-        <img src="http://127.0.0.1:5000/static/images/openai/{{d[3]}}" alt="">
+        <img src="{{ Recipes_image_path }}/{{ d[3] }}" alt="">
         <div class="title">
             <img src="/static/images/user2.png" alt="">
             <h3>{{d[0]}}</h3>
