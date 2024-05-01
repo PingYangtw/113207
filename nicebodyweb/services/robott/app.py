@@ -37,17 +37,14 @@ def robott_everyList():
 
 #生成食譜 > 了解更多 & 食譜天地 > 了解更多
 @robott_bp.route('/detailedRecipe')
-def robott_selfList_more(): 
-    #取得資料庫連線 
+def robott_selfList_more():  
     connection = db.get_connection() 
-    
-    #產生執行sql命令的物件, 再執行sql   
+     
     cursor = connection.cursor()     
     cursor.execute('SELECT title, TO_CHAR(create_time, \'MM.DD.YYYY\'), summary, "prepare", "cookTime", "cookStep", nutrition, "cookImage", "isPublish" FROM body."Cookbook" where "Cookid" =1;')
     
-    #取出資料
     data = cursor.fetchone()
-    #關閉資料庫連線    
+ 
     connection.close()
 
     return render_template('/robott/detailedRecipe.html', data=data)
