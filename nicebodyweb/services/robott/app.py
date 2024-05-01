@@ -18,7 +18,16 @@ robott_bp = Blueprint('robott_bp', __name__)
 #生成食譜
 @robott_bp.route('/generateRecipes')
 def robott_selfList():
-    return render_template('/robott/generateRecipes.html', data='王小明')
+    connection = db.get_connection() 
+
+    cursor = connection.cursor()     
+    cursor.execute('SELECT title, TO_CHAR(create_time, \'MM.DD.YYYY\') as "create_time", summary, "cookImage", "isPublish" FROM body."Cookbook" where "Uid" =1 order by "Cookid" desc;')
+
+    data = cursor.fetchall()
+
+    connection.close()
+    return render_template('/robott/generateRecipes.html', data=data)
+
 
 
 #食譜天地
