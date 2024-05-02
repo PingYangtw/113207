@@ -16,7 +16,9 @@ robott_bp = Blueprint('robott_bp', __name__)
 #--------------------------
 
 Recipes_image_path = ""
+user_image_path = ""
 # Recipes_image_path = "http://127.0.0.1:5000/static/images/openai"
+# user_image_path = "http://127.0.0.1:5000/static/images/userImage"
 
 #生成食譜
 @robott_bp.route('/generateRecipes')
@@ -36,7 +38,15 @@ def robott_selfList():
 #食譜天地
 @robott_bp.route('/recipeWorld')
 def robott_everyList():
-    return render_template('/robott/recipeWorld.html', data='王小明')
+    connection = db.get_connection() 
+
+    cursor = connection.cursor()     
+    cursor.execute('select * from body."v_recipeWorld" order by create_time desc;')
+
+    data = cursor.fetchall()
+
+    connection.close()
+    return render_template('/robott/recipeWorld.html', data=data, Recipes_image_path=Recipes_image_path, user_image_path = user_image_path)
 
 
 #生成食譜 > 了解更多 & 食譜天地 > 了解更多

@@ -48,76 +48,30 @@
       </div>
 
       <div class="content">
+        {% for d in data %}
         <div class="ai-recipe-share">
-          <img src="/static/images/food1.png" alt="">
+          <img src="{{ Recipes_image_path }}/{{ d[3] }}" alt="">
           <div class="title">
-            <img src="/static/images/user1.png" alt="">
-            {% for d in data %}
+            <img src="{{ user_image_path }}/{{ d[6] }}" alt="">
               <h3>{{d[0]}}</h3>
-            {% endfor %}
           </div>
-          <p>02.05.2024</p>
-          <p>這款「海之芳饌 - 蛤蠣湯高纖午餐」結合了新鮮蛤蠣湯的豐富風味，同時滿足您對高纖維的營養需求，是一道營養均衡且美味的午餐選擇。</p>
+          <p>{{d[1]}}</p>
+          <p>{{d[2]}}</p>
           <div class="more">
             <a href="/robott/detailedRecipe">了解更多</a>
             <div class="icon">
               <div class="like">
                 <i class="fa-solid fa-thumbs-up"></i>
-                <span>99&ensp;</span>
+                <span>{{d[4]}}&ensp;</span>
               </div>
               <div class="share">
                 <i class="fa-solid fa-share"></i>
-                <span>10</span>
+                <span>{{d[5]}}</span>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="ai-recipe-share">
-          <img src="/static/images/food2.png" alt="">
-          <div class="title">
-            <img src="/static/images/user2.png" alt="">
-            <h3>番茄蛋減糖魔法餐</h3>
-          </div>
-          <p>02.04.2024</p>
-          <p>「番茄蛋糖減魔法餐」是一道精心設計的午餐，以減糖為主要特色，主要以新鮮的番茄和有機蛋為食材，烹飪時間僅需30分鐘以內。</p>
-          <div class="more">
-            <a href="/rebott/everyList/more">了解更多</a>
-            <div class="icon">
-              <div class="like">
-                <i class="fa-solid fa-thumbs-up"></i>
-                <span>99&ensp;</span>
-              </div>
-              <div class="share">
-                <i class="fa-solid fa-share"></i>
-                <span>10</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ai-recipe-share">
-          <img src="/static/images/food1.png" alt="">
-          <div class="title">
-            <img src="/static/images/user1.png" alt="">
-            <h3>纖潤蛤蠣盛宴</h3>
-          </div>
-          <p>02.05.2024</p>
-          <p>這款「海之芳饌 - 蛤蠣湯高纖午餐」結合了新鮮蛤蠣湯的豐富風味，同時滿足您對高纖維的營養需求，是一道營養均衡且美味的午餐選擇。</p>
-          <div class="more">
-            <a href="/rebott/everyList/more">了解更多</a>
-            <div class="icon">
-              <div class="like">
-                <i class="fa-solid fa-thumbs-up"></i>
-                <span>99&ensp;</span>
-              </div>
-              <div class="share">
-                <i class="fa-solid fa-share"></i>
-                <span>10</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </section>
   </article>
@@ -125,7 +79,7 @@
   <footer id="footer-container"></footer>
 
   <script>
-    let messageText = "{{data}}";
+    let messageText = "chiaoyu";
 
     window.onload = function() {
       renderNav();
