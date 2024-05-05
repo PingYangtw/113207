@@ -120,36 +120,21 @@ progress::-webkit-progress-value {
   cursor: pointer;
 }
 
-.accumulation:nth-child(1)::before {
-  content: "累積打卡天數"; 
-}
-
-.accumulation:nth-child(2)::before {
-  content: "累積記錄體重"; 
-}
-
-.accumulation:nth-child(3)::before {
-  content: "累積生成食譜";
-}
-
-.accumulation:nth-child(4)::before {
-  content: "食譜獲讚數量";
-}
-
 .accumulation::before {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 0; 
-  background: linear-gradient(#9cc5a10f, #49a0787b);
+  background: linear-gradient(#b7e4c70f, #95d5b27b);
   transition: height 0.3s;
-  color: #FCFAF1;
+  color: #895737;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   font-size: 1em;
   line-height: 1.5;
+  content: attr(data-label);
 }
 
 .accumulation:hover::before {
@@ -171,6 +156,22 @@ progress::-webkit-progress-value {
 
 .accumulation:hover h1 {
   font-size: 6em;
+}
+
+.accumulation .label {
+  position: absolute;
+  bottom: 10px;
+  font-size: 1em;
+  color: #BC6C25;
+  opacity: 0;
+  transition: opacity 0.3s;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.accumulation:hover .label {
+  opacity: 1;
 }
 
 /* Large 1200px */
