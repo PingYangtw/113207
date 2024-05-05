@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/static/images/favicon.ico" rel="shortcut icon"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
@@ -44,26 +45,31 @@
       <div class="ai-recipe-share">
         <img src="{{ Recipes_image_path }}/{{ d[3] }}" alt="">
         <div class="title">
-            <img src="/static/images/user2.png" alt="">
-            <h3>{{d[0]}}</h3>
+          <img src="/static/images/user2.png" alt="">
+          <h3>{{d[0]}}</h3>
         </div>
         <p>{{d[1]}}</p>
         {% if d[2]|length > 60 %}
-            <p>{{d[2][:60]}}...</p>
+        <p>{{d[2][:60]}}...</p>
         {% else %}
-            <p>{{d[2]}}</p>
+        <p>{{d[2]}}</p>
         {% endif %}
+        <div class="diet">
+          <span class="dietname mediterranean">地中海</span>
+          <span class="dietname deshu">得舒</span>
+          <span class="dietname vegetarian">彈性素食</span>
+          <span class="dietname numdiet">234</span>
+        </div>
         <div class="more">
-            <a href="/robott/detailedRecipe">了解更多</a>
-            {% if d[4] == '0' %}
-                <a class="unpublished">發佈食譜</a>
-            {% else %}
-                <a class="published">已發佈</a>
-            {% endif %}
+          <a href="/robott/detailedRecipe">了解更多</a>
+          {% if d[4] == '0' %}
+            <a class="unpublished">發佈食譜</a>
+          {% else %}
+            <a class="published">已發佈</a>
+          {% endif %}
         </div>
       </div>
       {% endfor %}
-      
     </section>
   </article>
 
