@@ -90,14 +90,31 @@ article {
   transition: opacity 0.75s ease-in-out;
 }
 
+/* .image.featured 中間不可有空格 */
 .image.featured {
   margin: 0;
   padding: 0;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.featured img {
+  transition: transform  0.3s;
 }
 
 .featured h3 {
   margin: 10% 0;
   font-weight: bold;
+  transition: font-size  0.3s;
+}
+
+.image.featured:hover img {
+  transform: scale(1.1);
+}
+
+.image.featured:hover h3 {
+  font-size: 1.5em;
+  color: #BC6C25;
 }
 
 .forward,
