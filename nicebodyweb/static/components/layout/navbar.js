@@ -10,7 +10,8 @@ let renderNav = function() {
           <div class="wrap">
             <a href="/" class="nav-link">Home</a>
             <a href="/robott/generateRecipes" class="nav-link">Robot</a>
-            <a href="/goal/goalMain" class="nav-link">Goal</a>
+            <a href="/goal/goalMain" class="nav-link">Record</a>
+            <a href="/task/taskPage" class="nav-link">Task</a>
             <a href="/community/airecipePost" class="nav-link">Community</a>
           </div>
           <div class="icon">
@@ -32,7 +33,8 @@ let renderNav = function() {
     <div class="sideBar" id="sideBar">
       <a href="/" class="nav-link">Home</a>
       <a href="/robott/generateRecipes" class="nav-link">Robot</a>
-      <a href="/goal/goalMain" class="nav-link">Goal</a>
+      <a href="/goal/goalMain" class="nav-link">Record</a>
+      <a href="/task/taskPage" class="nav-link">Task</a>
       <a href="/community/airecipePost" class="nav-link">Community</a>
     </div>
   `;
