@@ -65,10 +65,16 @@
           </div>
           <p>{{d[1]}}</p>
           {% if d[2]|length > 60 %}
-            <p>{{d[2][:60]}}...</p>
+          <p>{{d[2][:60]}}...</p>
           {% else %}
-              <p>{{d[2]}}</p>
+          <p>{{d[2]}}</p>
           {% endif %}
+          <div class="diet">
+            <span class="dietname mediterranean">地中海</span>
+            <span class="dietname deshu">得舒</span>
+            <span class="dietname vegetarian">彈性素食</span>
+            <span class="dietname numdiet">234</span>
+          </div>
           <div class="more">
             <a href="/robott/detailedRecipe">了解更多</a>
             <div class="icon">
