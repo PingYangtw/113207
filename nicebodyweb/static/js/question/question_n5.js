@@ -1,3 +1,4 @@
+let messageText = "{{data}}";
 window.onload = function() {
     // Navbar
     renderNav();

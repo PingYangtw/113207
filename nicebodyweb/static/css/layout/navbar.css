@@ -42,7 +42,7 @@ nav .area .logo img {
 /* middle */
 
 nav .middle {
-  flex: 2;
+  flex: 3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,24 +118,25 @@ nav .alreadyLogin {
 }
 
 /* sideBar */
-
-nav .sideBar {
+.sideBar {
   display: none;
 }
 
-nav .sideBar a {
+.sideBar a {
   text-decoration: none;
   margin: 15px 0px;
   padding: 0px 50px;
   cursor: pointer;
-  color: #FCFAF1;
+  color: #6E3D0D;
+  transition: color 0.3s ease;
 }
 
 nav .middle .wrap a:hover,
 nav .area .logo h1:hover,
 .logSign a:hover,
 .alreadyLogin h3:hover,
-.alreadyLogin i:hover {
+.alreadyLogin i:hover,
+.sideBar a:hover {
   color: #FFCF56;
 }
 
@@ -197,18 +198,18 @@ nav .area .logo h1:hover,
     display: none;
   }
 
-  nav .sideBar {
+  .sideBar {
     display: none;
     flex-direction: column;
     justify-content: flex-start;
-    position: sticky;
-    z-index: 0;
-    height: calc(100vh - 80px);
+    position: fixed;
+    z-index: 500;
+    height: 100vh;
     left: 0;
-    width: 35%;
+    width: auto;
     background-color: #faf7ed;
-    box-shadow: -3px 0px 3px 1px #afafaf34;
-    padding-top: 3%;
+    box-shadow: 2px 2px 10px 2px #be987149;
+    padding-top: 10%;
   }
 }
 

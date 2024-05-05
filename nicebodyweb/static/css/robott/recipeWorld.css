@@ -44,14 +44,14 @@ article {
   display: flex;
   align-items: center;
   color: #BE9771;
-  width: 40%;
+  width: 50%;
 }
 
 .cooking-time input {
   border: #BE9771 1px solid;
   border-radius: 10px;
   padding: 10px 20px;
-  width: 40%;
+  width: 100%;
 }
 
 .cooking-time span {
@@ -70,10 +70,18 @@ article {
   margin: 0 3%;
 }
 
+.cooking-time > select {
+  border: #BE9771 1px solid;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 3%;
+  color: #495057;
+}
+
 .keyword-query {
   position:relative;
   display:inline-block;
-  width: 60%;
+  width: 50%;
 }
 
 .keyword-query input {
@@ -117,7 +125,6 @@ article {
   display: grid;
   grid-gap: 50px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  justify-content: space-between;
   margin-top: 2%;
 }
 
@@ -131,10 +138,11 @@ article {
 
 .ai-recipe-share img {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 50%;
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 /* title */
@@ -171,6 +179,25 @@ article {
 .ai-recipe-share p:nth-of-type(2) {
   margin-bottom: 10%;
   line-height: 25px;
+}
+
+/* diet */
+
+.diet {
+  font-size: 0.5em;
+  margin-bottom: 7%;
+  display: flex;
+  gap: 3%;
+  align-items: center;
+}
+
+.dietname {
+  padding: 2%;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #5e6472;
 }
 
 /* more */
@@ -217,6 +244,10 @@ article {
 /* Small 768px */
 
 @media screen and (max-width:768px) {
+  article {
+    padding: 20% 15% 5%;
+  }
+
   .switch a {
     padding: 0 0 2% 0;
   }

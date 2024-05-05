@@ -1,3 +1,4 @@
+let messageText = "{{data}}";
 window.onload = function () {
     // Navbar
     renderNav();
@@ -100,5 +101,3 @@ window.onload = function () {
     }
 
 };
-
-

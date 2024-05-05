@@ -4,6 +4,7 @@
 		<title>Home</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link href="/static/images/favicon.ico" rel="shortcut icon"/>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
@@ -23,11 +24,12 @@
 		<article id="page-wrapper">
 			<section id="header">
 				<div class="inner">
-					<h1>今天的你「營養」了嗎?</h1>
+					<h1>{{data[0]}}</h1>
 					<hr/>
 					<p>
-						吃得多、吃得飽不等於吃得好，想要吃得均衡健康，6大類食物要先分對！我的餐盤建議<br>
-						每天都要均衡攝取全榖雜糧類、豆魚蛋肉類、蔬菜類、水果類、乳品類與堅果種子類。
+						{% for i in range(0, data[1]|length, 39) %}
+							{{data[1][i:i+39]}}<br>
+						{% endfor %}
 					</p>
 				</div>
 			</section>

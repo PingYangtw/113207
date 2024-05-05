@@ -2,10 +2,10 @@
 import psycopg2
 
 # PostgreSQL連線資訊
-DB_HOST = "berry.db.elephantsql.com"
-DB_NAME = "elnxzanb"
-DB_USER = "elnxzanb"
-DB_PASSWORD = "SAMzkYmrmen23l2a42UZIVPJsO8w41XM"
+DB_HOST = "salt.db.elephantsql.com"
+DB_NAME = "midldwfg"
+DB_USER = "midldwfg"
+DB_PASSWORD = "p6RFJVuvTJ9mgqO6u7kO5Th8YET3BsR3"
 
 # 建立資料庫連線
 def get_connection():

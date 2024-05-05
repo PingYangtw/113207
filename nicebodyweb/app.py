@@ -7,6 +7,7 @@ import urllib.request
 from flask import Flask, render_template 
 from openai import OpenAI
 from datetime import datetime
+from utils import db
 
 #-----------------------
 # 匯入各個服務藍圖
@@ -14,6 +15,8 @@ from datetime import datetime
 from services.robott.app import robott_bp
 from services.question.app import question_bp
 from services.goal.app import goal_bp
+from services.community.app import community_bp
+from services.task.app import task_bp
 
 #-------------------------
 # 產生主程式, 加入主畫面
@@ -23,7 +26,16 @@ app = Flask(__name__)
 #主畫面
 @app.route('/')
 def index():
-    return render_template('/home/home.html') 
+    connection = db.get_connection() 
+    
+    cursor = connection.cursor()     
+    cursor.execute('SELECT "knowTitle", "knowContent" FROM body.knowledge ORDER BY RANDOM() LIMIT 1;')
+    
+    data = cursor.fetchone()   
+
+    connection.close()
+
+    return render_template('/home/home.html', data=data) 
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "openai-api-key"))
 
@@ -42,7 +54,7 @@ def json_data():
     # Execute our run
     run = client.beta.threads.runs.create(
         thread_id=thread.id,
-        assistant_id='asst_vb6Kgql3yMt4FrBWNUGHtwhQ',
+        assistant_id='asst_SrcfhWBYSD0L1CMhGPSpeEoV',
     )
 
     def wait_on_run(run, thread):
@@ -86,6 +98,8 @@ def json_data():
 app.register_blueprint(robott_bp, url_prefix='/robott')
 app.register_blueprint(question_bp, url_prefix='/question')
 app.register_blueprint(goal_bp, url_prefix='/goal')
+app.register_blueprint(community_bp, url_prefix='/community')
+app.register_blueprint(task_bp, url_prefix='/task')
 
 #-------------------------
 # 啟動主程式

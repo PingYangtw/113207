@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/static/images/favicon.ico" rel="shortcut icon"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
@@ -40,40 +41,42 @@
         <p>一位極富專業知識的營養專家，他能夠深入理解食材的營養價值和相互作用，為人們提供豐富、均衡且美味的飲食建議。</p>
       </a>
 
+      {% for d in data%}
       <div class="ai-recipe-share">
-        <img src="/static/images/food2.png" alt="">
+        <img src="{{ Recipes_image_path }}/{{ d[3] }}" alt="">
         <div class="title">
           <img src="/static/images/user2.png" alt="">
-          <h3>番茄蛋減糖魔法餐</h3>
+          <h3>{{d[0]}}</h3>
         </div>
-        <p>02.04.2024</p>
-        <p>「番茄蛋糖減魔法餐」是一道精心設計的午餐，以減糖為主要特色，主要以新鮮的番茄和有機蛋為食材，烹飪時間僅需30分鐘以內。</p>
+        <p>{{d[1]}}</p>
+        {% if d[2]|length > 60 %}
+        <p>{{d[2][:60]}}...</p>
+        {% else %}
+        <p>{{d[2]}}</p>
+        {% endif %}
+        <div class="diet">
+          <span class="dietname mediterranean">地中海</span>
+          <span class="dietname deshu">得舒</span>
+          <span class="dietname vegetarian">彈性素食</span>
+          <span class="dietname numdiet">234</span>
+        </div>
         <div class="more">
           <a href="/robott/detailedRecipe">了解更多</a>
-          <a class="published">已發佈</a>
+          {% if d[4] == '0' %}
+            <a class="unpublished">發佈食譜</a>
+          {% else %}
+            <a class="published">已發佈</a>
+          {% endif %}
         </div>
       </div>
-
-      <div class="ai-recipe-share">
-        <img src="/static/images/food1.png" alt="">
-        <div class="title">
-          <img src="/static/images/user1.png" alt="">
-          <h3>纖潤蛤蠣盛宴</h3>
-        </div>
-        <p>02.05.2024</p>
-        <p>這款「海之芳饌 - 蛤蠣湯高纖午餐」結合了新鮮蛤蠣湯的豐富風味，同時滿足您對高纖維的營養需求，是一道營養均衡且美味的午餐選擇。</p>
-        <div class="more">
-          <a>了解更多</a>
-          <a href="/robott/shareResults" class="unpublished">發佈食譜</a>
-        </div>
-      </div>
+      {% endfor %}
     </section>
   </article>
 
   <footer id="footer-container"></footer>
 
   <script>
-    let messageText = "{{data}}";
+    let messageText = "chiaoyu";
 
     window.onload = function() {
       const continueBtn = document.getElementById('generate-btn');

@@ -27,3 +27,39 @@ body {
 ::-webkit-scrollbar-track {
   box-shadow: transparent;
 }
+
+.fa-droplet {
+  color: #59A5D8;
+}
+
+.fa-seedling {
+  color: #4AD66D;
+}
+
+.fa-martini-glass {
+  color: #FF9914;
+}
+
+.fa-cookie-bite {
+  color: #BC6C25;
+}
+
+.fa-apple-whole {
+  color: #e5446d;
+}
+
+.mediterranean {
+  background-color: #d8f3dc;
+}
+
+.deshu {
+  background-color: #b8f2e6;
+}
+
+.vegetarian {
+  background-color: #aed9e0;
+}
+
+.numdiet {
+  background-color: #ffd6ba;
+}
