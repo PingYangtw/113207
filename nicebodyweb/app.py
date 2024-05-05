@@ -7,6 +7,7 @@ import urllib.request
 from flask import Flask, render_template 
 from openai import OpenAI
 from datetime import datetime
+from utils import db
 
 #-----------------------
 # 匯入各個服務藍圖
@@ -24,7 +25,16 @@ app = Flask(__name__)
 #主畫面
 @app.route('/')
 def index():
-    return render_template('/home/home.html') 
+    connection = db.get_connection() 
+    
+    cursor = connection.cursor()     
+    cursor.execute('SELECT "knowTitle", "knowContent" FROM body.knowledge ORDER BY RANDOM() LIMIT 1;')
+    
+    data = cursor.fetchone()   
+
+    connection.close()
+
+    return render_template('/home/home.html', data=data) 
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "openai-api-key"))
 
