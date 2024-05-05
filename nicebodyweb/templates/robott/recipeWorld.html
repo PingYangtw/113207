@@ -56,7 +56,11 @@
               <h3>{{d[0]}}</h3>
           </div>
           <p>{{d[1]}}</p>
-          <p>{{d[2]}}</p>
+          {% if d[2]|length > 60 %}
+            <p>{{d[2][:60]}}...</p>
+          {% else %}
+              <p>{{d[2]}}</p>
+          {% endif %}
           <div class="more">
             <a href="/robott/detailedRecipe">了解更多</a>
             <div class="icon">
