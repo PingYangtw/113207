@@ -48,79 +48,29 @@
           <progress value="0.5"></progress>
         </form>
       </div>
-
       <div class="check-box">
-        <div class="item" id="horns">
-          <input type="checkbox" />
-          <label for="horns">
-            &ensp;
-            <i class="fa-solid fa-droplet"></i>
-            喝水1000公升
-          </label>
-        </div>
 
+        {% for d in data %}
         <div class="item" id="horns">
-          <input type="checkbox" />
-          <label for="horns">
-            &ensp;
-            <i class="fa-solid fa-seedling"></i>
-            吃蔬菜
-          </label>
+            <input type="checkbox" {% if d[1] == 1 %}checked{% endif %}/>
+            <label for="horns">
+                &ensp;
+                {% if d[1] == 1 %}
+                <i class="fa-solid fa-droplet"></i>
+                {% elif d[1] == 2 %}
+                <i class="fa-solid fa-seedling"></i>
+                {% elif d[1] == 3 %}
+                <i class="fa-solid fa-apple-whole"></i>
+                {% elif d[1] == 4 %}
+                <i class="fa-solid fa-cookie-bite"></i>
+                {% elif d[1] == 5 %}
+                <i class="fa-solid fa-martini-glass"></i>
+                {% endif %}
+                {{ d[0] }}
+            </label>
         </div>
+        {% endfor %}
 
-        <div class="item" id="horns">
-          <input type="checkbox" />
-          <label for="horns">
-            &ensp;
-            <i class="fa-solid fa-martini-glass"></i>
-            沒有喝飲料
-          </label>
-        </div>
-
-        <div class="item" id="horns">
-          <input type="checkbox" />
-          <label for="horns">
-            &ensp;
-            <i class="fa-solid fa-cookie-bite"></i>
-            沒有吃零食
-          </label>
-        </div>
-
-        <div class="item" id="horns">
-          <input type="checkbox" />
-          <label for="horns">
-            &ensp;
-            <i class="fa-solid fa-droplet"></i>
-            喝兩瓶水
-          </label>
-        </div>
-
-        <div class="item" id="horns">
-          <input type="checkbox" />
-          <label for="horns">
-            &ensp;
-            <i class="fa-solid fa-apple-whole"></i>
-            吃水果
-          </label>
-        </div>
-
-        <div class="item" id="horns">
-          <input type="checkbox" />
-          <label for="horns">
-            &ensp;
-            <i class="fa-solid fa-martini-glass"></i>
-            沒有喝酒
-          </label>
-        </div>
-
-        <div class="item" id="horns">
-          <input type="checkbox" />
-          <label for="horns">
-            &ensp;
-            <i class="fa-solid fa-cookie-bite"></i>
-            沒有吃宵夜
-          </label>
-        </div>
 
         <div class="add-check-box" id="opencheck">
           <i class="fa-solid fa-plus"></i>
@@ -247,7 +197,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    let messageText = "{{data}}";
+    let messageText = "chiaoyu";
 
     window.onload = function() {
       renderNav();
