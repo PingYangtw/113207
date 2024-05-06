@@ -20,7 +20,7 @@ window.onload = function () {
 
     const inputField = document.getElementById('tag-ip');
 
-    const savedValue = sessionStorage.getItem('tagInputValue2');
+    const savedValue = sessionStorage.getItem('tagInputValue3');
 
     console.log(savedValue);
 
@@ -81,7 +81,7 @@ window.onload = function () {
     function checkInput() {
         if (inputField.value.trim() !== '' || tags.length > 0) {
             continueBtn.classList.add('button-brwon');
-            continueBtn.setAttribute('href', '/question/question_n3');
+            continueBtn.setAttribute('href', '/question/question_n4');
         } else {
             continueBtn.classList.remove('button-brwon');
             continueBtn.removeAttribute('href');
@@ -91,13 +91,13 @@ window.onload = function () {
     // 点击按钮时跳转到question_second.html页面
     continueBtn.addEventListener('click', function () {
         const tagInput = document.getElementById('tag-ip');
-        sessionStorage.setItem('tagInputValue2', tagInput.value);
+        sessionStorage.setItem('tagInputValue3', tagInput.value);
     });
 
     // 點擊返回按鈕時返回到前一頁
     document.getElementById('back').addEventListener('click', function () {
         const tagInput = document.getElementById('tag-ip');
-        sessionStorage.setItem('tagInputValue2', tagInput.value);
+        sessionStorage.setItem('tagInputValue3', tagInput.value);
     });
 
    if (savedValue !== null) {

@@ -63,14 +63,16 @@ window.onload = function() {
     if (savedValue1 !== null) {
         checkbox1.value = savedValue1;
         continueBtn.classList.add('button-brwon');
-        continueBtn.setAttribute('href', '/question/question_n5');   
+        continueBtn.setAttribute('href', '/question/question_n5');
+        
     }
 
     if (savedValue1 !== null || savedValue2 !== null) {
         min1.value = savedValue1;
         max1.value = savedValue2;
         continueBtn.classList.add('button-brwon');
-        continueBtn.setAttribute('href', '/question/question_n5');  
+        continueBtn.setAttribute('href', '/question/question_n5');
+        
     }
 
     if (savedValue1 !== null) {

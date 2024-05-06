@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/base/reset.css">
     <link rel="stylesheet" href="/static/css/base/global.css">
-    <link href="/static/css/question/question_main.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/css/question/question_main.css">
     <link rel="stylesheet" href="/static/css/layout/navbar.css">
     <script src="/static/js/question/question_n2.js" async></script>
     <script src="/static/components/layout/navbar.js" defer></script>
@@ -21,108 +21,41 @@
     <article>
         <section>
             <div class="gray">
-                <div class="green-three"></div>
+                <div class="green-second"></div>
             </div>
             
-            <div class="top">
-                <div class="title">
-                    <img
-                        loading="lazy"
-                        srcset="/static/images/question/question_banana.png 100w, 
-                        /static/images/question/question_banana.png 200w, 
-                        /static/images/question/question_banana.png 400w, 
-                        /static/images/question/question_banana.png 800w,
-                        /static/images/question/question_banana.png 1200w, 
-                        /static/images/question/question_banana.png 1600w, 
-                        /static/images/question/question_banana.png 2000w,"
-                    />
-                    <div>主要食材</div>
-                </div>
-                <div class="input">
-                    <p class="question">
-                        你有任何對特定食材的喜好嗎？
-                    </p>
-                    <div>
-                        <input type="text" id="tag-ip" class="text-border"
-                        placeholder="例如：牛肉、豬肉、雞肉" />
+            <div class="up">
+                <div class="top">
+                    <div class="title">
+                        <img
+                            loading="lazy"
+                            srcset="/static/images/question/question_banana.png 100w, 
+                            /static/images/question/question_banana.png 200w, 
+                            /static/images/question/question_banana.png 400w, 
+                            /static/images/question/question_banana.png 800w,
+                            /static/images/question/question_banana.png 1200w, 
+                            /static/images/question/question_banana.png 1600w, 
+                            /static/images/question/question_banana.png 2000w,"
+                        />
+                        <div>餐點時段</div>
+                    </div>
+                    <div class="input">
+                        <p class = "question">
+                            主要是用於哪個時段的餐點呢？
+                        </p>
+                        <div>
+                            <input type="text" id="tag-ip" class="text-border"
+                            placeholder="例如：早餐、午餐、晚餐" />
+                        </div>
                     </div>
                 </div>
-            </div>
 
+                <div class="tag-list">
+                    <div class="tag-list-item"> </div>
 
-            <div class="tag-list-group">
-                <div class="tag-list-class">
-                <button class="type" id="n3_1">
-                    <a  href="/question/question_n2_1" class="wrap one">
-                        <img loading="lazy" src="/static/images/question/toast.png" alt="主食類"/>
-                        <div>主食類</div>
-                    </a>
-                </button>
+                    <div class="tag-list-item2"></div>
 
-                <button class="type">
-                    <div class="wrap">
-                        <img loading="lazy" src="/static/images/question/meat.png" alt="肉類"/>
-                        <div>肉類</div>
-                    </div>
-                </button>
-
-                <button class="type">
-                    <div class="wrap">
-                        <img loading="lazy" src="/static/images/question/broccoli.png" alt="蔬菜"/>
-                        <div>蔬菜</div>
-                    </div>
-                </button>
-
-                <button class="type">
-                    <div class="wrap">
-                        <img loading="lazy" src="/static/images/question/food.png" alt="水果"/>
-                        <div>水果</div>
-                    </div>
-                </button>
-
-                <button class="type">
-                    <div class="wrap">
-                        <img loading="lazy" src="/static/images/question/egg.png" alt="蛋類"/>
-                        <div>蛋類</div>
-                    </div>
-                </button>
-
-                <button class="type">
-                    <div class="wrap">
-                        <img loading="lazy" src="/static/images/question/nuts.png" alt="堅果類"/>
-                        <div>堅果類</div>
-                    </div>
-                </button>
-
-                <button class="type">
-                    <div class="wrap">
-                        <img loading="lazy" src="/static/images/question/jar.png" alt="乳製品"/>
-                        <div>乳製品</div>
-                    </div>
-                </button>
-
-                <button class="type">
-                    <div class="wrap">
-                        <img loading="lazy" src="/static/images/question/bottle.png" alt="調味料"/>
-                        <div>調味料</div>
-                    </div>
-                </button>
-
-                <button class="type">
-                    <div class="wrap">
-                        <img loading="lazy" src="/static/images/question/cup.png" alt="飲料"/>
-                        <div>飲料</div>
-                    </div>
-                </button>
-
-                <button class="type">
-                    <div class="wrap">
-                        <img loading="lazy" src="/static/images/question/fridge.png" alt="其他"/>
-                        <div>其他</div>
-                    </div>
-                </button>
-            </div>
-                
+                </div>
             </div>
             
 
@@ -139,5 +72,11 @@
             </div>
         </section>
     </article>
+
+    <script>
+        
+            
+        
+    </script>
 </body>
 </html>
