@@ -19,15 +19,15 @@ def question1_selfList():
 def question2_selfList(): 
     return render_template('/question/question_n2.html', data='王小明')
 
+#問題三-一
+@question_bp.route('/question_n2_1')
+def question2_1_selfList(): 
+    return render_template('/question/question_n2_1.html', data='王小明')
+
 #問題三
 @question_bp.route('/question_n3')
 def question3_selfList(): 
     return render_template('/question/question_n3.html', data='王小明')
-
-#問題三-一
-@question_bp.route('/question_n3_1')
-def question3_1_selfList(): 
-    return render_template('/question/question_n3_1.html', data='王小明')
 
 #問題四
 @question_bp.route('/question_n4')

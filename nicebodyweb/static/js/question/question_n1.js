@@ -6,20 +6,17 @@ window.onload = function () {
     // 變數
     let tags = [];
 
-    const defaultTags = ["低脂", "低碳水化合物", "低鈉",
-        "高蛋白", "高纖維", "高能量", "減糖", "無糖",
-        "孕婦或哺乳期飲食", "均衡營養"];
+    const defaultTags = ["地中海飲食", "彈性素食", "得舒飲食", "234飲食"];
 
     const tagListContainer1 = document.querySelector('.tag-list-item');
     const tagListContainer2 = document.querySelector('.tag-list-item2');
-    const tagListContainer3 = document.querySelector('.tag-list-item3');
 
     const continueBtn = document.getElementById('continue-btn');
 
     const inputField = document.getElementById('tag-ip');
 
     const savedValue = sessionStorage.getItem('tagInputValue');
-    
+
     // 初始化標籤
     defaultTags.forEach((tag, index) => {
         const tagButton = document.createElement("button");
@@ -40,9 +37,7 @@ window.onload = function () {
             checkInput();
         });
 
-        if (index >= 8) {
-            tagListContainer3.appendChild(tagButton);
-        } else if (index >= 3) {
+        if (index >= 2) {
             tagListContainer2.appendChild(tagButton);
         } else {
             tagListContainer1.appendChild(tagButton);
@@ -63,6 +58,7 @@ window.onload = function () {
 
     // 從輸入框中移除指定的標籤文字
     function removeTagFromInput(tagToRemove) {
+
         tags = tags.filter(tag => tag !== tagToRemove);
 
         const tagInput = document.getElementById('tag-ip');
@@ -71,6 +67,7 @@ window.onload = function () {
         tagInput.value = updatedTags.join('、');
     }
 
+    
     // 检查输入框中是否有文本，并根据情况更新按钮状态和样式
     function checkInput() {
         if (inputField.value.trim() !== '' || tags.length > 0) {
@@ -83,7 +80,6 @@ window.onload = function () {
         }
     }
 
-    // 点击按钮时跳转到question_second.html页面
     continueBtn.addEventListener('click', function () {
         const tagInput = document.getElementById('tag-ip');
         sessionStorage.setItem('tagInputValue', tagInput.value);
@@ -102,4 +98,5 @@ window.onload = function () {
         });
         
     }
+
 };
