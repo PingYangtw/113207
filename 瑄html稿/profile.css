@@ -1,0 +1,93 @@
+/* 容器設定 */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* 個人檔案部分 */
+.profile {
+    padding: 25% 15% 10%;
+    background: color #000 /* 添加背景色 */
+}
+
+.profile,
+.details {
+    flex: 1;
+    padding: 20px;
+}
+
+
+/* 個人資訊部分 */
+.profile-info {
+    text-align: center; /* 文字居中 */
+    background-color:#FFC1E0 /* 添加背景色 */
+}
+
+/* 個人頭像 */
+.profile-picture {
+    border-radius: 50%; /* 圓形邊框 */
+    width: 350px; /* 寬度 */
+    height: 350px; /* 高度 */
+    object-fit: cover; /* 保持圖片比例填滿容器 */
+    border: 2px solid #ffffff; /* 邊框設定 */
+    box-sizing: border-box; /* 盒子模型 */
+}
+
+/* 個人姓名 */
+.profile-name {
+    margin-top: 10px; /* 上邊距 */
+}
+
+/* 個人操作按鈕 */
+.profile-actions {
+    margin-top: 20px; /* 上邊距 */
+    display: flex; /* 使用 flex 布局 */
+    justify-content: center; /* 元素居中對齊 */
+}
+
+/* 動作按鈕 */
+.action-button {
+    padding: 10px 20px; /* 內邊距 */
+    margin: 0 10px; /* 外邊距 */
+    border: none; /* 移除邊框 */
+    border-radius: 5px; /* 圓角 */
+    background-color: #007bff; /* 背景色 */
+    color: white; /* 文字顏色 */
+    cursor: pointer; /* 指標樣式 */
+}
+
+/* 詳細信息部分 */
+.details {
+    flex: 1; /* 占滿可用空間 */
+    padding: 20px; /* 內邊距 */
+}
+
+/* 等級條 */
+.level-bar {
+    width: 100%; /* 寬度100% */
+    height: 20px; /* 高度 */
+    background-color: lightgray; /* 背景色 */
+    border-radius: 10px; /* 圓角 */
+}
+
+/* 設置部分 */
+.settings {
+    margin-top: 20px; /* 上邊距 */
+}
+
+/* 輸入框和下拉框 */
+.settings input,
+.settings select {
+    width: 100%; /* 寬度100% */
+    padding: 10px; /* 內邊距 */
+    margin-bottom: 10px; /* 下邊距 */
+    border-radius: 5px; /* 圓角 */
+    border: 1px solid #ccc; /* 邊框 */
+    box-sizing: border-box; /* 盒子模型 */
+}
+
+/* 日期輸入框 */
+.settings input[type="date"] {
+    appearance: none; /* 取消預設外觀 */
+}
