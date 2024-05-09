@@ -2161,14 +2161,10 @@ input, select, textarea {
 		text-align: center;
 		padding: 7.5em 0 2em 0;
 		cursor: default;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
-
-		#header:before {
-			content: '';
-			display: inline-block;
-			vertical-align: middle;
-			height: 100%;
-		}
 
 		#header .inner {
 			position: relative;

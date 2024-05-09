@@ -30,58 +30,178 @@
       </form>
     </div>
 
-    <div class="title">
-      <i class="fa-regular fa-calendar-check"></i>
-      <h2>每日任務</h2>
-    </div>
+    <section>
+      <div class="title">
+        <div class="text">
+          <i class="fa-regular fa-calendar-check"></i>
+          <h2>每日任務</h2>
+        </div>
+      </div>
 
-    <div class="titlecontent">
-      <div class="eachtask">
-        <p>上線一次<span>+5</span></p>
-        <i class="fa-solid fa-check"></i>
+      <div class="titlecontent">
+        <a class="eachtask">
+          <p>上線一次<span>+5</span></p>
+          <i class="fa-solid fa-check"></i>
+        </a>
+        <a class="eachtask">
+          <p>輸入今日體重<span>+5</span></p>
+          <i class="fa-solid fa-circle-chevron-right"></i>
+        </a>
+        <a class="eachtask">
+          <p>生成一次食譜<span>+5</span></p>
+          <i class="fa-solid fa-circle-chevron-right"></i>
+        </a>
+        <a class="eachtask">
+          <p>發布一則貼文<span>+5</span></p>
+          <i class="fa-solid fa-circle-chevron-right"></i>
+        </a>
+        <a class="eachtask">
+          <p>完成個人檔案<span>+5</span></p>
+          <i class="fa-solid fa-circle-chevron-right"></i>
+        </a>
       </div>
-      <div class="eachtask">
-        <p>輸入今日體重<span>+5</span></p>
-        <i class="fa-solid fa-circle-chevron-right"></i>
-      </div>
-      <div class="eachtask">
-        <p>生成一次食譜<span>+5</span></p>
-        <i class="fa-solid fa-circle-chevron-right"></i>
-      </div>
-      <div class="eachtask">
-        <p>發布一則貼文<span>+5</span></p>
-        <i class="fa-solid fa-circle-chevron-right"></i>
-      </div>
-    </div>
+    </section>
 
-    <div class="title">
-      <i class="fa-regular fa-calendar-check"></i>
-      <h2>里程碑</h2>
-      <i class="fa-solid fa-angle-right"></i>
-      <h2>打卡小將</h2>
-    </div>
+    <section>
+      <div class="title">
+        <div class="text">
+          <i class="fa-regular fa-calendar-check"></i>
+          <h2>里程碑</h2>
+          <i class="fa-solid fa-angle-right"></i>
+          <h2>打卡小將</h2>
+        </div>
+        <i class="fa-regular fa-circle-question" id="openinfor"></i>
+        <dialog id="infor">
+          <h1>如何在里程碑留言?</h1>
+          <div class="content">
+            <p>在某區塊中達到100次的累積數量，就可以獲得1次在該區塊中留言的機會!加油啊各位!</p>
+          </div>
+          <div class="save">
+            <button id="closeinfor" class="closebtn">close</button>
+          </div>
+        </dialog>
+      </div>
+  
+      <div class="milestone">
+        <div class="accumulation">
+          <i class="fa-regular fa-calendar-check"></i>
+          <h1>20</h1>
+          <span class="label">累積打卡天數</span>
+        </div>
+        <div class="accumulation">
+          <i class="fa-solid fa-chart-line"></i>
+          <h1>20</h1>
+          <span class="label">累積記錄體重</span>
+        </div>
+        <div class="accumulation">
+          <i class="fa-solid fa-puzzle-piece"></i>
+          <h1>10</h1>
+          <span class="label">累積生成食譜</span>
+        </div>
+        <div class="accumulation">
+          <i class="fa-regular fa-thumbs-up"></i>
+          <h1>400</h1>
+          <span class="label">食譜獲讚數量</span>
+        </div>
+      </div>
 
-    <div class="milestone">
-      <div class="accumulation">
-        <i class="fa-regular fa-calendar-check"></i>
-        <h1>1</h1>
-        <span class="label">累積打卡天數</span>
+      <div class="comment">
+        <div class="commentbtn" id="opencheckcmt">
+          新增留言
+        </div>
+        <dialog id="checkcmt">
+          <h1>請輸入你的名言佳句~</h1>
+          <div class="content">
+            <p>(送出後無法修改，累積100次才有1次留言機會，請慎重輸入喔!)</p>
+            <textarea rows="5" placeholder="說點甚麼吧~"></textarea>
+          </div>
+          <div class="save">
+            <button id="closecheckcmt" class="closebtn">close</button>
+            <button id="savecheckcmt" class="savebtn">save</button>
+          </div>
+        </dialog>
+        <div class="commentbtn" id="openweightcmt">
+          新增留言
+        </div>
+        <dialog id="weightcmt">
+          <h1>請輸入你的名言佳句~</h1>
+          <div class="content">
+            <p>(送出後無法修改，累積100次才有1次留言機會，請慎重輸入喔!)</p>
+            <textarea rows="5" placeholder="說點甚麼吧~"></textarea>
+          </div>
+          <div class="save">
+            <button id="closeweightcmt" class="closebtn">close</button>
+            <button id="saveweightcmt" class="savebtn">save</button>
+          </div>
+        </dialog>
+        <div class="commentbtn" id="openrecipecmt">
+          新增留言
+        </div>
+        <dialog id="recipecmt">
+          <h1>請輸入你的名言佳句~</h1>
+          <div class="content">
+            <p>(送出後無法修改，累積100次才有1次留言機會，請慎重輸入喔!)</p>
+            <textarea rows="5" placeholder="說點甚麼吧~"></textarea>
+          </div>
+          <div class="save">
+            <button id="closerecipecmt" class="closebtn">close</button>
+            <button id="saverecipecmt" class="savebtn">save</button>
+          </div>
+        </dialog>
+        <div class="commentbtn" id="openthumbscmt">
+          新增留言
+        </div>
+        <dialog id="thumbscmt">
+          <h1>請輸入你的名言佳句~</h1>
+          <div class="content">
+            <p>(送出後無法修改，累積100次才有1次留言機會，請慎重輸入喔!)</p>
+            <textarea rows="5" placeholder="說點甚麼吧~"></textarea>
+          </div>
+          <div class="save">
+            <button id="closethumbscmt" class="closebtn">close</button>
+            <button id="savethumbscmt" class="savebtn">save</button>
+          </div>
+        </dialog>
       </div>
-      <div class="accumulation">
-        <i class="fa-solid fa-chart-line"></i>
-        <h1>2</h1>
-        <span class="label">累積記錄體重</span>
+
+      <div class="saying">
+        <div class="eachsay">
+          <img src="/static/images/user2.png" alt="">
+          <h6>安妮雅<span> - 724天:</span></h6>
+          <p>很想放棄，但看到這麼多人都成功上英雄榜了，我也不能輸給他們!</p>
+        </div>
+        <div class="line"></div>
+        <div class="eachsay">
+          <img src="/static/images/user3.png" alt="">
+          <h6>煙燻雞<span> - 624天:</span></h6>
+          <p>唷囉奔~甘巴爹~fighting!</p>
+        </div>
+        <div class="line"></div>
+        <div class="eachsay">
+          <img src="/static/images/user4.png" alt="">
+          <h6>志明<span> - 520天:</span></h6>
+          <p>來!卡拿去~要點甚麼都可以，隨便點</p>
+        </div>
+        <div class="line"></div>
+        <div class="eachsay">
+          <img src="/static/images/user6.png" alt="">
+          <h6>春嬌<span> - 116天:</span></h6>
+          <p>><志明我來了~</p>
+        </div>
+        <div class="line"></div>
+        <div class="eachsay">
+          <img src="/static/images/user5.png" alt="">
+          <h6>朝天椒<span> - 1231天:</span></h6>
+          <p>本小姐駕到!全部人通通閃開!!!!!</p>
+        </div>
+        <div class="line"></div>
+        <div class="eachsay">
+          <img src="/static/images/user1.png" alt="">
+          <h6>醜魚<span> - 217天:</span></h6>
+          <p>努估誰唷?我是誰?我在哪?</p>
+        </div>
       </div>
-      <div class="accumulation">
-        <i class="fa-solid fa-puzzle-piece"></i>
-        <h1>3</h1>
-        <span class="label">累積生成食譜</span>
-      </div>
-      <div class="accumulation">
-        <i class="fa-regular fa-thumbs-up"></i>
-        <h1>4</h1>
-        <span class="label">食譜獲讚數量</span>
-      </div>
+    </section>
   </article>
 
   <footer id="footer-container"></footer>
@@ -93,6 +213,54 @@
       renderNav();
       renderFooter();
     };
+
+    // 里程碑 留言開合、accumulation點選樣式
+    document.addEventListener("DOMContentLoaded", function() {
+      let accumulations = document.querySelectorAll(".accumulation");
+      let currentAccumulation = null;
+
+      accumulations.forEach(function(accumulation) {
+        accumulation.addEventListener("click", function() {
+          accumulations.forEach(item => {
+            if (item !== this && item.classList.contains('active')) {
+              item.classList.remove('active');
+            }
+          });
+
+          this.classList.toggle('active');
+          let saying = document.querySelector(".saying");
+
+          if (this === currentAccumulation & currentAccumulation === accumulation) {
+            currentAccumulation = null;
+            saying.style.display = saying.style.display === "none" || saying.style.display === "" ? "block" : "none";
+          } else {
+            currentAccumulation = this;
+            saying.style.display = "block";
+            currentAccumulation = accumulation;
+          }
+        });
+      });
+    });
+
+    // 彈跳視窗
+    function setupModal(openBtnId, modalId, closeBtnId) {
+      const openBtn = document.getElementById(openBtnId);
+      const modal = document.getElementById(modalId);
+      const closeBtn = document.getElementById(closeBtnId);
+
+      openBtn.addEventListener("click", () => modal.showModal());
+      closeBtn.addEventListener("click", () => modal.close());
+    }
+
+    const modals = [
+      ['openinfor', 'infor', 'closeinfor'],              // 里程碑簡介
+      ['opencheckcmt', 'checkcmt', 'closecheckcmt'],     // 輸入累積打卡天數留言
+      ['openweightcmt', 'weightcmt', 'closeweightcmt'],  // 輸入累積記錄體重留言
+      ['openrecipecmt', 'recipecmt', 'closerecipecmt'],  // 輸入累積生成食譜留言
+      ['openthumbscmt', 'thumbscmt', 'closethumbscmt']   // 輸入食譜獲讚數量留言
+    ];
+
+    modals.forEach(modal => setupModal(...modal));
 	</script>
 </body>
 </html>
