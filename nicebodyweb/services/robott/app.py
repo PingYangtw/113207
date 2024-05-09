@@ -15,10 +15,10 @@ robott_bp = Blueprint('robott_bp', __name__)
 # 在機器人服務藍圖加入路由
 #--------------------------
 
-# Recipes_image_path = ""
-# user_image_path = ""
-# Recipes_image_path = "http://127.0.0.1:5000/static/images/openai"
-# user_image_path = "http://127.0.0.1:5000/static/images/userImage"
+Recipes_image_path = ""
+user_image_path = ""
+Recipes_image_path = "http://127.0.0.1:5000/static/images/openai"
+user_image_path = "http://127.0.0.1:5000/static/images/userImage"
 
 #生成食譜
 @robott_bp.route('/generateRecipes')
