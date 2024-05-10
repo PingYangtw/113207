@@ -26,7 +26,7 @@ def robott_selfList():
     connection = db.get_connection() 
 
     cursor = connection.cursor()     
-    cursor.execute('SELECT title, TO_CHAR(create_time, \'MM.DD.YYYY\') as "create_time", summary, "cookImage", "isPublish" FROM body."Cookbook" where "Uid" =1 order by "Cookid" desc;')
+    cursor.execute('SELECT title, TO_CHAR(create_time, \'MM.DD.YYYY\') as "create_time", summary, "cookImage", "isPublish" FROM body."cookbook" where "Uid" =1 order by "Cookid" desc;')
 
     data = cursor.fetchall()
 
@@ -57,7 +57,7 @@ def robott_selfList_more():
     
     #產生執行sql命令的物件, 再執行sql   
     cursor = connection.cursor()     
-    cursor.execute('SELECT title, TO_CHAR(create_time, \'MM.DD.YYYY\'), summary, "prepare", "cookTime", "cookStep", nutrition, "cookImage", "isPublish" FROM body."Cookbook" where "Cookid" =1;')
+    cursor.execute('SELECT title, TO_CHAR(create_time, \'MM.DD.YYYY\'), summary, "prepare", "cookTime", "cookStep", nutrition, "cookImage", "isPublish" FROM body."cookbook" where "Cookid" =1;')
     
     #取出資料
     data = cursor.fetchone()
