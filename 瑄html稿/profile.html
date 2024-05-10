@@ -1,37 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/images/favicon.ico" rel="shortcut icon"/>
     <link rel="stylesheet" href="profile.css">
-    <title>個人資料</title>
-  </head>
+    <title>個人頁面</title>
+</head>
+<body>
+    <article>
+        <section class="profile">
+            <img src="icon.jpg" alt="Profile Picture" class="profile-picture">
+            <p class="profile-name">阿妮亞</p>
+            <button class="action-button">關注列表</button>
+            <button class="action-button">收藏列表</button>
+        </section>
 
-  <body>
-  <nav id="nav-container"></nav>
-    <div class="profile">
-        <div class="profile-info">
-            <img src="0510.png" alt="Profile Picture" class="profile-picture">
-            <p class="profile-name">瑄兒</p>
+        <section class="settings">
+            <div class="progress-bar">
+                <div class="level=">
+                  <span>LV.</span>3
+                </div>
+                <form action="test.aspx" method="get">
+                  <progress value="0.5"></progress>
+                </form>
+            </div>
+            <div class="container">
+        <div class="left">
+            <label for="username">帳號名稱</label>
+            <input type="text" id="username" placeholder="使用者名稱">
+	    <label for="password">密碼</label>
+            <input type="text" id="password">
+            <label for="email">電子郵件</label>
+            <input type="email" id="email" placeholder="輸入你的電子郵件地址">
+            
         </div>
-        <div class="profile-actions">
-            <button class="action-button">Button 1</button>
-            <button class="action-button">Button 2</button>
+       <div class="right">
+            <div id="gender-container">
+            <label for="gender">性別</label>
+            <button type="button" id="maleButton" onclick="selectGender('male')">男性</button>
+            <button type="button" id="femaleButton" onclick="selectGender('female')">女性</button>
+            </div>
+            <label for="birthday">生日</label>
+            <input type="date" id="birthday">
         </div>
     </div>
-
-    
-    <div class="details">
-        <div class="level-bar"></div>
-        <div class="settings">
-            <input type="text" placeholder="Username">
-            <select name="gender" id="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select>
-            <input type="date" placeholder="Birthday">
-            <input type="email" placeholder="Email">
-        </div>
-    </div>
-</div>
+        </section>
+    </article>
 </body>
+</html>
