@@ -1,6 +1,8 @@
 # 匯入Blueprint模組
-from flask import render_template
+from flask import jsonify, render_template
 from flask import Blueprint
+from flask import request
+
 
 from utils import db
 
@@ -11,18 +13,47 @@ goal_bp = Blueprint('goal_bp', __name__)
 # 在目標服務藍圖加入路由
 #--------------------------
 
-#目標主頁
-@goal_bp.route('/goalMain')
+from flask import request, jsonify
+
+@goal_bp.route('/goalMain', methods=['GET', 'POST'])
 def goal_main(): 
-    connection = db.get_connection() 
+    if request.method == 'POST':
+        try:
+            data = request.json
+            isChecked = data.get('checked')
+            goalId = data.get('id')
 
-    cursor = connection.cursor()     
-    cursor.execute('SELECT "checkName", "Iconid", "ChCategoryid" FROM body.v_check where "Uid" = 1 order by create_time;;')
+            if isChecked is None or goalId is None:
+                return jsonify({'error': 'Invalid request data.'}), 400
 
-    data = cursor.fetchall()
+            connection = db.get_connection() 
+            cursor = connection.cursor()
 
-    connection.close()
-    return render_template('/goal/goalMain.html', data=data)
+            if isChecked:
+                cursor.execute("INSERT INTO body.\"checkIn\"(\"ChCategoryid\", create_time) VALUES(%s, now())", (goalId,))
+                response = {'message': f'checkIn {goalId} inserted successfully.'}
+            else:
+                cursor.execute("DELETE FROM body.\"checkIn\" WHERE \"ChCategoryid\" = %s", (goalId,))
+                response = {'message': f'checkIn {goalId} deleted successfully.'}
+
+            connection.commit()
+            connection.close()
+
+            return jsonify(response)
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+        
+    else:
+        try:
+            connection = db.get_connection() 
+            cursor = connection.cursor()     
+            cursor.execute('SELECT "ChCategoryid", "checkName", "Iconid", "isCheck"  FROM body.v_check where "Uid" = 1 order by create_time;')
+            data = cursor.fetchall()
+            connection.close()
+            return render_template('/goal/goalMain.html', data=data)
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+
 
 
 #打卡目標列表

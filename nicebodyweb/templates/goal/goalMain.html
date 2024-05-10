@@ -15,6 +15,8 @@
   <script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
   <script src="/static/components/layout/navbar.js" defer></script>
   <script src="/static/components/layout/footer.js" defer></script>
+  <script src="/static/js/goalMain.js" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <title>目標</title>
 </head>
 <body>
@@ -33,22 +35,22 @@
       <div class="check-box">
 
         {% for d in data %}
-        <div class="item" id="horns">
-            <input type="checkbox" {% if d[1] == 1 %}checked{% endif %}/>
-            <label for="horns">
+        <div class="item">
+            <input type="checkbox" id="checkbox-{{ loop.index }}" {% if d[3] == 1 %}checked{% endif %} data-id="{{ d[0] }}"/>
+            <label for="checkbox-{{ loop.index }}">
                 &ensp;
-                {% if d[1] == 1 %}
+                {% if d[2] == 1 %}
                 <i class="fa-solid fa-droplet"></i>
-                {% elif d[1] == 2 %}
+                {% elif d[2] == 2 %}
                 <i class="fa-solid fa-seedling"></i>
-                {% elif d[1] == 3 %}
+                {% elif d[2] == 3 %}
                 <i class="fa-solid fa-apple-whole"></i>
-                {% elif d[1] == 4 %}
+                {% elif d[2] == 4 %}
                 <i class="fa-solid fa-cookie-bite"></i>
-                {% elif d[1] == 5 %}
+                {% elif d[2] == 5 %}
                 <i class="fa-solid fa-martini-glass"></i>
                 {% endif %}
-                {{ d[0] }}
+                {{ d[1] }}
             </label>
         </div>
         {% endfor %}
@@ -327,6 +329,8 @@
           return "#ffffff";
       }
     }
+
+    
   </script>
 </body>
 </html>
