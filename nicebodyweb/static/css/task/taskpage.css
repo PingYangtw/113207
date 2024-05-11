@@ -300,17 +300,24 @@ dialog .content textarea {
 
 .eachsay {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
 }
 
-.eachsay h6 {
+.eachsay .left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+.eachsay .left h6 {
   font-size: 1.2em;
   font-weight: bold;
 }
 
-.eachsay > h6 > span {
+.eachsay .left > h6 > span,
+.eachsay .date {
   font-size: 0.8em;
 }
 
