@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/static/images/favicon.ico" rel="shortcut icon"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/base/reset.css">
+  <link rel="stylesheet" href="/static/css/base/global.css">
+  <link rel="stylesheet" href="/static/css/layout/navbar.css">
+  <link rel="stylesheet" href="/static/css/layout/footer.css">
+  <link rel="stylesheet" href="/static/css/profile/collectionList.css">
+  <script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
+  <script src="/static/components/layout/navbar.js" defer></script>
+  <script src="/static/components/layout/footer.js" defer></script>
+  <title>收藏列表</title>
+</head>
+<body>
+  <nav id="nav-container"></nav>
+
+  <article>
+    <div class="title">
+      <i class="fa-solid fa-bookmark"></i>
+      <h1>收藏列表</h1>
+    </div>
+
+    <div class="select">
+      <select>
+        <option value="">全部</option>
+        <option value="">我的最愛</option>
+        <option value="">總有一天會用到</option>
+      </select>
+      <div class="add" id="openaddclass">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+    </div>
+    <dialog id="addclass">
+      <h1>新增分類</h1>
+      <div class="content">
+        <p>列表名稱</p>
+        <input type="text" class="input">
+      </div>
+      <div class="save">
+        <button id="closeaddclass" class="closebtn">close</button>
+        <button id="saveaddclass" class="savebtn">save</button>
+      </div>
+    </dialog>
+
+    <section>
+      <div class="collecttitle">
+        <i class="fa-regular fa-folder"></i>
+        <h2>我的最愛</h2>
+      </div>
+      <div class="collectcontent">
+        <div class="eachcollect">
+          <div class="wrap">
+            <p>五分鐘馬鈴薯料理~好吃又簡單~</p>
+            <img src="/static//images/user1.png" alt="">
+          </div>
+          <i class="fa-solid fa-pen" id="openeditclass"></i>
+          <i class="fa-regular fa-trash-can"></i>
+        </div>
+        <div class="eachcollect">
+          <div class="wrap">
+            <p>五分鐘馬鈴薯料理~好吃又簡單~</p>
+            <img src="/static//images/user1.png" alt="">
+          </div>
+          <i class="fa-solid fa-pen"></i>
+          <i class="fa-regular fa-trash-can"></i>
+        </div>
+        <div class="eachcollect">
+          <div class="wrap">
+            <p>五分鐘馬鈴薯料理~好吃又簡單~</p>
+            <img src="/static//images/user1.png" alt="">
+          </div>
+          <i class="fa-solid fa-pen"></i>
+          <i class="fa-regular fa-trash-can"></i>
+        </div>
+      </div>
+    </section>
+    <dialog id="editclass">
+      <h1>編輯分類</h1>
+      <div class="content">
+        <div class="eachclass">
+          <div class="left">
+            <input type="checkbox" id="scales" name="scales" checked />
+            <label for="scales">我的最愛</label>
+          </div>
+          <div class="num">(2篇)</div>
+        </div>
+        <div class="eachclass">
+          <div class="left">
+            <input type="checkbox" id="scales" name="scales" />
+            <label for="scales">總有一天會用到</label>
+          </div>
+          <div class="num">(2篇)</div>
+        </div>
+        <div class="eachclass">
+          <div class="left">
+            <input type="checkbox" id="scales" name="scales" />
+            <label for="scales">蔬食天堂</label>
+          </div>
+          <div class="num">(2篇)</div>
+        </div>
+        <div class="eachclass">
+          <div class="left">
+            <input type="checkbox" id="scales" name="scales" />
+            <label for="scales">高蛋白飲食</label>
+          </div>
+          <div class="num">(2篇)</div>
+        </div>
+      </div>
+      <div class="save">
+        <button id="closeeditclass" class="closebtn">close</button>
+        <button id="saveeditclass" class="savebtn">save</button>
+      </div>
+    </dialog>
+
+    <section>
+      <div class="collecttitle">
+        <i class="fa-regular fa-folder"></i>
+        <h2>總有一天會用到</h2>
+      </div>
+      <div class="collectcontent">
+        <div class="eachcollect">
+          <div class="wrap">
+            <p>五分鐘馬鈴薯料理~好吃又簡單~</p>
+            <img src="/static//images/user1.png" alt="">
+          </div>
+          <i class="fa-solid fa-pen"></i>
+          <i class="fa-regular fa-trash-can"></i>
+        </div>
+        <div class="eachcollect">
+          <div class="wrap">
+            <p>五分鐘馬鈴薯料理~好吃又簡單~</p>
+            <img src="/static//images/user1.png" alt="">
+          </div>
+          <i class="fa-solid fa-pen"></i>
+          <i class="fa-regular fa-trash-can"></i>
+        </div>
+        <div class="eachcollect">
+          <div class="wrap">
+            <p>五分鐘馬鈴薯料理~好吃又簡單~</p>
+            <img src="/static//images/user1.png" alt="">
+          </div>
+          <i class="fa-solid fa-pen"></i>
+          <i class="fa-regular fa-trash-can"></i>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <footer id="footer-container"></footer>
+
+  <script>
+		let messageText = "{{data}}";
+
+    window.onload = function() {
+      renderNav();
+      renderFooter();
+    };
+
+    // 彈跳視窗 新增收藏分類
+    let openaddclass=document.getElementById('openaddclass');
+    let addclass=document.getElementById('addclass');
+    let closeaddclass=document.getElementById('closeaddclass');
+    openaddclass.addEventListener("click", function(){
+      console.log(123)
+      addclass.showModal();
+    })
+    closeaddclass.addEventListener("click", function(){
+      addclass.close();
+    })
+
+    // 彈跳視窗 編輯收藏分類
+    let openeditclass=document.getElementById('openeditclass');
+    let editclass=document.getElementById('editclass');
+    let closeeditclass=document.getElementById('closeeditclass');
+    openeditclass.addEventListener("click", function(){
+      editclass.showModal();
+    })
+    closeeditclass.addEventListener("click", function(){
+      editclass.close();
+    })
+  </script>
+</body>
+</html>

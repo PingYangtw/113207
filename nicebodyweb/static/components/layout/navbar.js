@@ -24,8 +24,10 @@ let renderNav = function() {
           <a href="">Sign up</a>
         </div>
         <div class="alreadyLogin">
-          <img src="/static/images/user1.png" alt="">
-          <h3>${messageText}</h3>
+          <a href="/profile/profilePage">
+            <img src="/static/images/user1.png" alt="">
+            <h3>${messageText}</h3>
+          </a>
           <i class="fa-solid fa-right-from-bracket"></i>
         </div>
       </div>
