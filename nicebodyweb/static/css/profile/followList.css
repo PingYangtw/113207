@@ -60,3 +60,32 @@ section {
 .person i {
   color: #FF3333;
 }
+
+/* Large 1200px */
+
+@media screen and (max-width:1200px) {
+  article {
+    padding: 12% 15% 5%;
+  }
+  
+  section {
+    width: 60%;
+  }
+}
+
+/* Small 768px */
+
+@media screen and (max-width:768px) {
+  article {
+    background-color: #F0EAD2;
+    padding: 20% 10% 5%;
+  }
+
+  section {
+    width: 80%;
+  }
+
+  .person .left h6 {
+    font-size: 1em;
+  }
+}

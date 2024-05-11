@@ -25,7 +25,7 @@ article .title {
 }
 
 .select {
-  width: 70%;
+  width: 80%;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -146,7 +146,7 @@ dialog .content .input {
 }
 
 section {
-  width: 70%;
+  width: 80%;
 }
 
 section .collecttitle {
@@ -186,4 +186,56 @@ section .collectcontent {
 .eachcollect i {
   margin: 0 1%;
   cursor: pointer;
+}
+
+/* Large 1200px */
+
+@media screen and (max-width:1200px) {
+  article {
+    padding: 12% 15% 5%;
+  }
+
+  .select,
+  section {
+    width: 80%;
+  }
+
+  .select .add {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Middle 1024px */
+
+@media screen and (max-width:1024px) {
+  article {
+    padding: 15% 15% 5%;
+  }
+
+  .select,
+  section {
+    width: 90%;
+  }
+}
+
+/* Small 768px */
+
+@media screen and (max-width:768px) {
+  article {
+    padding: 20% 10% 5%;
+  }
+
+  .select,
+  section {
+    width: 100%;
+  }
+}
+
+/* X-Small 480px */
+
+@media screen and (max-width:480px) {
+  article {
+    padding: 25% 10% 5%;
+  }
 }
