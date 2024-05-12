@@ -39,7 +39,6 @@
 /* title */
 .receipe > .wrap > .title {
     display: flex;
-    justify-content: space-between;
     margin: 40px 0 20px;
     margin-top: 10%;
     align-items: center;
@@ -283,7 +282,11 @@ dialog > .content > h2 {
 }
 
 .right img{
-    transform: scale(0.8);
+   max-width: 100%;
+   max-height: 100%;
+   width: 12%;
+   height: 12%;
+   margin-right: 5%;
 }
 
 /* X-Large 1440px */

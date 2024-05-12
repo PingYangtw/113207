@@ -23,7 +23,7 @@
 
 		<article>
 			<div class="banner">
-				<img src="/static/images/food1.png" alt="">
+				<img src="{{ Recipes_image_path }}/{{ data[7] }}" alt="">
 			</div>
 			
 			<section class="receipe">
@@ -31,16 +31,22 @@
 					<div class="title">
 						<div class="left">
 							<h1>{{data[0]}}</h1>
-							<div class="like">
-								<i class="fa-solid fa-thumbs-up"></i>
-								<span>99&ensp;</span>
-							</div>
 						</div>
 						<div class="diet" id="openinfor">
-							<span class="dietname mediterranean">地中海</span>
-							<span class="dietname deshu">得舒</span>
-							<span class="dietname vegetarian">彈性素食</span>
-							<span class="dietname numdiet">234</span>
+							{% if data[9] is not none %}
+								{% if '1' in data[9] %}
+									<span class="dietname mediterranean">地中海</span>
+								{% endif %}
+								{% if '2' in data[9] %}
+									<span class="dietname deshu">得舒</span>
+								{% endif %}
+								{% if '3' in data[9] %}
+									<span class="dietname vegetarian">彈性素食</span>
+								{% endif %}
+								{% if '4' in data[9] %}
+									<span class="dietname numdiet">234</span>
+								{% endif %}
+							{% endif %}
 						</div>
 						<dialog id="infor">
 							<h1>飲食法簡介</h1>
@@ -79,7 +85,7 @@
 						</ol>
 
 						<h2>烹調時間</h2>
-						<p>{{data[4]}}</p>
+						<p>{{data[4]}}分</p>
 
 						<h2>料理步驟</h2>
 						<ol>
@@ -95,7 +101,11 @@
 					</div>
 
 					<div class="button">
-						<button>發布食譜</button>
+						{% if data[8] == '0' %}
+							<button>發佈食譜</button>
+						{% else %}
+							<button>已發佈</button>
+						{% endif %}
 					</div>
 				</div>
 		</article>

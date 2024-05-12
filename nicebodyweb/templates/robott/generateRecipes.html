@@ -75,7 +75,10 @@
           {% endif %}
         </div>
         <div class="more">
-          <a href="/robott/detailedRecipe">了解更多</a>
+          <form action="/robott/detailedRecipe" method="get">
+            <input type="hidden" name="recipe_id" value="{{ d[6] }}">
+            <button type="submit">了解更多</button>
+          </form>
           {% if d[4] == '0' %}
             <a class="unpublished">發佈食譜</a>
           {% else %}

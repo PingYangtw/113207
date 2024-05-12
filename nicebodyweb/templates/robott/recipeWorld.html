@@ -61,7 +61,7 @@
           <img src="{{ Recipes_image_path }}/{{ d[3] }}" alt="">
           <div class="title">
             <img src="{{ user_image_path }}/{{ d[6] }}" alt="">
-              <h3>{{d[0]}}</h3>
+            <h3>{{d[0]}}</h3>
           </div>
           <p>{{d[1]}}</p>
           {% if d[2]|length > 60 %}
@@ -87,19 +87,24 @@
                 <span class="dietname none">無</span>
             {% endif %}
           </div>
-          <div class="more">
-            <a href="/robott/detailedRecipe">了解更多</a>
-            <div class="icon">
-              <div class="like">
-                <i class="fa-solid fa-thumbs-up"></i>
-                <span>{{d[4]}}&ensp;</span>
-              </div>
-              <div class="share">
-                <i class="fa-solid fa-share"></i>
-                <span>{{d[5]}}</span>
+          <form action="/robott/shareResults" method="get">
+            <div class="more">
+              <input type="hidden" name="recipe_id" value="{{ d[8] }}">
+              <button type="submit">了解更多</button>
+              <div class="icon">
+                <div class="like">
+                  <i class="fa-solid fa-thumbs-up"></i>
+                  <input type="hidden" name="likecount" value="{{ d[4] }}">
+                  <span>{{d[4]}}&ensp;</span>
+                </div>
+                <div class="share">
+                  <i class="fa-solid fa-share"></i>
+                  <input type="hidden" name="messagecount" value="{{ d[5] }}">
+                  <span >{{d[5]}}</span>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
         {% endfor %}
       </div>
