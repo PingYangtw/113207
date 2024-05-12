@@ -14,6 +14,8 @@ window.onload = function() {
 
     const savedValue = sessionStorage.getItem('tagInputValue2');
 
+    const savedSelectedTag1Count = sessionStorage.getItem('selectedTag1Count');
+
     // 鼠標經過按鈕時改變背景顏色
     buttons.forEach(button => {
         button.addEventListener('mouseover', () => {
@@ -39,14 +41,43 @@ window.onload = function() {
         }
     }
 
+    inputField.addEventListener('input', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue !== '') {
+            continueBtn.classList.add('button-brwon');
+            continueBtn.setAttribute('href', '/question/question_n2');
+        } else {
+            continueBtn.classList.remove('button-brwon');
+            continueBtn.removeAttribute('href');
+        }
+    });
+
+    continueBtn.addEventListener('click', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue === '') {
+            alert('請輸入內容');
+        } 
+    });
+
+    if (savedSelectedTag1Count !== null) {
+        const selectedTag1Count = parseInt(savedSelectedTag1Count);
+        const tag1Button = document.getElementById('n2_1');
+        const tag1Div = tag1Button.querySelector('div');
+        if (selectedTag1Count > 0) {
+            tag1Div.textContent += `+${selectedTag1Count}`;
+            tag1Button.classList.add('select');
+        }
+    }
+
     // 点击按钮时跳转到question_second.html页面
     continueBtn.addEventListener('click', function () {
         const tagInput = document.getElementById('tag-ip');
         sessionStorage.setItem('tagInputValue2', tagInput.value);
+        sessionStorage.removeItem('tagInputValue3');
     });
 
     
-    document.getElementById('n3_1').addEventListener('click', function() {
+    document.getElementById('n2_1').addEventListener('click', function() {
         const tagInput = document.getElementById('tag-ip');
         sessionStorage.setItem('tagInputValue2', tagInput.value);
     });

@@ -6,7 +6,7 @@ window.onload = function() {
     // 變數
     let tags = [];
 
-    const defaultTags = ["素食", "無乳製品", "牛奶"];
+    const defaultTags = ["素食", "無乳製品", "牛奶", "無需求"];
 
     const tagListContainer1 = document.querySelector('.tag-list-item');
 
@@ -73,4 +73,22 @@ window.onload = function() {
             continueBtn.removeAttribute('href');
         }
     }
+
+    inputField.addEventListener('input', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue !== '') {
+            continueBtn.classList.add('button-brwon');
+            continueBtn.setAttribute('href', '/question/question_n2');
+        } else {
+            continueBtn.classList.remove('button-brwon');
+            continueBtn.removeAttribute('href');
+        }
+    });
+
+    continueBtn.addEventListener('click', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue === '') {
+            alert('請輸入內容');
+        } 
+    });
 };
