@@ -70,10 +70,22 @@
           <p>{{d[2]}}</p>
           {% endif %}
           <div class="diet">
-            <span class="dietname mediterranean">地中海</span>
-            <span class="dietname deshu">得舒</span>
-            <span class="dietname vegetarian">彈性素食</span>
-            <span class="dietname numdiet">234</span>
+            {% if d[7] is not none %}
+                {% if '1' in d[7] %}
+                    <span class="dietname mediterranean">地中海</span>
+                {% endif %}
+                {% if '2' in d[7] %}
+                    <span class="dietname deshu">得舒</span>
+                {% endif %}
+                {% if '3' in d[7] %}
+                    <span class="dietname vegetarian">彈性素食</span>
+                {% endif %}
+                {% if '4' in d[7] %}
+                    <span class="dietname numdiet">234</span>
+                {% endif %}
+            {% else %}
+                <span class="dietname none">無</span>
+            {% endif %}
           </div>
           <div class="more">
             <a href="/robott/detailedRecipe">了解更多</a>

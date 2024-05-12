@@ -24,19 +24,28 @@ from services.profile.app import profile_bp
 #-------------------------
 app = Flask(__name__)
 
+Recipes_image_path = ""
+user_image_path = ""
+# Recipes_image_path = "http://127.0.0.1:5000/static/images/openai"
+# user_image_path = "http://127.0.0.1:5000/static/images/userImage"
+
 #主畫面
 @app.route('/')
 def index():
-    connection = db.get_connection() 
-    
-    cursor = connection.cursor()     
+    connection = db.get_connection()
+    cursor = connection.cursor()
+
+    # 獲取隨機的知識項目
     cursor.execute('SELECT "knowTitle", "knowContent" FROM body.knowledge ORDER BY RANDOM() LIMIT 1;')
-    
-    data = cursor.fetchone()   
+    knowledge_data = cursor.fetchone()
+
+    # 獲取前 7 個最喜歡的食譜
+    cursor.execute('SELECT "cookImage", title FROM body."v_recipeWorld" ORDER BY likecount DESC LIMIT 7;')
+    recipe_data = cursor.fetchall()
 
     connection.close()
 
-    return render_template('/home/home.html', data=data) 
+    return render_template('/home/home.html', knowledge_data=knowledge_data, recipe_data=recipe_data, Recipes_image_path=Recipes_image_path)
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "openai-api-key"))
 
