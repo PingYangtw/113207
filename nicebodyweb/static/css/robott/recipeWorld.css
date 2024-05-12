@@ -208,9 +208,12 @@ article {
   align-items: center;
 }
 
-.more a {
+.more button {
   color: #0B1A2F;
   font-weight: bold;
+  background-color: transparent; /* 將背景色設為透明 */
+  border: none; /* 消除邊框 */
+  text-decoration: underline; /* 加底線 */
 }
 
 .more .icon {

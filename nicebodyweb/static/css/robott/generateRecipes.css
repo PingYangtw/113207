@@ -133,12 +133,16 @@ article {
   align-items: center;
 }
 
-.more a:nth-of-type(1) {
+.more button {
   color: #0B1A2F;
   font-weight: bold;
+  background-color: transparent; /* 將背景色設為透明 */
+  border: none; /* 消除邊框 */
+  text-decoration: underline; /* 加底線 */
 }
 
-.more a:nth-of-type(2) {
+.more a.unpublished,
+.more a.published {
   text-decoration: none;
   display: flex;
   justify-content: center;
