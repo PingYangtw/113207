@@ -1,5 +1,4 @@
 *{
-    margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
@@ -99,7 +98,7 @@ section {
 section .title {
     align-self: start;
     display: flex;  
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     gap: 20px;
     font-size: 36px;
@@ -108,6 +107,13 @@ section .title {
     white-space: nowrap;
     letter-spacing: 8px;
     margin: 1% 0 0;
+    width: 100%;
+}
+
+section .title .title_icon{
+    display: flex;
+    align-items: flex-end;
+    gap: 5%;
 }
 
 section .title img {
@@ -116,9 +122,76 @@ section .title img {
     width: 50px;
     height: 50px;
     border-radius: 5px;
-    margin-right: 5%;
 }
 
+section .title i {
+    font-size: 15px;
+    margin-bottom: 3%;
+    color: #636363;
+}
+
+/* infor dialog */
+
+dialog{
+    border: none;
+    box-shadow: 0 2px 6px #ccc;
+    border-radius: 10px;
+    padding: 2% 4%;
+    width: 30vw;
+    background-color: #FCFAF1;
+    box-sizing: border-box;
+    color: #495057;
+  }
+  
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  dialog h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #BC6C25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  dialog .content {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    line-height: 1.5em;
+  }
+  
+  dialog > .content > h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .save {
+    margin-top: 10%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .save button {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #495057;
+    cursor: pointer;
+    transition: color,background-color 0.3s;
+  }
+  
+  #closeinfor:hover {
+    background-color: #BC4749;
+    color: #FFF;
+  }
 /* input */
 
 .top .input{
@@ -205,9 +278,8 @@ section .tag-list-item4{
     border-radius: 50px;
     color: #495057;
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
-    user-select: none;
-    border: none;
     font-size: 16px;
+    border: none;
 }
 
 section .item-select {
@@ -346,10 +418,14 @@ section .tag-list-class .type{
     flex-wrap: wrap; /* 新增的屬性 */
     align-content: center; 
     justify-content: center;
-    border: none;
+    border: white;
     margin: 1% 0 0%;
     letter-spacing: 8px;
     align-self: start;
+}
+
+section .tag-list-class .select{
+    border: 3px solid #6E3D0D;
 }
 
 section .tag-list-class .type .wrap {
@@ -510,6 +586,14 @@ section .tag-list-class .type .wrap .one {
     section {
         width: 90vw;
         padding: 4%;
+    }
+
+    content  {
+        display: grid;
+        grid-gap: 50px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        justify-content: space-between;
+        margin-top: 5%;
     }
 
     .next .continue-btn {

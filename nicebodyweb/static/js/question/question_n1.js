@@ -6,7 +6,7 @@ window.onload = function () {
     // 變數
     let tags = [];
 
-    const defaultTags = ["地中海飲食", "彈性素食", "得舒飲食", "234飲食"];
+    const defaultTags = ["地中海飲食", "彈性素食", "得舒飲食", "234飲食", "無需求"];
 
     const tagListContainer1 = document.querySelector('.tag-list-item');
     const tagListContainer2 = document.querySelector('.tag-list-item2');
@@ -84,6 +84,25 @@ window.onload = function () {
         const tagInput = document.getElementById('tag-ip');
         sessionStorage.setItem('tagInputValue', tagInput.value);
         sessionStorage.removeItem('tagInputValue2');
+        sessionStorage.removeItem('selectedTag1Count');
+    });
+
+    inputField.addEventListener('input', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue !== '') {
+            continueBtn.classList.add('button-brwon');
+            continueBtn.setAttribute('href', '/question/question_n2');
+        } else {
+            continueBtn.classList.remove('button-brwon');
+            continueBtn.removeAttribute('href');
+        }
+    });
+
+    continueBtn.addEventListener('click', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue === '') {
+            alert('請輸入內容');
+        } 
     });
 
     if (savedValue !== null) {

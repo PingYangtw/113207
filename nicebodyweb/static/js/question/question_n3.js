@@ -8,7 +8,7 @@ window.onload = function () {
 
     const defaultTags = ["低脂", "低碳水化合物", "低鈉",
         "高蛋白", "高纖維", "高能量", "減糖", "無糖",
-        "孕婦或哺乳期飲食", "均衡營養"];
+        "孕婦或哺乳期飲食", "均衡營養", "無需求"];
 
     const tagListContainer1 = document.querySelector('.tag-list-item');
     const tagListContainer2 = document.querySelector('.tag-list-item2');
@@ -83,11 +83,29 @@ window.onload = function () {
         }
     }
 
+    inputField.addEventListener('input', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue !== '') {
+            continueBtn.classList.add('button-brwon');
+            continueBtn.setAttribute('href', '/question/question_n2');
+        } else {
+            continueBtn.classList.remove('button-brwon');
+            continueBtn.removeAttribute('href');
+        }
+    });
+
+    continueBtn.addEventListener('click', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue === '') {
+            alert('請輸入內容');
+        } 
+    });
+
     // 点击按钮时跳转到question_second.html页面
     continueBtn.addEventListener('click', function () {
         const tagInput = document.getElementById('tag-ip');
         sessionStorage.setItem('tagInputValue3', tagInput.value);
-        sessionStorage.removeItem('tagInputValue4');
+        sessionStorage.removeItem('tagInputValue4_1');
     });
 
     if (savedValue !== null) {
