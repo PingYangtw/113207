@@ -1725,10 +1725,6 @@ input, select, textarea {
 
 /* Sections/Article */
 
-	section, article {
-		margin-bottom: 3em;
-	}
-
 		section > :last-child, section:last-child, article > :last-child, article:last-child {
 			margin-bottom: 0;
 		}
