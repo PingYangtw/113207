@@ -24,11 +24,11 @@
 		<article id="page-wrapper">
 			<section id="header">
 				<div class="inner">
-					<h1>{{data[0]}}</h1>
+					<h1>{{knowledge_data[0]}}</h1>
 					<hr/>
 					<p>
-						{% for i in range(0, data[1]|length, 39) %}
-							{{data[1][i:i+39]}}<br>
+						{% for i in range(0, knowledge_data[1]|length, 39) %}
+							{{knowledge_data[1][i:i+39]}}<br>
 						{% endfor %}
 					</p>
 				</div>
@@ -56,48 +56,14 @@
 
 			<section class="carousel">
 				<div class="reel" >
+					{% for d in recipe_data%}
 					<div class="food">
 						<a href="#" class="image featured">
-							<img src="/static/images/food1.png" alt="" />
-							<h3>纖潤蛤蠣盛宴</h3>
+							<img src="{{ Recipes_image_path }}/{{ d[0] }}" alt="">
+							<h3>{{ d[1] }}</h3>
 						</a>
 					</div>
-					<div class="food">
-						<a href="#" class="image featured">
-							<img src="/static/images/food1.png" alt="" />
-							<h3>纖潤蛤蠣盛宴</h3>
-						</a>
-					</div>
-					<div class="food">
-						<a href="#" class="image featured">
-							<img src="/static/images/food1.png" alt="" />
-							<h3>纖潤蛤蠣盛宴</h3>
-						</a>
-					</div>
-					<div class="food">
-						<a href="#" class="image featured">
-							<img src="/static/images/food1.png" alt="" />
-							<h3>纖潤蛤蠣盛宴</h3>
-						</a>
-					</div>
-					<div class="food">
-						<a href="#" class="image featured">
-							<img src="/static/images/food1.png" alt="" />
-							<h3>纖潤蛤蠣盛宴</h3>
-						</a>
-					</div>
-					<div class="food">
-						<a href="#" class="image featured">
-							<img src="/static/images/food1.png" alt="" />
-							<h3>纖潤蛤蠣盛宴</h3>
-						</a>
-					</div>
-					<div class="food">
-						<a href="#" class="image featured">
-							<img src="/static/images/food1.png" alt="" />
-							<h3>纖潤蛤蠣盛宴</h3>
-						</a>
-					</div>
+					{% endfor %}
 				</div>
 			</section>
 

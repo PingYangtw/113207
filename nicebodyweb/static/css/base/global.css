@@ -64,6 +64,10 @@ body {
   background-color: #ffd6ba;
 }
 
+.none {
+  visibility: hidden;
+}
+
 .fa-pen {
   color: #6E3D0D;
 }
