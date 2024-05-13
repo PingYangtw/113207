@@ -6,8 +6,8 @@ function updateCursorPosition(e) {
   let y = e.pageY;
   cursor.style.left = x - 5 + "px";
   cursor.style.top = y - 5 + "px";
-  circle.style.left = x - 19 + "px";
-  circle.style.top = y - 19 + "px";
+  circle.style.left = x - 18 + "px";
+  circle.style.top = y - 18 + "px";
 }
 
 window.addEventListener("mousemove", updateCursorPosition);
