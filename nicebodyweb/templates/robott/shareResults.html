@@ -123,17 +123,17 @@
 					</div>
 
 					{% for d in data2%}
-						<a class="word">
-							<div class="each">
-								<div class="left">
-									<div class="like">
-										<i class="fa-solid fa-heart"></i>
-										<span>{{d[5]}}</span>
-									</div>
-									<p>{{d[4]}}</p>
+						<a class="each">
+							<div class="left">
+								<div class="like">
+									<i class="fa-solid fa-heart"></i>
+									<span>{{d[5]}}</span>
 								</div>
-								<div class="right">
-									<p>{{d[6]}}</p>
+								<p>{{d[4]}}</p>
+							</div>
+							<div class="right">
+								<p>{{d[6]}}</p>
+								<div class="photostickers">
 									<img src="{{ user_image_path }}/{{ d[2] }}" alt="">
 								</div>
 							</div>
