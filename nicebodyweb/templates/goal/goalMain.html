@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/static/css/base/reset.css">
   <link rel="stylesheet" href="/static/css/base/global.css">
   <link rel="stylesheet" href="/static/css/components/mousemove.css">
+  <link rel="stylesheet" href="/static/css/components/dialog.css">
 	<link rel="stylesheet" href="/static/css/layout/navbar.css">
   <link rel="stylesheet" href="/static/css/layout/footer.css">
   <link rel="stylesheet" href="/static/css/goal/goalMain.css">
@@ -82,8 +83,8 @@
           <input type="text">
         </div>
         <div class="save">
-          <button id="closecheck">close</button>
-          <button id="savecheck">save</button>
+          <button id="closecheck" class="closebtn">close</button>
+          <button id="savecheck" class="savebtn">save</button>
         </div>
       </dialog>
     </section>
@@ -108,8 +109,8 @@
           <input type="text">
         </div>
         <div class="save">
-          <button id="closeweight">close</button>
-          <button id="saveweight">save</button>
+          <button id="closeweight" class="closebtn">close</button>
+          <button id="saveweight" class="savebtn">save</button>
         </div>
       </dialog>
 
@@ -200,7 +201,7 @@
         '星期一', '星期二', '星期三', '星期四', '星期五' ,'星期六' ,'星期日',
       ],
       datasets: [{
-        label: '參加人數',
+        label: 'weight',
         data: [160, 130, 140, 160, 170, 200, 180],
       }]
     };
@@ -334,8 +335,6 @@
           return "#ffffff";
       }
     }
-
-    
   </script>
 </body>
 </html>
