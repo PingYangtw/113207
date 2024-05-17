@@ -4,6 +4,7 @@ body {
 
 article {
   margin-bottom: 0;
+  color: #495057;
 }
 
 #header {
@@ -96,6 +97,7 @@ article {
   padding: 0;
   text-decoration: none;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .featured img {
@@ -122,6 +124,97 @@ article {
   display: block;
 }
 
+/* honoroll */
+
+.honoroll {
+  background: linear-gradient(#FFF 0%, #FCFAF1 20%);
+  padding-bottom: 5%;
+  box-sizing: border-box;
+}
+
+.honoroll > .title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.honoroll > .title h1 {
+  font-family: "Caprasimo", serif;
+  font-size: 3.5em;
+  color: #FFCF56;
+  letter-spacing: 10px;
+}
+
+.honoroll > .title h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #6E3D0D;
+  margin-top: 20px;
+  letter-spacing: 7px;
+}
+
+.honoroll .type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 7% 0;
+}
+
+.type .picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.picture .bg {
+  max-width: 70%;
+  max-height: 70%;
+  position: relative;
+}
+
+.picture .gif {
+  position: absolute;
+}
+
+.type .infro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 50px;
+  font-weight: bold;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+.infro .user {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.infro > .user > h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+  letter-spacing: 7px;
+  color: #495057;
+}
+
+.infro .num {
+  font-size: 2.5em;
+  letter-spacing: 7px;
+}
+
+.infro .saying {
+  font-size: 1.5em;
+  color: #6E3D0D;
+  letter-spacing: 7px;
+  line-height: 35px;
+}
+
 /* link */
 
 .link {
@@ -142,6 +235,7 @@ article {
 
 .link .wrap h1 {
   font-size: 1.250em;
+  font-weight: bold;
 }
 
 .link .wrap .links {

@@ -94,19 +94,26 @@ nav .alreadyLogin {
   margin-right: 5%;
 }
 
-.alreadyLogin img {
-  max-width: 100%;
-  max-height: 100%;
-  width: 10%;
-  height: auto;
+.alreadyLogin a {
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   cursor: pointer;
+  flex-grow: 1;
 }
 
-.alreadyLogin h3 {
+.alreadyLogin a img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 15%;
+  height: auto;
+}
+
+.alreadyLogin a h3 {
   font-size: 1em;
   color: #6E3D0D;
   margin: 0 5%;
-  cursor: pointer;
   transition: color 0.3s ease;
 }
 

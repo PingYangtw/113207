@@ -1,0 +1,190 @@
+body {
+    background-color: #F0EAD2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 800px
+}
+
+.post {
+    width: 700px; 
+    background-color: #FCFAF1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.post-author {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.post-title{
+    color: #6E3D0D;
+    font-size: 20px;
+    font-weight:bold;
+}
+
+.post-content {
+    color: #495057;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.post-actions {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.post-actions button {
+    margin-right: 5px;
+}
+
+
+.post-time {
+    color: #CCC5B9; /* 設置時間的顏色 */
+    position: absolute;
+    top: 15px; /* 将位置调整到顶部 */
+    left: 135px; /* 调整到帖子作者的旁边 */
+    font-size: 12px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    float: left;
+}
+
+dialog{
+    border: none;
+    box-shadow: 0 2px 6px #ccc;
+    border-radius: 10px;
+    padding: 2% 4%;
+    width: 30vw;
+    background-color: #FCFAF1;
+    box-sizing: border-box;
+    color: #495057;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.comment-section {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.comment-input {
+    width:  612px;
+    margin-right: 10px;
+}
+
+.comment-submit {
+    width: 80px;
+}
+
+
+
+
+/* 新增的留言样式 */
+.comment-line {
+    width: 680px;
+    height: 1px;
+    background-color: #CCC5B9;
+    margin: 20px auto;
+}
+
+.comment-time{
+    color: #495057; /* 設置時間的顏色 */
+    position: absolute;
+   
+    left:  520px; /* 调整到帖子作者的旁边 */
+    font-size: 18px;
+}
+
+.word {
+    width: 100%;
+}
+
+ .word .each {
+    display: flex;
+    background-color: #FFF;
+    padding: 1%; 
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+.each .left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+}
+
+.each .right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.left .like {
+    
+    display: flex;
+    align-items: center;
+    left:  620px;
+    margin-right: 10px;
+}
+
+.left .like i {
+    font-size: 25px;
+    color: #ff3333bb;
+    margin-right: 5px;
+}
+
+.left p {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.right p {
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.right img{
+    transform: scale(0.8);
+}

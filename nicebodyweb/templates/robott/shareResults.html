@@ -9,43 +9,79 @@
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="/static/css/base/reset.css">
 		<link rel="stylesheet" href="/static/css/base/global.css">
+		<link rel="stylesheet" href="/static/css/components/mousemove.css">
+		<link rel="stylesheet" href="/static/css/components/dialog.css">
 		<link rel="stylesheet" href="/static/css/layout/navbar.css">
 		<link rel="stylesheet" href="/static/css/layout/footer.css">
 		<link rel="stylesheet" href="/static/css/robott/shareResults.css">
 		<script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
+		<script src="/static/components/mousemove.js" defer></script>
 		<script src="/static/components/layout/navbar.js" defer></script>
   	<script src="/static/components/layout/footer.js" defer></script>
 		<title>分享食譜</title>
 	</head>
 
 	<body>
+		<div id="myCursor"></div>
+		<div id="circle"></div>
+
 		<nav id="nav-container"></nav>
 
 		<article>
 			<div class="banner">
-				<img src="/static/images/food1.png" alt="">
+				<img src="{{ Recipes_image_path }}/{{ data[7] }}" alt="">
 			</div>
+
+			<dialog id="infor">
+				<h1>飲食法簡介</h1>
+				<div class="content">
+					<h2>地中海飲食法</h2>
+					<p>以蔬菜、水果、橄欖油、魚類和全穀雜糧為主，強調新鮮、天然的食材。</p>
+					<h2>得舒飲食法</h2>
+					<p>著重食用大量的蔬菜和水果，限制或避免動物性食品和加工食品的攝入，是一個降低血壓飲食治療方法。</p>
+					<h2>彈性素食</h2>
+					<p>結合了素食和非素食的元素，以植物性食物為主，但允許偶爾食用少量的動物性食物。</p>
+					<h2>234飲食法</h2>
+					<p>以每餐攝入500卡路里為原則，攝取的營養比例為：蛋白質佔25%、澱粉佔35%、脂肪佔40%。</p>
+				</div>
+				<div class="save">
+					<button id="closeinfor" class="closebtn">close</button>
+				</div>
+			</dialog>
 
 			<section class="receipe">
 				<div class="wrap">
 					<div class="title">
-						<img src="/static/images/user1.png" alt="">
-						<h1>纖潤蛤蠣盛宴</h1>
-						<div class="like">
-							<i class="fa-solid fa-thumbs-up"></i>
-							<span>99&ensp;</span>
+						<div class="left">
+							<h1>{{data[0]}}</h1>
+							<div class="like">
+								<i class="fa-solid fa-thumbs-up"></i>
+								<span>{{likecount[0]}}&ensp;</span>
+							</div>
+						</div>
+						<div class="diet" id="openinfor">
+							{% if data[9] is not none %}
+								{% if '1' in data[9] %}
+									<span class="dietname mediterranean">地中海</span>
+								{% endif %}
+								{% if '2' in data[9] %}
+									<span class="dietname deshu">得舒</span>
+								{% endif %}
+								{% if '3' in data[9] %}
+									<span class="dietname vegetarian">彈性素食</span>
+								{% endif %}
+								{% if '4' in data[9] %}
+									<span class="dietname numdiet">234</span>
+								{% endif %}
+							{% endif %}
 						</div>
 					</div>
 				
 					<div class="summary">
-						<p>02.04.2024</p>
+						<p>{{data[1]}}</p>
 						<h2>摘要</h2>
 						<p>
-							「番茄蛋糖減魔法餐」是一道精心設計的午餐，以減醣為主要特色， 主要以新鮮的番茄和有機蛋為食材 , 烹飪時間僅需30分鐘以內。
-							這道料理不僅美味清新 , 更符合營養需求 , 提供豐富的蛋白質，適量的脂肪 , 並極低的糖分。
-							橄欖油的加入使得整體口感更 加豐富。
-							每份約含250卡路里 , 是一款輕盈無負擔的午餐選擇 , 滿足味蕾的同時也保證營養均衡。
-							「番茄蛋糖減魔法餐」讓您在 享受美味的同時輕鬆追求減醣生活 。
+							{{data[2]}}
 						</p>
 					</div>
 						
@@ -59,7 +95,7 @@
 						</ol>
 
 						<h2>烹調時間</h2>
-						<p>0 ~ 30分鐘</p>
+						<p>{{data[4]}}分</p>
 
 						<h2>料理步驟</h2>
 						<ol>
@@ -71,11 +107,7 @@
 						</ol>
 
 						<h2>營養配比</h2>
-						<p>每份熱量約250卡路里，蛋白質豐富，脂肪含量適中，糖分極低，是一道減糖又營養豐富的午餐選擇。</p>
-					</div>
-
-					<div class="button">
-						<button>分享成果</button>
+						<p>{{data[6]}}</p>
 					</div>
 				</div>
 			</section>
@@ -83,93 +115,32 @@
 			<section class="comment">
 				<div class="wrap">
 					<div class="title">
-						<h1>大家一起做</h1>
-						<div class="share">
-							<i class="fa-solid fa-share"></i>
-							<span>10</span>
-						</div>
-					</div>
-
-					<a class="word">
-						<div class="each">
-							<div class="left">
-								<div class="like">
-									<i class="fa-solid fa-heart"></i>
-									<span>7</span>
-								</div>
-								<p>不僅簡單易做，而且味道鮮美</p>
-							</div>
-							<div class="right">
-								<p>02.04.2024</p>
-								<img src="/static/images/user3.png" alt="">
-							</div>
-						</div>
-					</a>
-
-					<div class="word">
-						<div class="each">
-							<div class="left">
-								<div class="like">
-									<i class="fa-solid fa-heart"></i>
-									<span>5</span>
-								</div>
-								<p>我是新手！竟然真的成功了！！！</p>
-							</div>
-							<div class="right">
-								<p>02.04.2024</p>
-								<img src="/static/images/user4.png" alt="">
+						<div class="left">
+							<h1>大家一起做</h1>
+							<div class="share">
+								<i class="fa-solid fa-share"></i>
+								<span>{{messagecount}}</span>
 							</div>
 						</div>
 					</div>
 
-					<div class="word">
-						<div class="each">
+					{% for d in data2%}
+						<a class="each">
 							<div class="left">
 								<div class="like">
 									<i class="fa-solid fa-heart"></i>
-									<span>3</span>
+									<span>{{d[5]}}</span>
 								</div>
-								<p>好吃又瘦身的簡單小美食~~~</p>
+								<p>{{d[4]}}</p>
 							</div>
 							<div class="right">
-								<p>02.04.2024</p>
-								<img src="/static/images/user5.png" alt="">
-							</div>
-						</div>
-					</div>
-
-					<div class="word">
-						<div class="each">
-							<div class="left">
-								<div class="like">
-									<i class="fa-solid fa-heart"></i>
-									<span>2</span>
+								<p>{{d[6]}}</p>
+								<div class="photostickers">
+									<img src="{{ user_image_path }}/{{ d[2] }}" alt="">
 								</div>
-								<p>嘴饞時的好朋友~超讚的五種低熱量甜食！</p>
 							</div>
-							<div class="right">
-								<p>02.04.2024</p>
-								<img src="/static/images/user4.png" alt="">
-							</div>
-						</div>
-					</div>
-
-					<div class="word">
-						<div class="each">
-							<div class="left">
-								<div class="like">
-									<i class="fa-solid fa-heart"></i>
-									<span>1</span>
-								</div>
-								<p>簡單上手的美味番茄炒蛋</p>
-							</div>
-							<div class="right">
-								<p>02.04.2024</p>
-								<img src="/static/images/user6.png" alt="">
-							</div>
-						</div>
-					</div>
-
+						</a>
+					{% endfor %}
 				</div>
 			</section>
 		</article>
@@ -177,12 +148,23 @@
 	<footer id="footer-container"></footer>
 
   <script>
-		let messageText = "{{data}}";
+		let messageText = "chiaoyu";
 
-    window.onload = function() {
-      renderNav();
-      renderFooter();
-    };
+		window.onload = function() {
+		renderNav();
+		renderFooter();
+		};
+
+		// 彈跳視窗 飲食法簡介
+		let openinfor=document.getElementById('openinfor');
+			let infor=document.getElementById('infor');
+			let closeinfor=document.getElementById('closeinfor');
+			openinfor.addEventListener("click", function(){
+				infor.showModal();
+			})
+			closeinfor.addEventListener("click", function(){
+				infor.close();
+			})
 	</script>
 	</body>
 </html>

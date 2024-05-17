@@ -5,6 +5,7 @@ window.onload = function () {
 
     // 變數
     let tags = [];
+    let selectedTag1Count = sessionStorage.getItem('selectedTag1Count');
 
     const defaultTags = ["白米", "糙米", "黑米", "紅米", "糯米", "香米", "小米",
         "寬麵", "細麵", "刀削麵", "拉麵", "義大利麵",
@@ -35,10 +36,15 @@ window.onload = function () {
             if (!isSelected) {
                 addTagToInput(tag); // 使用按鈕上存儲的標籤值
                 tagButton.classList.add("item-select");
+                selectedTag1Count++;
             } else {
                 removeTagFromInput(tag); // 使用按鈕上存儲的標籤值
                 tagButton.classList.remove("item-select");
+                selectedTag1Count--;
             }
+
+            sessionStorage.setItem('selectedTag1Count', selectedTag1Count);
+            console.log('selectedTag1Count 的值為：', selectedTag1Count);
             
             // 每次点击标签后检查输入框
             checkInput();
@@ -92,6 +98,25 @@ window.onload = function () {
     continueBtn.addEventListener('click', function () {
         const tagInput = document.getElementById('tag-ip');
         sessionStorage.setItem('tagInputValue2', tagInput.value);
+        sessionStorage.removeItem('tagInputValue3');
+    });
+
+    inputField.addEventListener('input', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue !== '') {
+            continueBtn.classList.add('button-brwon');
+            continueBtn.setAttribute('href', '/question/question_n3');
+        } else {
+            continueBtn.classList.remove('button-brwon');
+            continueBtn.removeAttribute('href');
+        }
+    });
+
+    continueBtn.addEventListener('click', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue === '') {
+            alert('請輸入內容');
+        } 
     });
 
     // 點擊返回按鈕時返回到前一頁

@@ -8,11 +8,9 @@ window.onload = function() {
     const checkbox1 = document.getElementById('checkbox1');
     const checkbox2 = document.getElementById('checkbox2');
     const min1 = document.getElementById('min_1');
-    const max1 = document.getElementById('max_1');
     const continueBtn = document.getElementById('continue-btn');
 
     const savedValue1 = sessionStorage.getItem('tagInputValue4_1');
-    const savedValue2 = sessionStorage.getItem('tagInputValue4_2')
     
     continueBtn.addEventListener('click', function () {
         if (checkbox1.checked) {
@@ -22,7 +20,6 @@ window.onload = function() {
         }
         
         sessionStorage.setItem('tagInputValue4_1', min1.value);
-        sessionStorage.setItem('tagInputValue4_2', max1.value);
         sessionStorage.removeItem('tagInputValue5');
     });
 
@@ -61,24 +58,9 @@ window.onload = function() {
     });
 
     if (savedValue1 !== null) {
-        checkbox1.value = savedValue1;
-        continueBtn.classList.add('button-brwon');
-        continueBtn.setAttribute('href', '/question/question_n5');   
-    }
-
-    if (savedValue1 !== null || savedValue2 !== null) {
         min1.value = savedValue1;
-        max1.value = savedValue2;
         continueBtn.classList.add('button-brwon');
-        continueBtn.setAttribute('href', '/question/question_n5');  
-    }
-
-    if (savedValue1 !== null) {
-        min1.value = savedValue1;
-    }
-
-    if (savedValue2 !== null) {
-        max1.value = savedValue2;
+        continueBtn.setAttribute('href', '/question/question_n5');
     }
 
 };

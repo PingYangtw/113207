@@ -10,16 +10,21 @@
 
   <link rel="stylesheet" href="/static/css/base/reset.css">
   <link rel="stylesheet" href="/static/css/base/global.css">
-  <link rel="stylesheet" href="/static/css/layout/navbar.css">
+  <link rel="stylesheet" href="/static/css/components/mousemove.css">
+	<link rel="stylesheet" href="/static/css/layout/navbar.css">
   <link rel="stylesheet" href="/static/css/layout/footer.css">
   <link rel="stylesheet" href="/static/css/robott/generateRecipes.css">
   
   <script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
-  <script src="/static/components/layout/navbar.js" defer></script>
+  <script src="/static/components/mousemove.js" defer></script>
+	<script src="/static/components/layout/navbar.js" defer></script>
   <script src="/static/components/layout/footer.js" defer></script>
   <title>生成食譜</title>
 </head>
 <body>
+  <div id="myCursor"></div>
+  <div id="circle"></div>
+
   <nav id="nav-container"></nav>
 
   <article>
@@ -31,7 +36,7 @@
     <section class="content">
       <a id = "generate-btn" class="ai-recipe-share AI" href="/question/question_n1">
         <div class="add">
-          <i class="fa-solid fa-plus"></i>
+          <img src="/static/images/addcricle.png" alt="">
         </div>
         <div class="title">
           <img src="/static/images/ai_banana.png" alt="">
@@ -54,14 +59,31 @@
         {% else %}
         <p>{{d[2]}}</p>
         {% endif %}
+
         <div class="diet">
-          <span class="dietname mediterranean">地中海</span>
-          <span class="dietname deshu">得舒</span>
-          <span class="dietname vegetarian">彈性素食</span>
-          <span class="dietname numdiet">234</span>
+          {% if d[5] is not none %}
+                {% if '1' in d[5] %}
+                    <span class="dietname mediterranean">地中海</span>
+                {% endif %}
+                {% if '2' in d[5] %}
+                    <span class="dietname deshu">得舒</span>
+                {% endif %}
+                {% if '3' in d[5] %}
+                    <span class="dietname vegetarian">彈性素食</span>
+                {% endif %}
+                {% if '4' in d[5] %}
+                    <span class="dietname numdiet">234</span>
+                {% endif %}
+
+          {% else %}
+            <span class="dietname none">無</span>
+          {% endif %}
         </div>
         <div class="more">
-          <a href="/robott/detailedRecipe">了解更多</a>
+          <form action="/robott/detailedRecipe" method="get">
+            <input type="hidden" name="recipe_id" value="{{ d[6] }}">
+            <button type="submit">了解更多</button>
+          </form>
           {% if d[4] == '0' %}
             <a class="unpublished">發佈食譜</a>
           {% else %}

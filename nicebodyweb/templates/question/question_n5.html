@@ -10,13 +10,18 @@
     <link rel="stylesheet" href="/static/css/base/reset.css">
     <link rel="stylesheet" href="/static/css/base/global.css">
     <link href="/static/css/question/question_main.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/static/css/layout/navbar.css">
+    <link rel="stylesheet" href="/static/css/components/mousemove.css">
+	<link rel="stylesheet" href="/static/css/layout/navbar.css">
     <script src="/static/js/question/question_n5.js" async></script>
-    <script src="/static/components/layout/navbar.js" defer></script>
+    <script src="/static/components/mousemove.js" defer></script>
+	<script src="/static/components/layout/navbar.js" defer></script>
     <script src="https://kit.fontawesome.com/ff1f69f5b7.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav id="nav-container"></nav>
+    <div id="myCursor"></div>
+  <div id="circle"></div>
+
+  <nav id="nav-container"></nav>
 
     <article>
         <section>
@@ -41,7 +46,7 @@
                     </div>
                     <div class="input">
                         <p class = "question">
-                            你有特殊的飲食需求嗎？或對什麼過敏？
+                            你對任何食物有過敏或不吃的嗎？
                         </p>
                         <div>
                             <input type="text" id="tag-ip" class="text-border"
@@ -63,10 +68,18 @@
                         <i class="fa-solid fa-circle-arrow-left"></i>
                     </a>
                     <a id="continue-btn" class = "continue-btn">
-                        繼續
+                        確認
                     </a>
                 </div>
             </div>
+
+            <form id="questionForm" action="/question/resultRecipe" method="post">
+                <input type="hidden" id="tagInputValue1" name="tagInputValue1">
+                <input type="hidden" id="tagInputValue2" name="tagInputValue2">
+                <input type="hidden" id="tagInputValue3" name="tagInputValue3">
+                <input type="hidden" id="tagInputValue4_1" name="tagInputValue4_1">
+                <input type="hidden" id="tagInputValue5" name="tagInputValue5">
+            </form>
         </section>
     </article>
 

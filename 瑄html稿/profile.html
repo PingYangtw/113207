@@ -1,37 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/static/images/favicon.ico" rel="shortcut icon"/>
+    <script src="https://kit.fontawesome.com/94de2da4da.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="profile.css">
-    <title>個人資料</title>
-  </head>
+    <link rel="stylesheet" href="/static/css/layout/navbar.css">
+     <link rel="stylesheet" href="/static/css/layout/footer.css">
+    <script src="/static/components/layout/navbar.js" defer></script>
+    <script src="/static/components/layout/sidebar.js" defer></script>
+    <script src="/static/components/layout/footer.js" defer></script>
+    <title>個人頁面</title>
+</head>
+<body>
+    <article>
+        <section class="profile">
+            <img src="icon.jpg" alt="Profile Picture" class="profile-picture">
+                <div class="title">
+                    <p class="profile-name">阿妮亞</p>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+            <button class="button">關注列表</button>
+            <button class="button">收藏列表</button>
+        </section>
 
-  <body>
-  <nav id="nav-container"></nav>
-    <div class="profile">
-        <div class="profile-info">
-            <img src="0510.png" alt="Profile Picture" class="profile-picture">
-            <p class="profile-name">瑄兒</p>
-        </div>
-        <div class="profile-actions">
-            <button class="action-button">Button 1</button>
-            <button class="action-button">Button 2</button>
-        </div>
-    </div>
+        <section class="settings">
+            <div class="progress-bar">
+                <div class="level">
+                  <span>LV.</span>3
+                </div>
+                <form action="test.aspx" method="get">
+                  <progress value="0.5"></progress>
+                </form>
+            </div>
 
-    
-    <div class="details">
-        <div class="level-bar"></div>
-        <div class="settings">
-            <input type="text" placeholder="Username">
-            <select name="gender" id="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select>
-            <input type="date" placeholder="Birthday">
-            <input type="email" placeholder="Email">
-        </div>
-    </div>
-</div>
-</body>
+            <div class="container">
+                <div class="out1">
+                    <div class="out2">
+                            <div class="mail">
+                                <div class="title">
+                                    <p>電子郵件</p>
+                                    <i class="fa-solid fa-lock"></i>
+                                </div>
+                                <input type="text" id="email">
+                            </div>
+                            <div class="gender">
+                                <div class="title">
+                                    <p>性別</p>
+                                    <i class="fa-solid fa-lock"></i>
+                                </div>    
+                                <div class="gbt">
+                                <button type="button" id="maleButton" onclick="selectGender('male')">男性</button>
+                                <button type="button" id="femaleButton" onclick="selectGender('female')">女性</button>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="out1">
+                        <div class="out2">
+                                <div class="password">
+                                    <div class="title">
+                                        <p>密碼</p>
+                                        <i class="fa-solid fa-lock"></i>
+                                    </div>
+                                    <input type="text" id="email">
+                                </div>
+                                <div class="birthday">
+                                    <div class="title">
+                                        <p>生日</p>
+                                        <i class="fa-solid fa-lock"></i>
+                                    </div>    
+                                    <input type="date" id="birthday">
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="closesetting">
+                            <button class="button">變更個資</button>
+                        </div>
+
+                 </div>
+             </div>
+        </section>
+    </article>
+
+
+
+    <footer id="footer-container"></footer>
+
+    <script>
+      let messageText = "chiaoyu";
+  
+      window.onload = function() {
+        renderNav();
+        renderFooter();
+      };
+  
+      document.addEventListener('DOMContentLoaded', function () {
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+        const sideBar = document.querySelector('.sideBar');
+  
+        menuIcon.addEventListener('click', function () {
+          sideBar.classList.add('active');
+        });
+  
+        closeIcon.addEventListener('click', function () {
+          sideBar.classList.remove('active');
+        });
+      });
+    </script>
+  </body>
+  </html>

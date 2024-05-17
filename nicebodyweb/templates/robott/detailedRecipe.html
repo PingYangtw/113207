@@ -9,21 +9,27 @@
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/base/reset.css">
 		<link rel="stylesheet" href="/static/css/base/global.css">
+		<link rel="stylesheet" href="/static/css/components/mousemove.css">
+		<link rel="stylesheet" href="/static/css/components/dialog.css">
 		<link rel="stylesheet" href="/static/css/layout/navbar.css">
 		<link rel="stylesheet" href="/static/css/layout/footer.css">
 		<link rel="stylesheet" href="/static/css/robott/shareResults.css">
 		<script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
+		<script src="/static/components/mousemove.js" defer></script>
 		<script src="/static/components/layout/navbar.js" defer></script>
   	<script src="/static/components/layout/footer.js" defer></script>
 		<title>食譜</title>
 	</head>
 
 	<body>
-		<nav id="nav-container"></nav>
+		<div id="myCursor"></div>
+  <div id="circle"></div>
+
+  <nav id="nav-container"></nav>
 
 		<article>
 			<div class="banner">
-				<img src="/static/images/food1.png" alt="">
+				<img src="{{ Recipes_image_path }}/{{ data[7] }}" alt="">
 			</div>
 			
 			<section class="receipe">
@@ -31,16 +37,22 @@
 					<div class="title">
 						<div class="left">
 							<h1>{{data[0]}}</h1>
-							<div class="like">
-								<i class="fa-solid fa-thumbs-up"></i>
-								<span>99&ensp;</span>
-							</div>
 						</div>
-						<div class="diet">
-							<span class="dietname mediterranean" id="openinfor">地中海</span>
-							<span class="dietname deshu" id="openinfor">得舒</span>
-							<span class="dietname vegetarian" id="openinfor">彈性素食</span>
-							<span class="dietname numdiet" id="openinfor">234</span>
+						<div class="diet" id="openinfor">
+							{% if data[9] is not none %}
+								{% if '1' in data[9] %}
+									<span class="dietname mediterranean">地中海</span>
+								{% endif %}
+								{% if '2' in data[9] %}
+									<span class="dietname deshu">得舒</span>
+								{% endif %}
+								{% if '3' in data[9] %}
+									<span class="dietname vegetarian">彈性素食</span>
+								{% endif %}
+								{% if '4' in data[9] %}
+									<span class="dietname numdiet">234</span>
+								{% endif %}
+							{% endif %}
 						</div>
 						<dialog id="infor">
 							<h1>飲食法簡介</h1>
@@ -55,7 +67,7 @@
 								<p>以每餐攝入500卡路里為原則，攝取的營養比例為：蛋白質佔25%、澱粉佔35%、脂肪佔40%。</p>
 							</div>
 							<div class="save">
-								<button id="closeinfor">close</button>
+								<button id="closeinfor" class="closebtn">close</button>
 							</div>
 						</dialog>
 					</div>
@@ -79,7 +91,7 @@
 						</ol>
 
 						<h2>烹調時間</h2>
-						<p>{{data[4]}}</p>
+						<p>{{data[4]}}分</p>
 
 						<h2>料理步驟</h2>
 						<ol>
@@ -95,7 +107,11 @@
 					</div>
 
 					<div class="button">
-						<button>發布食譜</button>
+						{% if data[8] == '0' %}
+							<button>發佈食譜</button>
+						{% else %}
+							<button>已發佈</button>
+						{% endif %}
 					</div>
 				</div>
 		</article>

@@ -1,59 +1,176 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('your_background_image.jpg');
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .login-box {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-  }
-  
-  .login-box h1 {
-    margin-top: 0;
-  }
-  
-  input[type="text"],
-  input[type="password"],
-  button {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .google-login {
-    background-color: #db4437;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .google-login:hover {
-    background-color: #c1351a;
-  }
-  
+  background-image:\Users\USER\Desktop('login.jpg');
+  margin: 50px;
+  display: flex; /* 使用 flex 布局 */
+}
+
+article {
+  /*border-radius: 20px;  圓形邊框 */
+  background-color: white;
+  margin: 20px 75px 20px 75px; /* 外邊距 */
+  padding: 20px; /* 內邊距 */
+  display: flex; 
+  justify-content: space-between; /* 左右兩側對齊 */
+  box-sizing: border-box;
+}
+
+.profile {
+  flex: 1; /* 让 .profile 元素平分父容器剩余空间 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 25px 70px 25px; /* 调整 .profile 元素的外边距 */
+}
+
+.profile-picture {
+  border-radius: 50%; /* 圓形邊框 */
+  margin: 0px 0px 10px 25px; 
+  width: 65%; /* 寬度 */
+  height: 65%; /* 高度 */
+  box-sizing: border-box; /* 盒子模型 */
+}
+
+.profile-name {
+  font-size: 2em; /* 文字大小 */
+  margin: 0px 10px 50px 10px;
+  color: #6E3D0D; /* 文字顏色 */
+  position: relative; /* 設置相對位置 */
+  border-bottom:2px #6E3D0D solid; 
+  padding-bottom:0.25px;
+}
+
+.action-button {
+  width: 45%;
+  height: 50px;
+  padding: 10px 10px;
+  margin: 10px 10px;
+  border: none; /* 邊框 */
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);/*整個陰影*/
+  border-radius: 5px; /* 圓角 */
+  background-color: white;
+  color: #d4a373;
+  text-align: center;
+  font-size: 1em;
+  cursor: pointer; /* 指標樣式 */
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  transition: background-color 0.3s;/*按按鈕時的漸變*/
+}
+
+/*設定按鈕漸變*/
+.action-button:hover {
+  background-color:  #d4a373;
+  color: white;
+}
+
+
+/* 個人資料設定內容 */
+.settings {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.split-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 等級條
+.progress-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+.progress-bar > form {
+  width: 100%;
+}
+
+.progress-bar > .level {
+  z-index: 1;
+  border: #F47E93 5px solid;
+  background-color: #FFF;
+  padding: 20px 20px;
+  border-radius: 50%;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  margin-right:-20px;
+  width: 5%;
+  height: 20px; /* 高度 */
+
+.progress-bar > .level > span {
+  font-size: 0.5em;
+}
+
+progress{
+  z-index: 0;
+  appearance: none;
+  height: 10px;
+  width: 100%;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #B3B3B3;
+  border-radius: 5px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #F47E93;
+  border-radius: 5px;
+} */
+
+label{
+  color: #495057;
+  position: relative; /* 相對位置 */
+  border-bottom:2px #495057 solid; 
+  padding-bottom:1%;
+}
+
+
+/* 輸入框 */
+.settings input{
+ width: 200px;
+ border:none;
+ border-radius: 5px;
+ padding: 10px;
+ margin-top: 10px;
+ margin-right: 10px; 
+ /* box-sizing: border-box; */
+}
+
+
+.settings input[type="email"]  {
+  width: 200px;
+  border:none
+}
+
+/* 性別按鈕 */
+.settings button[id="maleButton"]{
+  border-radius: 15px;
+  width: 100px;
+  height: 45px;
+  border:none;
+  background-color:#84C1FF;
+}
+
+.settings button[id="femaleButton"]{
+  border-radius: 15px;
+  width: 100px;
+  height: 45px;
+  border:#FF4D6D;
+  background-color:#FF95CA;
+}
+
+
+/* 日期輸入框 */
+.settings input[type="date"] {
+  width: 200px;
+  border:none;
+}

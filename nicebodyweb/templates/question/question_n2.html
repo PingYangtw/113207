@@ -10,18 +10,23 @@
     <link rel="stylesheet" href="/static/css/base/reset.css">
     <link rel="stylesheet" href="/static/css/base/global.css">
     <link href="/static/css/question/question_main.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/static/css/layout/navbar.css">
+    <link rel="stylesheet" href="/static/css/components/mousemove.css">
+	<link rel="stylesheet" href="/static/css/layout/navbar.css">
     <script src="/static/js/question/question_n2.js" async></script>
-    <script src="/static/components/layout/navbar.js" defer></script>
+    <script src="/static/components/mousemove.js" defer></script>
+	<script src="/static/components/layout/navbar.js" defer></script>
     <script src="https://kit.fontawesome.com/ff1f69f5b7.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav id="nav-container"></nav>
+    <div id="myCursor"></div>
+  <div id="circle"></div>
+
+  <nav id="nav-container"></nav>
 
     <article>
         <section>
             <div class="gray">
-                <div class="green-three"></div>
+                <div class="green-two"></div>
             </div>
             
             <div class="top">
@@ -52,7 +57,8 @@
 
             <div class="tag-list-group">
                 <div class="tag-list-class">
-                <button class="type" id="n3_1">
+
+                <button class="type" id="n2_1">
                     <a  href="/question/question_n2_1" class="wrap one">
                         <img loading="lazy" src="/static/images/question/toast.png" alt="主食類"/>
                         <div>主食類</div>

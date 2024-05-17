@@ -10,18 +10,24 @@
     <link rel="stylesheet" href="/static/css/base/reset.css">
     <link rel="stylesheet" href="/static/css/base/global.css">
     <link rel="stylesheet" href="/static/css/question/question_main.css">
-    <link rel="stylesheet" href="/static/css/layout/navbar.css">
+    <link rel="stylesheet" href="/static/css/components/mousemove.css">
+    <link rel="stylesheet" href="/static/css/components/dialog.css">
+	<link rel="stylesheet" href="/static/css/layout/navbar.css">
     <script src="/static/js/question/question_n1.js" async></script>
-    <script src="/static/components/layout/navbar.js" defer></script>
+    <script src="/static/components/mousemove.js" defer></script>
+	<script src="/static/components/layout/navbar.js" defer></script>
     <script src="https://kit.fontawesome.com/ff1f69f5b7.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav id="nav-container"></nav>
+    <div id="myCursor"></div>
+  <div id="circle"></div>
+
+  <nav id="nav-container"></nav>
 
     <article>
         <section>
             <div class="gray">
-                <div class="green-second"></div>
+                <div class="green-one"></div>
             </div>
             
             <div class="up">
@@ -37,7 +43,12 @@
                             /static/images/question/question_banana.png 1600w, 
                             /static/images/question/question_banana.png 2000w,"
                         />
-                        <div>飲食法</div>
+
+                        <div class = "title_icon">
+                            <div>飲食法</div>
+                            <i class="fa-regular fa-circle-question" id="openinfor"></i>
+                        </div>
+                        
                     </div>
                     <div class="input">
                         <p class = "question">
@@ -51,13 +62,10 @@
                 </div>
 
                 <div class="tag-list">
-                    <div class="tag-list-item"> </div>
-
+                    <div class="tag-list-item"></div>
                     <div class="tag-list-item2"></div>
-
                 </div>
             </div>
-            
 
             <div class="next">
                 <div class="line"></div>
@@ -70,11 +78,35 @@
             </div>
         </section>
     </article>
+    <dialog id="infor">
+        <h1>飲食法簡介</h1>
+        <div class="content">
+            <h2>地中海飲食法</h2>
+            <p>以蔬菜、水果、橄欖油、魚類和全穀雜糧為主，強調新鮮、天然的食材。</p>
+            <h2>得舒飲食法</h2>
+            <p>著重食用大量的蔬菜和水果，限制或避免動物性食品和加工食品的攝入，是一個降低血壓飲食治療方法。</p>
+            <h2>彈性素食</h2>
+            <p>結合了素食和非素食的元素，以植物性食物為主，但允許偶爾食用少量的動物性食物。</p>
+            <h2>234飲食法</h2>
+            <p>以每餐攝入500卡路里為原則，攝取的營養比例為：蛋白質佔25%、澱粉佔35%、脂肪佔40%。</p>
+        </div>
+        <div class="save">
+            <button id="closeinfor" class="closebtn">close</button>
+        </div>
+    </dialog>
+    
 
     <script>
-        
-            
-        
+        // 彈跳視窗 飲食法簡介
+        let openinfor=document.getElementById('openinfor');
+		let infor=document.getElementById('infor');
+		let closeinfor=document.getElementById('closeinfor');
+		openinfor.addEventListener("click", function(){
+			infor.showModal();
+		})
+		closeinfor.addEventListener("click", function(){
+			infor.close();
+		})        
     </script>
 </body>
 </html>

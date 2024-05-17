@@ -6,13 +6,15 @@ window.onload = function() {
     // 變數
     let tags = [];
 
-    const defaultTags = ["素食", "無乳製品", "牛奶"];
+    const defaultTags = ["素食", "無乳製品", "牛奶", "無需求"];
 
     const tagListContainer1 = document.querySelector('.tag-list-item');
 
     const inputField = document.getElementById('tag-ip');
 
     const continueBtn = document.getElementById('continue-btn');
+
+    const savedValue = sessionStorage.getItem('tagInputValue5');
 
 
     // 初始化標籤
@@ -66,11 +68,41 @@ window.onload = function() {
     function checkInput() {
         if (inputField.value.trim() !== '' || tags.length > 0) {
             continueBtn.classList.add('button-brwon');
-            continueBtn.setAttribute('href', '/robott/detailedRecipe');
+            
             
         } else {
             continueBtn.classList.remove('button-brwon');
             continueBtn.removeAttribute('href');
         }
     }
+
+    inputField.addEventListener('input', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue !== '') {
+            continueBtn.classList.add('button-brwon');
+        } else {
+            continueBtn.classList.remove('button-brwon');
+        }
+    });
+
+    continueBtn.addEventListener('click', function() {
+        const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
+        if (inputValue === '') {
+            alert('請輸入內容');
+        } else{
+            const tagInputValue1 = sessionStorage.getItem('tagInputValue');
+            const tagInputValue2 = sessionStorage.getItem('tagInputValue2');
+            const tagInputValue3 = sessionStorage.getItem('tagInputValue3');
+            const tagInputValue4_1 = sessionStorage.getItem('tagInputValue4_1');
+
+            document.getElementById('tagInputValue1').value = tagInputValue1;
+            document.getElementById('tagInputValue2').value = tagInputValue2;
+            document.getElementById('tagInputValue3').value = tagInputValue3;
+            document.getElementById('tagInputValue4_1').value = tagInputValue4_1;
+            document.getElementById('tagInputValue5').value = inputValue;
+
+            // 提交表單
+            document.getElementById('questionForm').submit();
+        }
+    });
 };
