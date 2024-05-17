@@ -46,7 +46,7 @@
                     </div>
                     <div class="input">
                         <p class = "question">
-                            你有特殊的飲食需求嗎？或對什麼過敏？
+                            你對任何食物有過敏或不吃的嗎？
                         </p>
                         <div>
                             <input type="text" id="tag-ip" class="text-border"
@@ -68,10 +68,18 @@
                         <i class="fa-solid fa-circle-arrow-left"></i>
                     </a>
                     <a id="continue-btn" class = "continue-btn">
-                        繼續
+                        確認
                     </a>
                 </div>
             </div>
+
+            <form id="questionForm" action="/question/resultRecipe" method="post">
+                <input type="hidden" id="tagInputValue1" name="tagInputValue1">
+                <input type="hidden" id="tagInputValue2" name="tagInputValue2">
+                <input type="hidden" id="tagInputValue3" name="tagInputValue3">
+                <input type="hidden" id="tagInputValue4_1" name="tagInputValue4_1">
+                <input type="hidden" id="tagInputValue5" name="tagInputValue5">
+            </form>
         </section>
     </article>
 
