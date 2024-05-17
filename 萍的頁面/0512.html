@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\user\OneDrive\桌面\OPOP\0512.css">
+    <script src="https://kit.fontawesome.com/137568a2e8.js" crossorigin="anonymous"></script>
+    <title>貼文</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="post-container">
+        <div class="post">
+            <img src="C:\Users\user\OneDrive\桌面\OPOP\PO.jpg" alt="QAQ的頭像" class="avatar">
+            <div class="post-author">QAQ</div><div class="post-time">2024/2/4 22:00</div>
+            <div class="post-content">適量運動有助於保持健康。每週至少進行150分鐘的中等強度有氧運動，如快步行或游泳，以及兩次以上的肌肉強化運動，如舉重或瑜伽。</div>
+            <div class="post-actions">
+                <div class="postreport" onclick="openReportModal()"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div  class="postlike" onclick="likePost()"><i class="fa-regular fa-heart"></i></div>
+                <div class="postcollect" onclick="openCollectionModal()"><i class="fa-regular fa-bookmark"></i></div>
+            </div>
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="留言...">
+                <button class="comment-submit" onclick="commentPost()"><i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+            
+        </div>
+        <!-- Repeat the structure for other posts -->
+        <div class="post">
+            <img src="C:\Users\user\OneDrive\桌面\OPOP\PP.jpg" alt="OwO的頭像" class="avatar">
+            <div class="post-author">OwO</div><div class="post-time">2024/2/4 22:00</div>
+            <div class="post-content">定期接受健康檢查以及預防性篩查，如血壓測量、血糖檢測和癌症篩查，有助於早期發現潛在的健康問題。</div>
+            <div class="post-actions">
+                <button onclick="openReportModal()"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                <button onclick="likePost()"><i class="fa-regular fa-heart"></i></button>
+                <button onclick="openCollectionModal()"><i class="fa-regular fa-bookmark"></i></button>
+            </div>
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="留言...">
+                <button class="comment-submit" onclick="commentPost()"><i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <div class="post">
+            <img src="C:\Users\user\OneDrive\桌面\OPOP\OP.jpg" alt="第三個發文者的頭像" class="avatar">
+            <div class="post-author">(っ・Д・)っ</div><div class="post-time">2024/2/4 22:00</div>
+            <div class="post-content">均衡飲食是維持健康的關鍵。嘗試攝取各種不同類型的食物，包括蔬菜、水果、全穀類、蛋白質和健康脂肪，它有助於提供身體所需的各種營養素，促進健康的生長和發育，並降低患上慢性疾病的風險。</div>
+            <div class="post-actions">
+                <button onclick="openReportModal()"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                <button onclick="likePost()"><i class="fa-regular fa-heart"></i></button>
+                <button onclick="openCollectionModal()"><i class="fa-regular fa-bookmark"></i></button>
+            </div>
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="留言...">
+                <button class="comment-submit" onclick="commentPost()"><i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <div class="post">
+            <img src="C:\Users\user\OneDrive\桌面\OPOP\QA.jpg" alt="第四個發文者的頭像" class="avatar">
+            <div class="post-author">(╯‵□′)╯︵┴─┴</div><div class="post-time">2024/2/4 22:00</div>
+            <div class="post-content">健康飲食對我們的身體和心理健康都至關重要，它涉及我們所攝取的食物類型、份量和飲食習慣。健康飲食是維持身體和心理健康的基石。通過選擇多元化的食物，保持適量的攝取，並建立良好的飲食習慣，我們可以享受更健康、更快樂的生活。</div>
+            <div class="post-actions">
+                <button onclick="openReportModal()"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                <button onclick="likePost()"><i class="fa-regular fa-heart"></i></button>
+                <button onclick="openCollectionModal()"><i class="fa-regular fa-bookmark"></i></button>
+            </div>
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="留言...">
+                <button class="comment-submit" onclick="commentPost()"><i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+    <dialog id="reportModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cancelReport()"><i class="fa-solid fa-xmark"></i></span>
+            <h1><i class="fa-solid fa-triangle-exclamation"></i>檢舉貼文</h1>
+            <p>檢舉原因：</p>
+            <form id="reportForm">
+                <input type="checkbox" id="publicOrder" name="reportReason" value="publicOrder">
+                <label for="publicOrder">違反公共秩序善良風俗</label><br>
+                <input type="checkbox" id="falseInformation" name="reportReason" value="falseInformation">
+                <label for="falseInformation">不實資訊</label><br>
+                <input type="checkbox" id="legalViolation" name="reportReason" value="legalViolation">
+                <label for="legalViolation">違反法律</label><br>
+                <input type="checkbox" id="fraud" name="reportReason" value="fraud">
+                <label for="fraud">賭博詐騙</label><br>
+                <input type="checkbox" id="other" name="reportReason" value="other">
+                <label for="other">其他：</label>
+                <input type="text" id="otherReason" name="otherReason"><br>
+                <button type="button" onclick="cancelReport()">取消</button>
+                <button type="button" onclick="confirmReport()">確認</button>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="collectionModal" class="collection-modal">
+        <span class="close" onclick="cancelCollection()"><i class="fa-solid fa-xmark"></i></span>
+        <h1>收藏列表</h1>
+        <div class="collection-options">
+            <label><input type="checkbox"> 我的最愛</label>
+            <label><input type="checkbox"> 總有一天會用到</label>
+            <label><input type="checkbox"> 蔬食天堂</label>
+            <label><input type="checkbox"> 高蛋白飲食</label>
+        </div>
+        <div class="collection-actions">
+            <button onclick="cancelCollection()">取消</button>
+            <button onclick="confirmCollection()">確認</button>
+        </div>
+    </dialog>
+
+
+
+    <script>
+        function likePost() {
+            // 點讚功能的JavaScript代碼
+        }
+
+        function commentPost() {
+            // 留言功能的JavaScript代碼
+        }
+
+        function reportPost() {
+            // 檢舉功能的JavaScript代碼
+        }
+
+        function collectPost() {
+            // 收藏功能的JavaScript代碼
+        }
+        // 顯示模态框
+        function openReportModal() {
+            var modal = document.getElementById("reportModal");
+            modal.style.display = "block";
+        }
+
+        // 取消檢舉
+        function cancelReport() {
+            var modal = document.getElementById("reportModal");
+            modal.style.display = "none";
+        }
+
+        // 确认檢舉
+        function confirmReport() {
+            var modal = document.getElementById("reportModal");
+            var form = document.getElementById("reportForm");
+            var reasons = [];
+            var checkboxes = form.elements['reportReason'];
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    reasons.push(checkboxes[i].value);
+                }
+            }
+            var otherReason = document.getElementById("otherReason").value;
+            if (otherReason !== "") {
+                reasons.push(otherReason);
+            }
+            console.log("檢舉原因：", reasons);
+            modal.style.display = "none";
+        }
+
+// 顯示收藏彈跳視窗
+        function openCollectionModal() {
+            var modal = document.getElementById("collectionModal");
+            modal.style.display = "block";
+        }
+
+// 取消收藏
+        function cancelCollection() {
+            var modal = document.getElementById("collectionModal");
+            modal.style.display = "none";
+        }
+
+// 確認收藏
+        function confirmCollection() {
+            var modal = document.getElementById("collectionModal");
+    // 處理收藏
+            modal.style.display = "none";
+        }
+    </script>
+
+    
+</body>
+</html>
