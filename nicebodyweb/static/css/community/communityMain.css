@@ -114,6 +114,7 @@ section {
 .pocontent > .middle > .textcontent {
   width: 100%;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .pocontent > .middle > .textcontent > p {
@@ -124,6 +125,7 @@ section {
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
+  color: #495057;
 }
 
 .pocontent > .middle > .hashtag {
