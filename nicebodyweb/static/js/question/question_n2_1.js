@@ -105,7 +105,7 @@ window.onload = function () {
         const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
         if (inputValue !== '') {
             continueBtn.classList.add('button-brwon');
-            continueBtn.setAttribute('href', '/question/question_n2');
+            continueBtn.setAttribute('href', '/question/question_n3');
         } else {
             continueBtn.classList.remove('button-brwon');
             continueBtn.removeAttribute('href');
