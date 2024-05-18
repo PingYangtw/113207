@@ -72,6 +72,24 @@ dialog .content textarea {
   transition: color 0.3s;
 }
 
+dialog .content .reasons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.reasons .eachreason {
+  padding: 4%;
+  border-radius: 10px;
+  background-color: #FFF;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
 dialog .content .eachclass {
   width: 100%;
   padding: 4%;
@@ -88,13 +106,21 @@ dialog .content .eachclass {
   font-size: 0.5em;
 }
 
-dialog .content input {
+dialog .content .input {
   width: 100%;
   padding: 10px;
   border: #86BAA1 1px solid;
   border-radius: 10px;
   box-sizing: border-box;
   resize: none;
+}
+
+.contentsave {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  gap: 20px;
 }
 
 .save {
@@ -105,7 +131,8 @@ dialog .content input {
   gap: 10px;
 }
 
-.save button {
+.save button,
+.contentsave button {
   border: none;
   border-radius: 10px;
   padding: 10px 15px;
