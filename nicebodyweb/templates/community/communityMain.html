@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/static/images/favicon.ico" rel="shortcut icon"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/base/reset.css">
+  <link rel="stylesheet" href="/static/css/base/global.css">
+  <link rel="stylesheet" href="/static/css/components/mousemove.css">
+  <link rel="stylesheet" href="/static/css/components/dialog.css">
+	<link rel="stylesheet" href="/static/css/layout/navbar.css">
+  <link rel="stylesheet" href="/static/css/layout/footer.css">
+  <link rel="stylesheet" href="/static/css/community/communityMain.css">
+  <script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
+  <script src="/static/components/mousemove.js" defer></script>
+	<script src="/static/components/layout/navbar.js" defer></script>
+  <script src="/static/components/layout/footer.js" defer></script>
+  <title>社群</title>
+</head>
+<body>
+  <div id="myCursor"></div>
+  <div id="circle"></div>
+
+  <nav id="nav-container"></nav>
+
+  <article>
+    <a class="po" href="">
+      <div class="photostickers">
+        <img src="/static/images/user1.png" alt="">
+      </div>
+      <div class="say">說點甚麼吧!</div>
+    </a>
+
+    <section>
+      <div class="eachpo">
+        <div class="photostickers">
+          <img src="/static/images/user1.png" alt="">
+        </div>
+        <div class="pocontent">
+          <div class="top">
+            <div class="left">
+              <h1>煙燻雞</h1>
+              <span>2024/2/4 22:00</span>
+            </div>
+            <div class="right">
+              <i class="fa-regular fa-trash-can" id="opendelete"></i>
+              <a href="/community/airecipePost">
+                <i class="fa-regular fa-pen-to-square"></i>
+              </a>
+            </div>
+          </div>
+          <div class="middle">
+            <h1>健康是力量！！！</h1>
+            <a class="textcontent">
+              <p>我超喜歡</p>
+            </a>
+            <a class="imgcontent" href="/community/detailedPost">
+              <img src="/static/images/poimg.png" alt="">
+              <img src="/static/images/poimg.png" alt="">
+            </a>
+            <div class="hashtag">#<span>小知識</span></div>
+          </div>
+          <div class="line"></div>
+          <div class="bottom">
+            <input type="text" placeholder="說點什麼吧！">
+            <div class="right">
+              <button type="submit"><i class="fa-regular fa-paper-plane"></i></button>
+              <span>132</span>
+              <i class="fa-regular fa-heart"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="eachpo">
+        <div class="photostickers">
+          <img src="/static/images/user1.png" alt="">
+        </div>
+        <div class="pocontent">
+          <div class="top">
+            <div class="left">
+              <h1>煙燻雞</h1>
+              <span>2024/2/4 22:00</span>
+            </div>
+            <div class="right">
+              <i class="fa-solid fa-user-plus"></i>
+              <i class="fa-regular fa-bookmark" id="opencollect"></i>
+              <i class="fa-solid fa-triangle-exclamation" id="openreport"></i>
+            </div>
+          </div>
+          <div class="middle">
+            <h1>理想減重速度？</h1>
+            <a class="textcontent" href="/community/detailedPost">
+              <p>
+                減重目標設定最好是每週減0.5~1.0 公斤，以此速率減重，則每月期望能夠減重的目標為2~4 公斤，2 至3 個月的理想減重目標為8 公斤或減掉初始體重的10%（如90 公斤的人約減9公斤），此種減重速率也較不會引起身體負擔。
+                <br>資料來源:衛生福利部國民健康署
+                減重目標設定最好是每週減0.5~1.0 公斤，以此速率減重，則每月期望能夠減重的目標為2~4 公斤，2 至3 個月的理想減重目標為8 公斤或減掉初始體重的10%（如90 公斤的人約減9公斤），此種減重速率也較不會引起身體負擔。
+                <br>資料來源:衛生福利部國民健康署
+              </p>
+            </a>
+            <div class="hashtag">#<span>小知識</span></div>
+          </div>
+          <div class="line"></div>
+          <div class="bottom">
+            <input type="text" placeholder="說點什麼吧！">
+            <div class="right">
+              <button type="submit"><i class="fa-regular fa-paper-plane"></i></button>
+              <span>132</span>
+              <i class="fa-regular fa-heart"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <a class="circlepo" href="/community/airecipePost">
+    <i class="fa-solid fa-feather"></i>
+  </a>
+
+  <dialog id="delete">
+    <h1>確定刪除貼文?</h1>
+    <div class="contentsave">
+      <button id="closedelete" class="closebtn">cancel</button>
+      <button id="savedelete" class="savebtn">confirm</button>
+    </div>
+  </dialog>
+
+  <dialog id="collect">
+    <h1>編輯分類</h1>
+    <div class="content">
+      <div class="eachclass">
+        <div class="left">
+          <input type="checkbox" id="scales" name="scales" checked />
+          <label for="scales">我的最愛</label>
+        </div>
+        <div class="num">(2篇)</div>
+      </div>
+      <div class="eachclass">
+        <div class="left">
+          <input type="checkbox" id="scales" name="scales" />
+          <label for="scales">總有一天會用到</label>
+        </div>
+        <div class="num">(2篇)</div>
+      </div>
+      <div class="eachclass">
+        <div class="left">
+          <input type="checkbox" id="scales" name="scales" />
+          <label for="scales">蔬食天堂</label>
+        </div>
+        <div class="num">(2篇)</div>
+      </div>
+      <div class="eachclass">
+        <div class="left">
+          <input type="checkbox" id="scales" name="scales" />
+          <label for="scales">高蛋白飲食</label>
+        </div>
+        <div class="num">(2篇)</div>
+      </div>
+    </div>
+    <div class="save">
+      <button id="closecollect" class="closebtn closecollect">close</button>
+      <button id="savecollect" class="savebtn savecollect">save</button>
+    </div>
+  </dialog>
+
+  <dialog id="report">
+    <h1>檢舉</h1>
+    <div class="content">
+      <h2>檢舉原因</h2>
+      <div class="reasons">
+        <div class="eachreason">
+          <input type="checkbox" id="scales" name="scales" checked />
+          <label for="scales">不實資訊</label>
+        </div>
+        <div class="eachreason">
+          <input type="checkbox" id="scales" name="scales" />
+          <label for="scales">違反公共秩序善良風俗</label>
+        </div>
+        <div class="eachreason">
+          <input type="checkbox" id="scales" name="scales" />
+          <label for="scales">違反法律</label>
+        </div>
+        <div class="eachreason">
+          <input type="checkbox" id="scales" name="scales" />
+          <label for="scales">違反法律</label>
+        </div>
+        <div class="eachreason">
+          <input type="checkbox" id="scales" name="scales" />
+          <label for="scales">賭博詐騙</label>
+        </div>
+        <div class="eachreason">
+          <input type="checkbox" id="scales" name="scales" />
+          <label for="scales">其他(請填在下方空格)</label>
+        </div>
+      </div>
+      <textarea rows="5"></textarea>
+    </div>
+    <div class="save">
+      <button id="closereport" class="closebtn">cancel</button>
+      <button id="savereport" class="savebtn">confirm</button>
+    </div>
+  </dialog>
+
+  <footer id="footer-container"></footer>
+
+  <script>
+		let messageText = "{{data}}";
+
+    window.onload = function() {
+      renderNav();
+      renderFooter();
+    };
+
+    // 彈跳視窗
+    function setupModal(openBtnId, modalId, closeBtnId, saveBtnId, onSaved) {
+      const openBtn = document.getElementById(openBtnId);
+      const modal = document.getElementById(modalId);
+      const closeBtn = document.getElementById(closeBtnId);
+      const saveBtn = document.getElementById(saveBtnId);
+
+      openBtn.addEventListener("click", () => {
+        if (openBtnId === 'opencollect') {
+          if (openBtn.classList.contains('fa-regular')) {
+            modal.showModal();
+          } else {
+            handleCollectSave();
+          }
+        } else {
+          modal.showModal(); 
+        }
+      });
+
+      closeBtn.addEventListener("click", () => modal.close());
+      saveBtn.addEventListener("click", () => {
+        onSaved();
+        modal.close();
+      });
+    }
+
+    const modals = [
+      ['opendelete', 'delete', 'closedelete', 'savedelete', () => {}],
+      ['openreport', 'report', 'closereport', 'savereport', () => {}],
+      ['opencollect', 'collect', 'closecollect', 'savecollect', handleCollectSave],
+    ];
+
+    modals.forEach(modal => setupModal(...modal));
+
+    // 改變收藏icon
+    function handleCollectSave() {
+      const openCollectButton = document.querySelector('.fa-regular.fa-bookmark, .fa-solid.fa-bookmark');
+      if (openCollectButton) {
+        if (openCollectButton.classList.contains('fa-regular')) {
+          openCollectButton.classList.remove('fa-regular');
+          openCollectButton.classList.add('fa-solid');
+          openCollectButton.id = 'opencollect';
+        } else {
+          openCollectButton.classList.remove('fa-solid');
+          openCollectButton.classList.add('fa-regular');
+          openCollectButton.id = ''; 
+        }
+      }
+    }
+
+    // 改變按讚icon、數字
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.fa-regular.fa-heart').forEach(function(element) {
+        element.addEventListener('click', function() {
+          let isRegular = this.classList.contains('fa-regular');
+          let countElement = this.closest('section').querySelector('.right span');
+          this.classList.toggle('fa-regular', !isRegular);
+          this.classList.toggle('fa-solid', isRegular);
+          countElement.textContent = parseInt(countElement.textContent) + (isRegular ? 1 : -1);
+        });
+      });
+    });
+
+    // 改變關注icon樣式
+    document.addEventListener('DOMContentLoaded', function() {
+      const userIcons = document.querySelectorAll('.fa-solid.fa-user-plus');
+      userIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+          if (this.classList.contains('fa-user-plus')) {
+            this.classList.remove('fa-user-plus');
+            this.classList.add('fa-user-check');
+          } else {
+            this.classList.remove('fa-user-check');
+            this.classList.add('fa-user-plus');
+          }
+        });
+      });
+    });
+
+    // 發文小圓出場
+    window.addEventListener('scroll', () => {
+      const circlePo = document.querySelector('.circlepo');
+      const triggerHeight = 200;
+      if (window.scrollY > triggerHeight) {
+        circlePo.classList.add('show');
+      } else {
+        circlePo.classList.remove('show');
+      }
+    });
+	</script>
+</body>
+</html>

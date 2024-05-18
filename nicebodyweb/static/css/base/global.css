@@ -40,7 +40,9 @@ body {
   color: #FF9914;
 }
 
-.fa-cookie-bite {
+.fa-cookie-bite,
+.fa-pen-to-square,
+.fa-triangle-exclamation {
   color: #BC6C25;
 }
 
@@ -72,6 +74,20 @@ body {
   color: #6E3D0D;
 }
 
-.fa-trash-can {
+.fa-trash-can,
+.fa-heart {
   color: #FF3333;
+}
+
+.fa-paper-plane {
+  color: #FFF;
+}
+
+.fa-user-plus,
+.fa-user-check {
+  color: #86BAA1;
+}
+
+.fa-bookmark {
+  color: #FFCF56;
 }
