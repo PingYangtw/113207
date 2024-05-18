@@ -4,6 +4,7 @@
 import os
 import time
 import urllib.request
+import json
 from flask import Flask, render_template 
 from openai import OpenAI
 from datetime import datetime
@@ -52,53 +53,55 @@ client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "openai-api-key"))
 #json-data
 @app.route('/json-data')
 def json_data():
-    thread = client.beta.threads.create()
+    # thread = client.beta.threads.create()
 
-    # Create a message to append to our thread
-    message = client.beta.threads.messages.create(
-        thread_id=thread.id,
-        role="user",
-        content="營養需求：無糖；餐點時段：午餐；主要食材：馬鈴薯；烹調時間：無要求；特殊飲食需求：素食",
-    )
+    # # Create a message to append to our thread
+    # message = client.beta.threads.messages.create(
+    #     thread_id=thread.id,
+    #     role="user",
+    #     content="營養需求：無糖；餐點時段：午餐；主要食材：馬鈴薯；烹調時間：無要求；特殊飲食需求：素食",
+    # )
 
-    # Execute our run
-    run = client.beta.threads.runs.create(
-        thread_id=thread.id,
-        assistant_id='asst_SrcfhWBYSD0L1CMhGPSpeEoV',
-    )
+    # # Execute our run
+    # run = client.beta.threads.runs.create(
+    #     thread_id=thread.id,
+    #     assistant_id='asst_uq2gPIFYGBn1gCda10ExVyj1',
+    # )
 
-    def wait_on_run(run, thread):
-        while run.status == "queued" or run.status == "in_progress":
-            run = client.beta.threads.runs.retrieve(
-                thread_id=thread.id,
-                run_id=run.id,
-            )
-            time.sleep(0.5)
-        return run
+    # def wait_on_run(run, thread):
+    #     while run.status == "queued" or run.status == "in_progress":
+    #         run = client.beta.threads.runs.retrieve(
+    #             thread_id=thread.id,
+    #             run_id=run.id,
+    #         )
+    #         time.sleep(0.5)
+    #     return run
 
-    run = wait_on_run(run, thread)
+    # run = wait_on_run(run, thread)
 
-    # Retrieve all the messages added after our last user message
-    messages = client.beta.threads.messages.list(
-        thread_id = thread.id
-    )
+    # # Retrieve all the messages added after our last user message
+    # messages = client.beta.threads.messages.list(
+    #     thread_id = thread.id
+    # )
 
-    for message in reversed(messages.data):
-        data = message.content[0].text.value
+    # for message in reversed(messages.data):
+    #     data = message.content[0].text.value
 
-    response = client.images.generate(
-        prompt = "番茄炒蛋，以新鮮番茄和有機蛋為主角，搭配橄欖油，色彩鮮艷，濃淡相間，散發清新氣息。",
-        n = 1,
-        size = "256x256",
-    )
+    # response = client.images.generate(
+    #     model="dall-e-3",
+    #     prompt = "A plate of golden-brown potato cakes topped with thinly sliced scallions, with a side of fresh mixed greens. The rustic setting features warm natural lighting, creating a cozy and inviting atmosphere.",
+    #     n = 1,
+    #     quality="standard",
+    #     size = "1024x1024",
+    # )
 
-    image_url = response.data[0].url
+    # image_url = response.data[0].url
 
-    file_name = "static/images/openai/" + "image" + datetime.now().strftime('%Y-%m-%d-%H-%M-%S') + ".png"
-    urllib.request.urlretrieve(image_url, file_name)
+    # file_name = "static/images/openai/" + "image" + datetime.now().strftime('%Y-%m-%d-%H-%M-%S') + ".png"
+    # urllib.request.urlretrieve(image_url, file_name)
 
 
-    return render_template('/json-data.html',  data=data)
+    return render_template('/json-data.html')
 
     
 

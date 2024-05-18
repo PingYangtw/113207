@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="/static/images/favicon.ico" rel="shortcut icon"/>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/base/reset.css">
+		<link rel="stylesheet" href="/static/css/base/global.css">
+		<link rel="stylesheet" href="/static/css/components/mousemove.css">
+		<link rel="stylesheet" href="/static/css/layout/navbar.css">
+		<link rel="stylesheet" href="/static/css/layout/footer.css">
+		<link rel="stylesheet" href="/static/css/robott/shareResults.css">
+		<script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
+		<script src="/static/components/mousemove.js" defer></script>
+		<script src="/static/components/layout/navbar.js" defer></script>
+  	<script src="/static/components/layout/footer.js" defer></script>
+		<title>食譜</title>
+	</head>
+
+	<body>
+		<div id="myCursor"></div>
+  <div id="circle"></div>
+
+  <nav id="nav-container"></nav>
+
+		<article>
+			<div class="banner">
+				<img src="{{ Recipes_image_path }}/{{ image_name }}" alt="">
+			</div>
+			
+			<section class="receipe">
+				<div class="wrap">
+					<div class="title">
+						<div class="left">
+							<h1>{{ data['recipe']['title'] }}</h1>
+						</div>
+						<div class="diet" id="openinfor">
+							{% if data['recipe']['diet'] is not none %}
+								{% if '1' in data['recipe']['diet'] %}
+									<span class="dietname mediterranean">地中海</span>
+								{% endif %}
+								{% if '2' in data['recipe']['diet'] %}
+									<span class="dietname deshu">得舒</span>
+								{% endif %}
+								{% if '3' in data['recipe']['diet'] %}
+									<span class="dietname vegetarian">彈性素食</span>
+								{% endif %}
+								{% if '4' in data['recipe']['diet'] %}
+									<span class="dietname numdiet">234</span>
+								{% endif %}
+							{% endif %}
+						</div>
+						<dialog id="infor">
+							<h1>飲食法簡介</h1>
+							<div class="content">
+								<h2>地中海飲食法</h2>
+								<p>以蔬菜、水果、橄欖油、魚類和全穀雜糧為主，強調新鮮、天然的食材。</p>
+								<h2>得舒飲食法</h2>
+								<p>著重食用大量的蔬菜和水果，限制或避免動物性食品和加工食品的攝入，是一個降低血壓飲食治療方法。</p>
+								<h2>彈性素食</h2>
+								<p>結合了素食和非素食的元素，以植物性食物為主，但允許偶爾食用少量的動物性食物。</p>
+								<h2>234飲食法</h2>
+								<p>以每餐攝入500卡路里為原則，攝取的營養比例為：蛋白質佔25%、澱粉佔35%、脂肪佔40%。</p>
+							</div>
+							<div class="save">
+								<button id="closeinfor">close</button>
+							</div>
+						</dialog>
+					</div>
+				
+					<div class="summary">
+						<p>{{ current_time }}</p>
+						<h2>摘要</h2>
+						<p>
+							{{data['recipe']['summary']}}
+						</p>
+						
+					</div>
+						
+					<div class="content">
+						<h2>食材準備 - {{ data2['total'] }}元</h2>
+						<ol>
+							{% for item in data2['prepareMoney'] %}
+							<li>{{ item }}</li>
+							{% endfor %}
+						</ol>
+
+						<h2>烹調時間</h2>
+						<p>{{data['recipe']['cookTime']}}分</p>
+
+						<h2>料理步驟</h2>
+						<ol>
+							{% for item in data['recipe']['cookStep'] %}
+							<li>{{ item }}</li>
+							{% endfor %}
+						</ol>
+
+						<h2>營養配比</h2>
+						<p>{{data['recipe']['nutrition']}}</p>
+					</div>
+
+					<div class="button">
+						<button>發佈食譜</button>
+					</div>
+				</div>
+		</article>
+
+		<footer id="footer-container"></footer>
+
+		<script>
+			let messageText = "王小明";
+			
+			window.onload = function() {
+				renderNav();
+				renderFooter();
+			};
+
+			// 彈跳視窗 飲食法簡介
+			let openinfor=document.getElementById('openinfor');
+			let infor=document.getElementById('infor');
+			let closeinfor=document.getElementById('closeinfor');
+			openinfor.addEventListener("click", function(){
+				infor.showModal();
+			})
+			closeinfor.addEventListener("click", function(){
+				infor.close();
+			})
+		</script>
+	</body>
+</html>
