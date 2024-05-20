@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>發文</title>
+    <style>
+        /* 添加按鈕樣式 */
+        .submit-btn {
+            background-color: #86BAA1; /* 按鈕背景顏色 */
+            color: white; /* 按鈕文字顏色 */
+            border: none; /* 移除按鈕邊框 */
+            border-radius: 20px; /* 設置按鈕圓角 */
+            padding: 10px 20px; /* 設置按鈕內邊距 */
+            cursor: pointer; /* 設置光標樣式為手型 */
+            display: block; /* 將按鈕轉換為块級元素 */
+            margin: 0 auto; /* 設置左右外邊距為自動，使其水平居中 */
+        }
+        /* 添加樣式使<label>和<input>在一行顯示 */
+        label {
+            display: block;
+            margin-bottom: 10px; /* 問題之間的間距 */
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        select {
+            width: 600px; /* 問題一、二、五的輸入框寬度 */
+            display: block; /* 每個輸入框佔據一行 */
+            margin-bottom: 10px; /* 問題之間的間距 */
+            box-sizing: border-box; /* 讓 padding 和 border 不佔據真實的寬度 */
+            height: 40px; /* 問題一至問題五的輸入框高度 */
+            border-radius: 10px; /* 設置圓角 */
+        }
+        input#q2 {
+            height: 150px; /* 問題二的輸入框高度 */
+        }
+        input#q3,
+        input#q4 {
+            width: 200px; /* 問題三和問題四的輸入框寬度 */
+        }
+        select {
+            width: 200px; /* 問題五的下拉式選單寬度 */
+            border-radius: 10px; /* 設置圓角 */
+        }
+        input[type="file"] {
+            height: 40px; /* 設置問題六的輸入框高度 */
+            border-radius: 10px; /* 設置圓角 */
+        }
+        body {
+            background-color: #F0EAD2; /* 设置网页背景颜色 */
+            text-align: center; /* 文本居中对齐 */
+        }
+        h1 {
+            color: #D4A373; /* 設置標題文字顏色 */
+        }
+        form {
+            display: inline-block; /* 将表单作为内联块级元素，使其可以水平居中 */
+            text-align: left; /* 将表单内元素左对齐 */
+        }
+        .form-row {
+            margin-bottom: 10px; /* 底边距 */
+        }
+    </style>
+</head>
+<body>
+
+<h1>發文</h1>
+
+<form action="/submit_answers" method="post">
+    <label for="q1">標題：</label>
+    <input type="text" id="q1" name="title" required>
+    
+    <label for="q2">內文：</label>
+    <input type="text" id="q2" name="content" required>
+
+    <label for="q3">人數：</label>
+    <input type="number" id="q3" name="num_people" required>
+
+    <label for="q4">烹調時間：</label>
+    <input type="text" id="q4" name="cooking_time" required>
+
+    <label for="q5">創建者：</label>
+    <select id="q5" name="creator" required>
+        <option value="AI">AI</option>
+        <option value="原創">原創</option>
+    </select>
+
+    <label for="q6">圖片：</label>
+    <input type="file" id="q6" name="image">
+
+    <div>
+        <!-- 添加了 class 屬性以應用樣式 -->
+        <input type="submit" value="發佈" class="submit-btn">
+    </div>
+</form>
+
+</body>
+</html>
