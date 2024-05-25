@@ -39,30 +39,27 @@
           <th></th>
           <th></td>
         </tr>
+        {% for d in data %}
         <tr>
-          <td><i class="fa-solid fa-droplet"></i></td>
-          <td>喝水1000公升</td>
-          <td ><i class="fa-solid fa-pen" id="opencheck"></i></td>
-          <td><i class="fa-regular fa-trash-can"></i></td>
+          <td>
+            {% if d[2] == '1' %}
+            <i class="fa-solid fa-droplet"></i>
+            {% elif d[2] == '2' %}
+            <i class="fa-solid fa-seedling"></i>
+            {% elif d[2] == '3' %}
+            <i class="fa-solid fa-apple-whole"></i>
+            {% elif d[2] == '4' %}
+            <i class="fa-solid fa-cookie-bite"></i>
+            {% elif d[2] == '5' %}
+            <i class="fa-solid fa-martini-glass"></i>
+            {% endif %}
+          </td>
+
+          <td>{{ d[1] }}</td>
+          <td ><i class="fa-solid fa-pen" id="opencheck" data-id="{{ d[0] }}"></i></td>
+          <td><i class="fa-regular fa-trash-can" data-id="{{ d[0] }}"></i></td>
         </tr>
-        <tr>
-          <td><i class="fa-solid fa-droplet"></i></td>
-          <td>喝水1000公升</td>
-          <td><i class="fa-solid fa-pen" id="opencheck"></i></td>
-          <td><i class="fa-regular fa-trash-can"></i></td>
-        </tr>
-        <tr>
-          <td><i class="fa-solid fa-droplet"></i></td>
-          <td>喝水1000公升</td>
-          <td><i class="fa-solid fa-pen" id="opencheck"></i></td>
-          <td><i class="fa-regular fa-trash-can"></i></td>
-        </tr>
-        <tr>
-          <td><i class="fa-solid fa-droplet"></i></td>
-          <td>喝水1000公升</td>
-          <td><i class="fa-solid fa-pen" id="opencheck"></i></td>
-          <td><i class="fa-regular fa-trash-can"></i></td>
-        </tr>
+        {% endfor %}
       </table>
       <dialog id="check">
         <h1>修改打卡目標</h1>
@@ -87,7 +84,7 @@
   </article>
 
   <script>
-    let messageText = "{{data}}";
+    let messageText = "chiaoyu";
 
     window.onload = function() {
       renderNav();
