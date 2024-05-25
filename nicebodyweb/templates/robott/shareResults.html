@@ -32,23 +32,6 @@
 				<img src="{{ Recipes_image_path }}/{{ data[7] }}" alt="">
 			</div>
 
-			<dialog id="infor">
-				<h1>飲食法簡介</h1>
-				<div class="content">
-					<h2>地中海飲食法</h2>
-					<p>以蔬菜、水果、橄欖油、魚類和全穀雜糧為主，強調新鮮、天然的食材。</p>
-					<h2>得舒飲食法</h2>
-					<p>著重食用大量的蔬菜和水果，限制或避免動物性食品和加工食品的攝入，是一個降低血壓飲食治療方法。</p>
-					<h2>彈性素食</h2>
-					<p>結合了素食和非素食的元素，以植物性食物為主，但允許偶爾食用少量的動物性食物。</p>
-					<h2>234飲食法</h2>
-					<p>以每餐攝入500卡路里為原則，攝取的營養比例為：蛋白質佔25%、澱粉佔35%、脂肪佔40%。</p>
-				</div>
-				<div class="save">
-					<button id="closeinfor" class="closebtn">close</button>
-				</div>
-			</dialog>
-
 			<section class="receipe">
 				<div class="wrap">
 					<div class="title">
@@ -60,21 +43,37 @@
 							</div>
 						</div>
 						<div class="diet" id="openinfor">
-							{% if data[9] is not none %}
-								{% if '1' in data[9] %}
+							{% if data[8] is not none %}
+								{% if '1' in data[8] %}
 									<span class="dietname mediterranean">地中海</span>
 								{% endif %}
-								{% if '2' in data[9] %}
+								{% if '2' in data[8] %}
 									<span class="dietname deshu">得舒</span>
 								{% endif %}
-								{% if '3' in data[9] %}
+								{% if '3' in data[8] %}
 									<span class="dietname vegetarian">彈性素食</span>
 								{% endif %}
-								{% if '4' in data[9] %}
+								{% if '4' in data[8] %}
 									<span class="dietname numdiet">234</span>
 								{% endif %}
 							{% endif %}
 						</div>
+						<dialog id="infor">
+							<h1>飲食法簡介</h1>
+							<div class="content">
+								<h2>地中海飲食法</h2>
+								<p>以蔬菜、水果、橄欖油、魚類和全穀雜糧為主，強調新鮮、天然的食材。</p>
+								<h2>得舒飲食法</h2>
+								<p>著重食用大量的蔬菜和水果，限制或避免動物性食品和加工食品的攝入，是一個降低血壓飲食治療方法。</p>
+								<h2>彈性素食</h2>
+								<p>結合了素食和非素食的元素，以植物性食物為主，但允許偶爾食用少量的動物性食物。</p>
+								<h2>234飲食法</h2>
+								<p>以每餐攝入500卡路里為原則，攝取的營養比例為：蛋白質佔25%、澱粉佔35%、脂肪佔40%。</p>
+							</div>
+							<div class="save">
+								<button id="closeinfor" class="closebtn">close</button>
+							</div>
+						</dialog>
 					</div>
 				
 					<div class="summary">
@@ -86,12 +85,11 @@
 					</div>
 						
 					<div class="content">
-						<h2>食材準備</h2>
+						<h2>食材預算 - {{data[9]}}元</h2>
 						<ol>
-							<li>新鮮番茄2顆</li>
-							<li>新鮮香菜1把 , 切碎</li>
-							<li>橄欖油2湯匙</li>
-							<li>鹽和胡椒調味</li>
+							{% for item in data[3].split(', ') %}
+							<li>{{ item }}</li>
+							{% endfor %}
 						</ol>
 
 						<h2>烹調時間</h2>
@@ -99,11 +97,9 @@
 
 						<h2>料理步驟</h2>
 						<ol>
-							<li>將番茄切成小丁狀備用 。</li>
-							<li>在鍋中用橄欖油加熱，加入切碎的番茄煮至軟爛 。</li>
-							<li>打入蛋，蓋上鍋蓋，用中小火蒸煮約5分鐘，直到蛋白凝固，但蛋黃仍然微嫩。</li>
-							<li>撒上切碎的香菜, 撒上適量的鹽和胡椒調味。</li>
-							<li>輕輕攪拌混合 , 即可上桌享用。</li>
+							{% for item in data[5].split(', ') %}
+							<li>{{ item }}</li>
+							{% endfor %}
 						</ol>
 
 						<h2>營養配比</h2>
