@@ -43,20 +43,20 @@
         {% for d in data %}
         <div class="item">
             <input type="checkbox" id="checkbox-{{ loop.index }}" {% if d[3] == 1 %}checked{% endif %} data-id="{{ d[0] }}"/>
-            <label for="checkbox-{{ loop.index }}">
-                &ensp;
-                {% if d[2] == 1 %}
-                <i class="fa-solid fa-droplet"></i>
-                {% elif d[2] == 2 %}
-                <i class="fa-solid fa-seedling"></i>
-                {% elif d[2] == 3 %}
-                <i class="fa-solid fa-apple-whole"></i>
-                {% elif d[2] == 4 %}
-                <i class="fa-solid fa-cookie-bite"></i>
-                {% elif d[2] == 5 %}
-                <i class="fa-solid fa-martini-glass"></i>
-                {% endif %}
-                {{ d[1] }}
+            <label for="horns">
+              &ensp;
+              {% if d[2] == '1' %}
+              <i class="fa-solid fa-droplet"></i>
+              {% elif d[2] == '2' %}
+              <i class="fa-solid fa-seedling"></i>
+              {% elif d[2] == '3' %}
+              <i class="fa-solid fa-apple-whole"></i>
+              {% elif d[2] == '4' %}
+              <i class="fa-solid fa-cookie-bite"></i>
+              {% elif d[2] == '5' %}
+              <i class="fa-solid fa-martini-glass"></i>
+              {% endif %}
+              {{ d[1] }}
             </label>
         </div>
         {% endfor %}
