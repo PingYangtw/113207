@@ -12,12 +12,13 @@ $(document).ready(function() {
             },
             error: function(xhr, status, error) {
                 console.error(error);
+                alert(error, '出現錯誤，請稍後再試！');
             }
         });
     });
 });
 
-savecheck.addEventListener('click', function() {
+document.getElementById('savecheck').addEventListener('click', function() {
     var textValue = document.getElementById('textcheck').value.trim();
 
     if (!lastClickedElement) {
@@ -65,13 +66,13 @@ savecheck.addEventListener('click', function() {
             case 'fa-seedling':
                 iconId = 2;
                 break;
-            case 'fa-apple-whole':
+            case 'fa-martini-glass':
                 iconId = 3;
                 break;
             case 'fa-cookie-bite':
                 iconId = 4;
                 break;
-            case 'fa-martini-glass':
+            case 'fa-apple-whole':
                 iconId = 5;
                 break;
             default:
@@ -89,6 +90,7 @@ savecheck.addEventListener('click', function() {
             },
             error: function(xhr, status, error) {
                 console.error(error);
+                alert(error, '出現錯誤，請稍後再試！');
             }
         });
 

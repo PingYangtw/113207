@@ -44,12 +44,14 @@
           <th></th>
           <th></td>
         </tr>
+        {% for d in data %}
         <tr>
-          <td>2024/04/08</td>
-          <td>48</td>
+          <td>{{ d[2] }}</td>
+          <td>{{ d[1] }}</td>
           <td ><i class="fa-solid fa-pen" id="openweight"></i></td>
           <td><i class="fa-regular fa-trash-can"></i></td>
         </tr>
+        {% endfor %}
       </table>
       <dialog id="weight">
         <h1>新增體重紀錄</h1>
@@ -68,7 +70,7 @@
   </article>
 
   <script>
-    let messageText = "{{data}}";
+    let messageText = "chiaoyu";
 
     window.onload = function() {
       renderNav();

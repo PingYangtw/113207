@@ -18,7 +18,7 @@
   <script src="/static/components/mousemove.js" defer></script>
 	<script src="/static/components/layout/navbar.js" defer></script>
   <script src="/static/components/layout/footer.js" defer></script>
-  <script src="/static/js/goalMain.js" async></script>
+  <script src="/static/js/goal/goalMain.js" async></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <title>目標</title>
 </head>
@@ -50,11 +50,11 @@
               {% elif d[2] == '2' %}
               <i class="fa-solid fa-seedling"></i>
               {% elif d[2] == '3' %}
-              <i class="fa-solid fa-apple-whole"></i>
+              <i class="fa-solid fa-martini-glass"></i>
               {% elif d[2] == '4' %}
               <i class="fa-solid fa-cookie-bite"></i>
               {% elif d[2] == '5' %}
-              <i class="fa-solid fa-martini-glass"></i>
+              <i class="fa-solid fa-apple-whole"></i>
               {% endif %}
               {{ d[1] }}
             </label>
@@ -189,6 +189,9 @@
   <script>
     let messageText = "chiaoyu";
 
+    let weight_data= "{{ weight }}";
+    let weight_list = JSON.parse(weight_data);
+
     window.onload = function() {
       renderNav();
       renderFooter();
@@ -196,19 +199,38 @@
 
     // 體重變化表
     let chartElement = document.getElementById('myChart');
-    let data = {
-      labels: [
-        '星期一', '星期二', '星期三', '星期四', '星期五' ,'星期六' ,'星期日',
-      ],
+
+    let today = new Date();
+
+    let labels = [];
+
+    for (let i = 6; i >= 0; i--) {
+      let date = new Date(today);
+      date.setDate(today.getDate() - i);
+      
+      let formattedDate = (date.getMonth() + 1) + '/' + date.getDate();
+      labels.push(formattedDate);
+    }
+
+    let originalData = weight_list;
+    let data = originalData.map(value => value !== 0 ? value : null); // 将0替换为null
+
+    let chartData = {
+      labels: labels,
       datasets: [{
         label: 'weight',
-        data: [160, 130, 140, 160, 170, 200, 180],
+        data: data,
+        pointRadius: data.map(value => value !== null ? 3 : 0), // 设置没有数据的点半径为0
+        pointBackgroundColor: data.map(value => value !== null ? 'blue' : 'rgba(0,0,0,0)'), // 设置没有数据的点颜色为透明
       }]
     };
+
     new Chart(chartElement, {
       type: 'line',
-      data: data,
+      data: chartData,
     });
+
+
 
     // 前後對照圖
     let isEditing = {
