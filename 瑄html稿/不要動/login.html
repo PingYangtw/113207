@@ -1,0 +1,34 @@
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/images/favicon.ico" rel="shortcut icon"/>
+    <script src="https://kit.fontawesome.com/94de2da4da.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="/static/css/layout/navbar.css">
+    <link rel="stylesheet" href="/static/css/layout/footer.css">
+    <script src="/static/components/layout/navbar.js" defer></script>
+    <script src="/static/components/layout/sidebar.js" defer></script>
+    <script src="/static/components/layout/footer.js" defer></script>
+    <title>登入</title>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Log in</h1>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <button onclick="redirectToGoogle()" class="google-login-button">Login with Google</button>
+  </div>
+  <div class="word">
+    <h1>WEL</h1>
+    <h2>COME</h2>
+  </div>
+
+  <script src="scripts.js" defer></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>
+    function redirectToGoogle() {
+      window.location.href = 'URL_TO_GOOGLE_LOGIN_PAGE';
+    }
+  </script>
+</body>
+</html>

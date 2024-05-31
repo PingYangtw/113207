@@ -32,18 +32,26 @@ article {
     box-sizing: border-box; /* 盒子模型 */
 }
 
-.profile-name {
-    font-size: 2em; /* 文字大小 */
-    color: #6E3D0D; /* 文字顏色 */
-    position: relative; /* 設置相對位置 */
-    border-bottom:2px #6E3D0D solid; 
-}
-
-.profile .title{
+.profile .title {
     display: flex;
     align-items: center;
-    margin: 0px 10px 50px 10px;
+    margin: 0px 10px 30px 10px; /* 保持上下间距，微调左右间距 */
+    justify-content: center; /* 将内容靠近起始位置 */
 }
+
+.profile input {
+    border: none;
+    border-bottom: 2px solid #6E3D0D; /* 添加下底線 */
+    width: 60%; /* 修改寬度 */
+    border-radius: 0; /* 取消圓角 */
+    padding: 10px 10px;
+    box-sizing: border-box;
+    font-size: 2em;
+    color: #6E3D0D;
+    text-align: center;
+    outline: none; /* 移除聚焦時的外框 */
+}
+
 
 .profile button {
     width: 45%;
@@ -181,13 +189,28 @@ p{
     transition: background-color 0.3s;/*按按鈕時的漸變*/
 }
 
-.gender button[id="maleButton"]{
-    background-color:#84C1FF;
+.gender button {
+    flex: 1;
+    padding: 10px 10px;
+    border-radius: 15px;
+    border: none;
+    color: #495057;
+    text-align: center;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    transition: background-color 0.3s;
+}
+
+.gender button[id="maleButton"] {
+    background-color: #84C1FF;
     border: #84C1FF 2px solid;
 }
 
-.gender button[id="femaleButton"]{
-    background-color:#FF95CA;
+.gender button[id="femaleButton"] {
+    background-color: #FF95CA;
     border: #FF95CA 2px solid;
 }
 
@@ -198,6 +221,7 @@ p{
 .gender button[id="femaleButton"]:hover {
     border: #c22574 2px solid;
 }
+
 
 /*設定按鈕漸變
 .gender button:hover {
