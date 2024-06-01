@@ -1,0 +1,280 @@
+body {
+    background-color: #f0ead2;
+    margin: 50px;
+    width: 100%; /* 固定寬度 */
+    height: 80%; /* 固定高度 */
+    display: flex; /* 使用 flex 布局 */
+    justify-content: center;
+    align-items: center;
+}
+
+article {
+    /*border-radius: 20px;  圓形邊框 */
+    background-color: white;
+    padding: 20px 70px 70px 40px; /* 內邊距 */
+    display: flex; 
+    justify-content: space-between; /* 左右兩側對齊 */
+    box-sizing: border-box;
+}
+
+.profile {
+    flex: 1; /* 让 .profile 元素平分父容器剩余空间 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 25px 70px 25px; /* 调整 .profile 元素的外边距 */
+}
+
+.profile-picture {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 0px 20px 0px 20px;
+    object-fit: cover;
+    box-sizing: border-box;
+    cursor: pointer; /* 添加鼠標樣式 */
+    transition: opacity 0.3s; /* 添加過渡效果 */
+}
+
+.profile-picture:hover {
+    opacity: 0.7; /* 懸停時透明度變化 */
+}
+
+.profile .title {
+    display: flex;
+    align-items: center;
+    margin: 0px 10px 30px 10px; /* 保持上下间距，微调左右间距 */
+    justify-content: center; /* 将内容靠近起始位置 */
+}
+
+.profile input {
+    border: none;
+    border-bottom: 2px solid #6E3D0D; /* 添加下底線 */
+    width: 60%; /* 修改寬度 */
+    border-radius: 0; /* 取消圓角 */
+    padding: 25px 0px 0px 0px;
+    box-sizing: border-box;
+    font-size: 2em;
+    color: #6E3D0D;
+    text-align: center;
+    outline: none; /* 移除聚焦時的外框 */
+}
+
+
+.profile button {
+    width: 45%;
+    height: 50px;
+    padding: 10px 10px;
+    margin: 10px 10px;
+    border: none; /* 邊框 */
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);/*整個陰影*/
+    border-radius: 5px; /* 圓角 */
+    background-color: white;
+    color: #d4a373;
+    text-align: center;
+    font-size: 1em;
+    cursor: pointer; /* 指標樣式 */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    transition: background-color 0.3s;/*按按鈕時的漸變*/
+}
+
+/*設定按鈕漸變*/
+.profile button:hover {
+    background-color:  #d4a373;
+    color: white;
+}
+
+
+/* 個人資料設定內容 */
+.settings {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    margin: 0px 20px 0px 20px;
+}
+
+/*等級條*/
+.progress-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 55px;
+    margin-bottom: 25px;
+  }
+  
+  .progress-bar > form {
+    width: 100%;
+  }
+  
+  .progress-bar > .level {
+    border: #F47E93 5px solid;
+    background-color: #FFF;
+    border-radius: 50%;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5%;
+  }
+  
+  .progress-bar > .level > span {
+    font-size: 0.5em;
+  }
+  
+  progress{
+    appearance: none;
+    height: 10px;
+    width: 100%;
+    position: relative;
+  }
+  
+  progress::-webkit-progress-bar {
+    background-color: #B3B3B3;
+    border-radius: 5px;
+  }
+  
+  progress::-webkit-progress-value {
+    background-color: #F47E93;
+    border-radius: 5px;
+  }
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.out2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5%;
+}
+
+.out2 .title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1%;
+}
+
+p{
+    margin: 10px 5px 5px 5px;
+}
+
+.out2 .mail,
+.out2 .gender,
+.out2 .password,
+.out2 .birthday {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    flex: 1;
+    position: relative; /* 添加相對位置 */
+}
+
+.gbt{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5%;
+}
+
+/* 性別按鈕 */
+.gender button {
+    flex: 1;
+    padding: 10px 10px;
+    border-radius: 15px;
+    border:none;
+    color: #495057;
+    text-align: center;
+    font-size: 1em;
+    cursor: pointer; /* 指標樣式 */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    transition: background-color 0.3s;/*按按鈕時的漸變*/
+}
+
+.gender button {
+    flex: 1;
+    padding: 10px 10px;
+    border-radius: 15px;
+    border: none;
+    color: #495057;
+    text-align: center;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    transition: background-color 0.3s;
+}
+
+.gender button[id="maleButton"] {
+    background-color: #84C1FF;
+    border: #84C1FF 2px solid;
+}
+
+.gender button[id="femaleButton"] {
+    background-color: #FF95CA;
+    border: #FF95CA 2px solid;
+}
+
+.gender button[id="maleButton"]:hover {
+    border: #297bcd 2px solid;
+}
+
+.gender button[id="femaleButton"]:hover {
+    border: #c22574 2px solid;
+}
+
+
+/*設定按鈕漸變
+.gender button:hover {
+    background-color:  #d4a373;
+    color: white;
+}*/
+
+
+.settings input {
+    border: #495057 2px solid;
+    width: 100%;
+    border-radius: 15px;
+    padding: 10px 10px;
+    box-sizing: border-box;
+}
+
+.closesetting {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.closesetting button {
+    border-radius: 5px;
+    height: 40px;
+    border: none;
+    background-color: #495057;
+    color: #FFF;
+    text-align: center;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    transition: background-color 0.3s;
+    padding: 10px 10px;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    border: #495057 1px solid;
+}
+
+.closesetting button:hover {
+    background-color:  #FFF;
+    color:  #495057;
+}

@@ -1,7 +1,5 @@
 # 匯入Blueprint模組
-from concurrent.futures import ThreadPoolExecutor
 import os
-import threading
 import time
 import json
 import urllib.request
@@ -9,7 +7,9 @@ from flask import render_template
 from flask import Blueprint
 from flask import request
 from openai import OpenAI
-from datetime import date, datetime
+from datetime import datetime
+from utils import db
+
 from utils import db
 
 # 產生問題服務藍圖
@@ -53,7 +53,7 @@ def question4_selfList():
 def question5_selfList():
     return render_template('/question/question_n5.html', data='王小明')
 
-# #結果(money)
+#結果(money)
 # @question_bp.route('/resultRecipe', methods=['GET', 'POST'])
 # def resultRecipe_selfList(): 
 #     if request.method == 'POST':
@@ -156,7 +156,7 @@ def question5_selfList():
 #             conn.commit()
 #             conn.close()
             
-#             return render_template('/question/resultRecipe.html', data=json_data, data2=json_data2, image_name=image_name, Recipes_image_path=Recipes_image_path, current_time=current_time)
+#             return render_template('/question/resultRecipe.html', data=json_data, data2=json_data2, image_name=image_name, Recipes_image_path=Recipes_image_path, current_time='2024-05-17')
 #         except Exception as e:
 #             # 印出錯誤原因
 #             print('-'*30)
@@ -166,124 +166,12 @@ def question5_selfList():
 #             return render_template('/question/resultRecipe.html', data='王小明')
 #     return render_template('/question/resultRecipe.html', data='王小明')
 
-# @question_bp.route('/resultRecipe', methods=['GET', 'POST'])
-# def resultRecipe_selfList(): 
-#     if request.method == 'POST':
-#         try:
-#             tagInputValue1 = request.form.get('tagInputValue1')
-#             tagInputValue2 = request.form.get('tagInputValue2')
-#             tagInputValue3 = request.form.get('tagInputValue3')
-#             tagInputValue4_1 = request.form.get('tagInputValue4_1')
-#             tagInputValue5 = request.form.get('tagInputValue5')
-
-#             content = f"飲食法:{tagInputValue1}; 主要食材:{tagInputValue2}; 營養需求:{tagInputValue3}; 烹調時間:{tagInputValue4_1}分鐘以內; 過敏成分或不吃的食物:{tagInputValue5}"
-
-#             def wait_on_run(run, thread):
-#                 while run.status == "queued" or run.status == "in_progress":
-#                     run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
-#                     time.sleep(0.5)
-#                 return run
-
-#             # 食譜助理執行緒
-#             def recipe_assistant():
-#                 thread = client.beta.threads.create()
-#                 message = client.beta.threads.messages.create(thread_id=thread.id, role="user", content=content)
-#                 run = client.beta.threads.runs.create(thread_id=thread.id, assistant_id='asst_uq2gPIFYGBn1gCda10ExVyj1')
-#                 run = wait_on_run(run, thread)
-#                 messages = client.beta.threads.messages.list(thread_id=thread.id)
-#                 for message in reversed(messages.data):
-#                     data = message.content[0].text.value
-#                 print(json.loads(data))
-#                 return json.loads(data)
-
-#             # 估價助理執行緒
-#             def pricing_assistant(prepare_str):
-#                 thread = client.beta.threads.create()
-#                 message = client.beta.threads.messages.create(thread_id=thread.id, role="user", content=prepare_str)
-#                 run = client.beta.threads.runs.create(thread_id=thread.id, assistant_id='asst_g2WebXcfXJBxfFP9VzMbBKQd')
-#                 run = wait_on_run(run, thread)
-#                 messages = client.beta.threads.messages.list(thread_id=thread.id)
-#                 for message in reversed(messages.data):
-#                     data2 = message.content[0].text.value
-#                 print(json.loads(data2))
-#                 return json.loads(data2)
-
-#             # 生成圖片執行緒
-#             def generate_image(imagedescribe):
-#                 response = client.images.generate(
-#                     model="dall-e-3",
-#                     prompt="食物在畫面的正中心，不能出現未說明的食材" + imagedescribe,
-#                     n=1,
-#                     quality="standard",
-#                     size="1024x1024",
-#                 )
-#                 image_url = response.data[0].url
-#                 current_time = datetime.now()
-#                 image_name = "image" + current_time.strftime('%Y-%m-%d-%H-%M-%S') + ".png"
-#                 file_name = "static/images/openai/" + image_name
-#                 urllib.request.urlretrieve(image_url, file_name)
-#                 return image_name
-
-#             with ThreadPoolExecutor() as executor:
-#                 # 同時執行多個任務
-#                 recipe_future = executor.submit(recipe_assistant)
-#                 recipe_data = recipe_future.result()
-
-#                 title = recipe_data["recipe"]["title"]
-#                 summary = recipe_data["recipe"]["summary"]
-#                 prepare = recipe_data["recipe"]["prepare"]
-#                 cookTime = recipe_data["recipe"]["cookTime"]
-#                 cookStep = recipe_data["recipe"]["cookStep"]
-#                 nutrition = recipe_data["recipe"]["nutrition"]
-#                 diet = recipe_data["recipe"]["diet"]
-#                 imagedescribe = recipe_data["imagedescribe"]
-
-#                 prepare_str = ', '.join(prepare)
-#                 cookStep_str = ', '.join(cookStep)
-#                 diet_str = ', '.join(diet)
-
-#                 pricing_future = executor.submit(pricing_assistant, prepare_str)
-#                 pricing_data = pricing_future.result()
-
-#                 prepareMoney = pricing_data["prepareMoney"]
-#                 prepareMoney_str = ', '.join(prepareMoney)
-#                 total = pricing_data["total"]
-
-#                 image_future = executor.submit(generate_image, imagedescribe)
-#                 image_name = image_future.result()
-
-#             current_date = datetime.now()
-
-#             # DB
-#             def db_insert():
-#                 conn = db.get_connection()
-#                 cursor = conn.cursor()
-#                 cursor.execute("INSERT INTO body.cookbook (\"Uid\", title, summary, \"prepare\", \"prepareMoney\", \"cookTime\", \"cookStep\", nutrition, diet, \"cookImage\", \"cookImageDescribe\", \"isPublish\", diet_req, main_req, nutrition_req, cook_time_req, special_diet_req, create_time, update_time) VALUES (1,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '0', %s, %s, %s, %s, %s, now(), now())",
-#                     (title, summary, prepareMoney_str, total, cookTime, cookStep_str, nutrition, diet_str, image_name, imagedescribe, tagInputValue1, tagInputValue2, tagInputValue3, tagInputValue4_1, tagInputValue5))
-#                 conn.commit()
-#                 conn.close()
-
-#             threading.Thread(target=db_insert).start()
-
-#             return render_template('/question/resultRecipe.html', data=recipe_data, data2=pricing_data, image_name=image_name, Recipes_image_path=Recipes_image_path, current_time=current_date)
-
-#         except Exception as e:
-#             # 印出錯誤原因
-#             print('-'*30)
-#             print(e)
-#             print('-'*30)
-#             # 渲染失敗畫面
-#             return render_template('/question/resultRecipe.html', data='王小明')
-
-#     return render_template('/question/resultRecipe.html', data='王小明')
-
-
 #結果測試(free)
 @question_bp.route('/resultRecipe', methods=['GET', 'POST'])
 def resultRecipe_selfList(): 
     if request.method == 'POST':
         try:
-            json_data = {'recipe': {'title': '地中海風情的巧克力蛋糕', 'summary': '這款地中海風味的巧克力蛋糕熱量低，糖分含量低，十分適合健康飲食的你。特別添加了新鮮的藍莓和 橄欖油，讓口感更加滿足，又不失健康。', 'prepare': ['低脂巧克力100克', '全麥麵粉150克', '無糖可可粉50克', '橄欖油60克', '赤藻糖醇70克', '無鋁泡打粉5克', '雞蛋2個', '新鮮藍莓100克'], 'cookTime': '60', 'cookStep': ['將巧克力放入微波爐叮融，備用', '全麥麵粉、無糖可可粉和無鋁泡打粉過篩後，混合均勻', '將 雞蛋打入大碗中，加入橄欖油和赤藻糖醇一起打發', '將巧克力融液加入雞蛋油糖糊 中，拌勻', '分前將乾粉類慢慢加入巧克力糊中，邊翻邊拌', '拌至無粉顆粒後，放 入新鮮的藍莓，稍稍翻拌均勻後倒入已經舖好烘焙紙的模具中，平整表面', '將模具 放入已經預熱好的烤箱中，中層，上下火180度，烤45分鐘左右即可'], 'nutrition': '每份（100克）含碳水化合物68%，蛋白質15%，脂肪17%，纖維質10%。', 'diet': ['1']}, 'imagedescribe': '你現在看到的是一款地中海風味的巧克力蛋糕，主要食材有新鮮的巧克力、橄欖油和藍莓。這款蛋糕採用藍莓和橄欖油做裝飾，使整體顏色呈 現出豐富的層次感，營造出地中海的海洋風情。在健康與美味之間取得完美的平衡。 以綠色和藍色的色調搭配木紋桌面，營造出自然、清新的地中海氛圍。'}
+            json_data = {'recipe': {'title': '蔬菜蒸餃', 'summary': '這道蔬菜蒸餃是一種創意十足的美味料理，主要選用新鮮的青菜和豆腐作為餡料，搭配嫩滑的餃子皮，口感清爽又營養豐富。此外，這道料理能夠符合234飲食法需求，提供均衡的營養配比。', 'prepare': ['餃子皮: 300克', '大白菜: 150克', '豆腐: 100克', '紅蘿蔔: 50克', '香菇: 50克', '蔥: 2根'], 'cookTime': '60', 'cookStep': ['將大白菜和豆腐放入攪拌機中攪打成泥狀 ，取出備用。', '將紅蘿蔔和香菇切成末，蔥切碎，加入大白菜和豆腐泥中，攪拌均勻。', '將餃子皮包入蔬菜餡料，擀成餃子形狀。', '將餃子 放入蒸籠，加熱蒸15分鐘即可。'], 'nutrition': '這道蔬菜蒸餃提供均衡的營養配比，含有碳水化合物30%、蛋白質20%、脂質8%、維生素A、維生素C和膳食纖維。', 'diet': ['4']}, 'imagedescribe': '這道蔬菜蒸餃以清新的綠色蔬菜和豆腐製作，烹飪後呈現出養生美味的菜餚種類。餃子 整齊擺放在蒸籠中，餃子皮散發出微微的透明感，搭配點綴蔬菜碎末的綠色蔬菜餃子煞是好看。背景環境以多種蔬菜和水蒸氣炊煮的場景為主，營 造出溫馨家庭的氛圍。'}
 
             title = json_data["recipe"]["title"]
             summary = json_data["recipe"]["summary"]
@@ -297,7 +185,7 @@ def resultRecipe_selfList():
             cookStep_str = ', '.join(cookStep)
             diet_str = ', '.join(diet)
 
-            json_data2 = {'prepareMoney': ['低脂巧克力100克：xxx元', '全麥麵粉150克：xxx元', '無糖可可粉50克：xxx元', '橄欖油60克：xxx元', '赤藻糖醇70克：xxx元', '無鋁泡打粉5 克：xxx元', '雞蛋2個：xxx元', '新鮮藍莓100克：xxx元'], 'total': 'XXX'}
+            json_data2 = {'prepareMoney': ['餃子皮: 300克：45元', '大白菜: 150克：12元', '豆腐: 100克：10元', '紅蘿蔔: 50克：5元', '香菇: 50克：15元', '蔥: 2根：20元'], 'total': '107'}
 
             prepareMoney = json_data2["prepareMoney"]
             prepareMoney_str = ', '.join(prepareMoney)
@@ -306,15 +194,13 @@ def resultRecipe_selfList():
             image_name = 'image2024-05-17-10-42-34.png'
             
             # DB
-            # def db_insert():
-            #     conn = db.get_connection()
-            #     cursor = conn.cursor()
-            #     cursor.execute("INSERT INTO body.cookbook (\"Uid\", title, summary, \"prepare\", \"prepareMoney\", \"cookTime\", \"cookStep\", nutrition, diet, \"cookImage\", \"cookImageDescribe\", \"isPublish\", diet_req, main_req, nutrition_req, cook_time_req, special_diet_req, create_time, update_time) VALUES (1,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '0', %s, %s, %s, %s, %s, %s, %s)",
-            #                         (title, summary, prepareMoney_str, total, cookTime, cookStep_str, nutrition, diet_str, image_name, imagedescribe, 'test', 'test', 'test', 'test', 'test', '2024-05-17', '2024-05-17'))
-            #     conn.commit()
-            #     conn.close()
+            # conn = db.get_connection()
+            # cursor = conn.cursor()
+            # cursor.execute("INSERT INTO body.cookbook (\"Uid\", title, summary, \"prepare\", \"prepareMoney\", \"cookTime\", \"cookStep\", nutrition, diet, \"cookImage\", \"cookImageDescribe\", \"isPublish\", diet_req, main_req, nutrition_req, cook_time_req, special_diet_req, create_time, update_time) VALUES (1,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '0', %s, %s, %s, %s, %s, %s, %s)",
+            #                     (title, summary, prepareMoney_str, total, cookTime, cookStep_str, nutrition, diet_str, image_name, imagedescribe, 'test', 'test', 'test', 'test', 'test', '2024-05-17', '2024-05-17'))
+            # conn.commit()
+            # conn.close()
             
-            # threading.Thread(target=db_insert).start()
 
             return render_template('/question/resultRecipe.html', data=json_data, data2=json_data2, image_name=image_name, Recipes_image_path=Recipes_image_path, current_time='2024-05-17')
         except Exception as e:

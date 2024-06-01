@@ -62,7 +62,7 @@ def robott_selfList_more():
 
     recipe_id = request.args.get('recipe_id')
 
-    cursor.execute('SELECT title, TO_CHAR(create_time, \'MM.DD.YYYY\'), summary, "prepare", "cookTime", "cookStep", nutrition, "cookImage", "isPublish", diet, "prepareMoney" FROM body."cookbook" where "Cookid" =%s', (recipe_id,))
+    cursor.execute('SELECT title, TO_CHAR(create_time, \'MM.DD.YYYY\'), summary, "prepare", "cookTime", "cookStep", nutrition, "cookImage", "isPublish", diet FROM body."cookbook" where "Cookid" =%s', (recipe_id,))
     
     #取出資料
     data = cursor.fetchone()

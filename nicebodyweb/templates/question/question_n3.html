@@ -1,76 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>機器人問題三</title>
-  <link href="/static/images/favicon.ico" rel="shortcut icon"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/css/base/reset.css">
-  <link rel="stylesheet" href="/static/css/base/global.css">
-  <link rel="stylesheet" href="/static/css/question/question_main.css">
-  <link rel="stylesheet" href="/static/css/components/mousemove.css">
+    <meta charset="UTF-8">
+    <title>機器人問題三</title>
+    <link href="/static/images/favicon.ico" rel="shortcut icon"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/base/reset.css">
+    <link rel="stylesheet" href="/static/css/base/global.css">
+    <link rel="stylesheet" href="/static/css/question/question_main.css">
+    <link rel="stylesheet" href="/static/css/components/mousemove.css">
 	<link rel="stylesheet" href="/static/css/layout/navbar.css">
-  <script src="/static/js/question/question_n3.js" async></script>
-  <script src="/static/components/mousemove.js" defer></script>
+    <script src="/static/js/question/question_n3.js" async></script>
+    <script src="/static/components/mousemove.js" defer></script>
 	<script src="/static/components/layout/navbar.js" defer></script>
-  <script src="https://kit.fontawesome.com/ff1f69f5b7.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ff1f69f5b7.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div id="myCursor"></div>
+    <div id="myCursor"></div>
   <div id="circle"></div>
 
   <nav id="nav-container"></nav>
 
-  <article>
-    <section>
-      <div class="gray">
-        <div class="green-three"></div>
-      </div>
-
-      <div class="up">
-        <div class="top">
-          <div class="title">
-            <img
-              loading="lazy"
-              srcset="/static/images/question/question_banana.png 100w, 
-              /static/images/question/question_banana.png 200w, 
-              /static/images/question/question_banana.png 400w, 
-              /static/images/question/question_banana.png 800w,
-              /static/images/question/question_banana.png 1200w, 
-              /static/images/question/question_banana.png 1600w, 
-              /static/images/question/question_banana.png 2000w,"
-            />
-
-            <div class = "title_icon">
-              <div>營養需求</div>
+    <article>
+        <section>
+            <div class="gray">
+                <div class="green-three"></div>
             </div>
-          </div>
 
-          <div class="input">
-            <p class = "question">你對於營養需求有特別的偏好嗎？</p>
-            <input type="text" id="tag-ip" class="text-border" placeholder="例如：低脂、高蛋白、減糖" />
-          </div>
-        </div>
-      </div>
-
-      <div class="tag-list">
-        <div class="tag-list-item"></div>
-        <div class="tag-list-item2"></div>
-        <div class="tag-list-item3"></div>
-      </div>
-        
-      <div class="next">
-        <div class="line"></div>
-        <div class="btn">
-          <a id = "back" href="/question/question_n2_1">
-            <i class="fa-solid fa-circle-arrow-left"></i>
-          </a>
-          <a id="continue-btn" class = "continue-btn">繼續</a>
-        </div>
-      </div>
-    </section>
-  </article>
+            <div class="up">
+                <div class="top">
+                    <div class="title">
+                        <img
+                            loading="lazy"
+                            srcset="/static/images/question/question_banana.png 100w, 
+                            /static/images/question/question_banana.png 200w, 
+                            /static/images/question/question_banana.png 400w, 
+                            /static/images/question/question_banana.png 800w,
+                            /static/images/question/question_banana.png 1200w, 
+                            /static/images/question/question_banana.png 1600w, 
+                            /static/images/question/question_banana.png 2000w,"
+                        />
+                        <div>營養需求</div>
+                    </div>
+                    <div class="input">
+                        <p class = "question">
+                            你對於營養需求有特別的偏好嗎？
+                        </p>
+                        <div>
+                            <input type="text" id="tag-ip" class="text-border"
+                            placeholder="例如：低脂、高蛋白、減糖" />
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="tag-list">
+                    <div class="tag-list-item"> </div>
+    
+                    <div class="tag-list-item2"></div>
+    
+                    <div class="tag-list-item3"></div>
+                </div>
+            </div>
+            
+            <div class="next">
+                <div class="line"></div>
+                <div class="btn">
+                    <a href="/question/question_n2">
+                        <i class="fa-solid fa-circle-arrow-left"></i>
+                    </a>
+                    <a id="continue-btn" class = "continue-btn">
+                        繼續
+                    </a>
+                </div>
+            </div>
+        </section>
+    </article>
 </body>
 </html>

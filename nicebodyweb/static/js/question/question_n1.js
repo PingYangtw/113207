@@ -6,11 +6,67 @@ window.onload = function () {
     // 變數
     let tags = [];
 
+    const defaultTags = ["地中海飲食", "彈性素食", "得舒飲食", "234飲食", "無需求"];
+
+    const tagListContainer1 = document.querySelector('.tag-list-item');
+    const tagListContainer2 = document.querySelector('.tag-list-item2');
+
     const continueBtn = document.getElementById('continue-btn');
 
     const inputField = document.getElementById('tag-ip');
 
     const savedValue = sessionStorage.getItem('tagInputValue');
+
+    // 初始化標籤
+    defaultTags.forEach((tag, index) => {
+        const tagButton = document.createElement("button");
+        tagButton.classList.add("item");
+        tagButton.textContent = tag;
+        tagButton.id = tag;
+        tagButton.addEventListener("click", function () {
+            const isSelected = tagButton.classList.contains("item-select");
+            if (!isSelected) {
+                addTagToInput(tag); // 使用按鈕上存儲的標籤值
+                tagButton.classList.add("item-select");
+            } else {
+                removeTagFromInput(tag); // 使用按鈕上存儲的標籤值
+                tagButton.classList.remove("item-select");
+            }
+            
+            // 每次点击标签后检查输入框
+            checkInput();
+        });
+
+        if (index >= 2) {
+            tagListContainer2.appendChild(tagButton);
+        } else {
+            tagListContainer1.appendChild(tagButton);
+        }
+    });
+
+    // 將標籤文字添加到輸入框中
+    function addTagToInput(tag) {
+        tags.push(tag);
+
+        const tagInput = document.getElementById('tag-ip');
+        if (tagInput.value.trim() === "") {
+            tagInput.value = tag;
+        } else {
+            tagInput.value += `、 ${tag}`;
+        }
+    }
+
+    // 從輸入框中移除指定的標籤文字
+    function removeTagFromInput(tagToRemove) {
+
+        tags = tags.filter(tag => tag !== tagToRemove);
+
+        const tagInput = document.getElementById('tag-ip');
+        const currentTags = tagInput.value.split('、').map(tag => tag.trim());
+        const updatedTags = currentTags.filter(tag => tag !== tagToRemove);
+        tagInput.value = updatedTags.join('、');
+    }
+
     
     // 检查输入框中是否有文本，并根据情况更新按钮状态和样式
     function checkInput() {
@@ -49,41 +105,17 @@ window.onload = function () {
         } 
     });
 
-    document.querySelectorAll('.diet-tag a').forEach(function(tag) {
-      tag.addEventListener('click', function() {
-          // Toggle 'select' class for the clicked <a> element
-          if (this.classList.contains('select')) {
-              this.classList.remove('select');
-          } else {
-              this.classList.add('select');
-          }
+    if (savedValue !== null) {
+        inputField.value = savedValue;
+        checkInput();
+        const selectedTags = savedValue.split('、').map(tag => tag.trim());
+        selectedTags.forEach(tag => {
+            const tagButton = document.getElementById(tag);
+            if (tagButton !== null) {
+                tagButton.classList.add('item-select');
+            }
+        });
+        
+    }
 
-          // Get all selected tags' text
-          var selectedTexts = [];
-          document.querySelectorAll('.diet-tag a.select h6').forEach(function(selectedTag) {
-              selectedTexts.push(selectedTag.textContent);
-          });
-
-          // Set the joined selected texts to the input with id 'tag-ip'
-          document.getElementById('tag-ip').value = selectedTexts.join('、');
-
-          checkInput();
-      });
-  });
-
-  if (savedValue !== null) {
-      inputField.value = savedValue;
-      checkInput();
-      const selectedTags = savedValue.split('、').map(tag => tag.trim());
-      selectedTags.forEach(tag => {
-          document.querySelectorAll('.diet-tag a').forEach(function(tagElement) {
-              console.log(tagElement.querySelector('h6').textContent);
-              if (tagElement.querySelector('h6').textContent === tag) {
-                  tagElement.classList.add('select');
-              }
-          });
-      });
-  }
-
-    
 };

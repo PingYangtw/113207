@@ -17,7 +17,6 @@ window.onload = function() {
     const savedValue = sessionStorage.getItem('tagInputValue5');
 
 
-
     // 初始化標籤
     defaultTags.forEach((tag) => {
         const tagButton = document.createElement("button");
@@ -103,9 +102,7 @@ window.onload = function() {
             document.getElementById('tagInputValue5').value = inputValue;
 
             // 提交表單
-            document.getElementById('questionForm').submit();  
-
-            document.getElementById('loading').style.display = 'flex';
+            document.getElementById('questionForm').submit();
         }
     });
 };

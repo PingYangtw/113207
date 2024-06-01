@@ -59,7 +59,7 @@ article {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 3%;
   background-color: #FFF;
   border-radius: 10px;
   margin-top: 3%;
@@ -86,7 +86,7 @@ article {
 
 .input input {
   border: none;
-  padding: 1.5%;
+  padding: 1.5% 3%;
   border-radius: 10px;
 }
 

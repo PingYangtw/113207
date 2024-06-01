@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/static/css/components/mousemove.css">
   <link rel="stylesheet" href="/static/css/components/dialog.css">
 	<link rel="stylesheet" href="/static/css/layout/navbar.css">
+  <link rel="stylesheet" href="/static/css/layout/footer.css">
   <link rel="stylesheet" href="/static/css/goal/weightList.css">
   <script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
   <script src="/static/components/mousemove.js" defer></script>
@@ -43,14 +44,12 @@
           <th></th>
           <th></td>
         </tr>
-        {% for d in data %}
         <tr>
-          <td>{{ d[2] }}</td>
-          <td>{{ d[1] }}</td>
+          <td>2024/04/08</td>
+          <td>48</td>
           <td ><i class="fa-solid fa-pen" id="openweight"></i></td>
           <td><i class="fa-regular fa-trash-can"></i></td>
         </tr>
-        {% endfor %}
       </table>
       <dialog id="weight">
         <h1>新增體重紀錄</h1>
@@ -69,7 +68,7 @@
   </article>
 
   <script>
-    let messageText = "chiaoyu";
+    let messageText = "{{data}}";
 
     window.onload = function() {
       renderNav();

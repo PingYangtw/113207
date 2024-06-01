@@ -14,13 +14,10 @@
 		<link rel="stylesheet" href="/static/css/layout/navbar.css">
 		<link rel="stylesheet" href="/static/css/layout/footer.css">
 		<link rel="stylesheet" href="/static/css/robott/shareResults.css">
-		<link rel="stylesheet" href="/static/css/components/fancybox/jquery.fancybox.css"/>
-    <link rel="stylesheet" href="/static/css/components/fancybox/my.jquery.fancybox.css"/>
 		<script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
 		<script src="/static/components/mousemove.js" defer></script>
 		<script src="/static/components/layout/navbar.js" defer></script>
   	<script src="/static/components/layout/footer.js" defer></script>
-		<script src="/static/components/jquery.fancybox.js"></script> 
 		<title>分享食譜</title>
 	</head>
 
@@ -32,10 +29,25 @@
 
 		<article>
 			<div class="banner">
-				<a data-fancybox="gallery" href="{{ Recipes_image_path }}/{{ data[7] }}">
-					<img src="{{ Recipes_image_path }}/{{ data[7] }}" alt="">
-				</a>
+				<img src="{{ Recipes_image_path }}/{{ data[7] }}" alt="">
 			</div>
+
+			<dialog id="infor">
+				<h1>飲食法簡介</h1>
+				<div class="content">
+					<h2>地中海飲食法</h2>
+					<p>以蔬菜、水果、橄欖油、魚類和全穀雜糧為主，強調新鮮、天然的食材。</p>
+					<h2>得舒飲食法</h2>
+					<p>著重食用大量的蔬菜和水果，限制或避免動物性食品和加工食品的攝入，是一個降低血壓飲食治療方法。</p>
+					<h2>彈性素食</h2>
+					<p>結合了素食和非素食的元素，以植物性食物為主，但允許偶爾食用少量的動物性食物。</p>
+					<h2>234飲食法</h2>
+					<p>以每餐攝入500卡路里為原則，攝取的營養比例為：蛋白質佔25%、澱粉佔35%、脂肪佔40%。</p>
+				</div>
+				<div class="save">
+					<button id="closeinfor" class="closebtn">close</button>
+				</div>
+			</dialog>
 
 			<section class="receipe">
 				<div class="wrap">
@@ -43,42 +55,26 @@
 						<div class="left">
 							<h1>{{data[0]}}</h1>
 							<div class="like">
-								<i class="fa-regular fa-thumbs-up"></i>
+								<i class="fa-solid fa-thumbs-up"></i>
 								<span>{{likecount[0]}}&ensp;</span>
 							</div>
 						</div>
 						<div class="diet" id="openinfor">
-							{% if data[8] is not none %}
-								{% if '1' in data[8] %}
+							{% if data[9] is not none %}
+								{% if '1' in data[9] %}
 									<span class="dietname mediterranean">地中海</span>
 								{% endif %}
-								{% if '2' in data[8] %}
+								{% if '2' in data[9] %}
 									<span class="dietname deshu">得舒</span>
 								{% endif %}
-								{% if '3' in data[8] %}
+								{% if '3' in data[9] %}
 									<span class="dietname vegetarian">彈性素食</span>
 								{% endif %}
-								{% if '4' in data[8] %}
+								{% if '4' in data[9] %}
 									<span class="dietname numdiet">234</span>
 								{% endif %}
 							{% endif %}
 						</div>
-						<dialog id="infor">
-							<h1>飲食法簡介</h1>
-							<div class="content">
-								<h2>地中海飲食法</h2>
-								<p>以蔬菜、水果、橄欖油、魚類和全穀雜糧為主，強調新鮮、天然的食材。</p>
-								<h2>得舒飲食法</h2>
-								<p>著重食用大量的蔬菜和水果，限制或避免動物性食品和加工食品的攝入，是一個降低血壓飲食治療方法。</p>
-								<h2>彈性素食</h2>
-								<p>結合了素食和非素食的元素，以植物性食物為主，但允許偶爾食用少量的動物性食物。</p>
-								<h2>234飲食法</h2>
-								<p>以每餐攝入500卡路里為原則，攝取的營養比例為：蛋白質佔25%、澱粉佔35%、脂肪佔40%。</p>
-							</div>
-							<div class="save">
-								<button id="closeinfor" class="closebtn">close</button>
-							</div>
-						</dialog>
 					</div>
 				
 					<div class="summary">
@@ -90,11 +86,12 @@
 					</div>
 						
 					<div class="content">
-						<h2>食材預算 - {{data[9]}}元</h2>
+						<h2>食材準備</h2>
 						<ol>
-							{% for item in data[3].split(', ') %}
-							<li>{{ item }}</li>
-							{% endfor %}
+							<li>新鮮番茄2顆</li>
+							<li>新鮮香菜1把 , 切碎</li>
+							<li>橄欖油2湯匙</li>
+							<li>鹽和胡椒調味</li>
 						</ol>
 
 						<h2>烹調時間</h2>
@@ -102,9 +99,11 @@
 
 						<h2>料理步驟</h2>
 						<ol>
-							{% for item in data[5].split(', ') %}
-							<li>{{ item }}</li>
-							{% endfor %}
+							<li>將番茄切成小丁狀備用 。</li>
+							<li>在鍋中用橄欖油加熱，加入切碎的番茄煮至軟爛 。</li>
+							<li>打入蛋，蓋上鍋蓋，用中小火蒸煮約5分鐘，直到蛋白凝固，但蛋黃仍然微嫩。</li>
+							<li>撒上切碎的香菜, 撒上適量的鹽和胡椒調味。</li>
+							<li>輕輕攪拌混合 , 即可上桌享用。</li>
 						</ol>
 
 						<h2>營養配比</h2>
@@ -119,15 +118,10 @@
 						<div class="left">
 							<h1>大家一起做</h1>
 							<div class="share">
-								<i class="fa-solid fa-comments"></i>
+								<i class="fa-solid fa-share"></i>
 								<span>{{messagecount}}</span>
 							</div>
 						</div>
-					</div>
-
-					<div class="message">
-						<input type="text" placeholder="說點什麼吧！">
-						<i class="fa-solid fa-paper-plane"></i>
 					</div>
 
 					{% for d in data2%}
@@ -151,18 +145,18 @@
 			</section>
 		</article>
 
-		<footer id="footer-container"></footer>
+	<footer id="footer-container"></footer>
 
-		<script>
-			let messageText = "chiaoyu";
+  <script>
+		let messageText = "chiaoyu";
 
-			window.onload = function() {
-				renderNav();
-				renderFooter();
-			};
+		window.onload = function() {
+		renderNav();
+		renderFooter();
+		};
 
-			// 彈跳視窗 飲食法簡介
-			let openinfor=document.getElementById('openinfor');
+		// 彈跳視窗 飲食法簡介
+		let openinfor=document.getElementById('openinfor');
 			let infor=document.getElementById('infor');
 			let closeinfor=document.getElementById('closeinfor');
 			openinfor.addEventListener("click", function(){
@@ -171,46 +165,6 @@
 			closeinfor.addEventListener("click", function(){
 				infor.close();
 			})
-
-			// 改變按讚icon、數字
-			// $(document).ready(function() {
-			// 	const likeButton = $(".like i");
-			// 	const likeCount = $(".like span");
-
-			// 	let currentLikeCount = parseInt(likeCount.text());
-
-			// 	const isLiked = likeButton.hasClass("fa-solid");
-
-			// 	likeButton.on("click", function() {
-			// 		likeButton.toggleClass("fa-regular fa-solid");
-
-			// 		if (isLiked) {
-			// 			currentLikeCount--;
-			// 		} else {
-			// 			currentLikeCount++;
-			// 		}
-
-			// 		likeCount.text(currentLikeCount + " ");
-
-			// 		$.ajax({
-			// 			method: "POST",
-			// 			data: {
-			// 				recipe_id: recipe_id,
-			// 				likeCount: currentLikeCount,
-			// 			},
-			// 			async: true,
-			// 			success: function(response) {
-			// 				console.log("Like count updated successfully:", response);
-			// 				if (response.message === "Like count updated successfully") {
-			// 					likeCount.text(response.data.likeCount + " ");
-			// 				}
-			// 			},
-			// 			error: function(error) {
-			// 				console.error("Error updating like count:", error);
-			// 			},
-			// 		});
-			// 	});
-			// });
-		</script>
+	</script>
 	</body>
 </html>

@@ -1,16 +1,14 @@
-body {
-  background-color: #F0EAD2;
-}
-
 article {
+  background-color: #F0EAD2;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 10% 0 5%;
 }
 
 main {
   width: 50%;
+  margin-top: 10%;
 }
 
 main h1 {

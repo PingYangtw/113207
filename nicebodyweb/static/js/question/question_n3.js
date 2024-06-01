@@ -94,16 +94,18 @@ window.onload = function () {
         }
     });
 
-    // 点击按钮时跳转到question_second.html页面
-    continueBtn.addEventListener('click', function () {
+    continueBtn.addEventListener('click', function() {
         const inputValue = inputField.value.trim(); // 獲取去除兩端空格的輸入值
-        const tagInput = document.getElementById('tag-ip');
         if (inputValue === '') {
             alert('請輸入內容');
-        } else {
-            sessionStorage.setItem('tagInputValue3', tagInput.value);
-            sessionStorage.removeItem('tagInputValue4_1');
-        }
+        } 
+    });
+
+    // 点击按钮时跳转到question_second.html页面
+    continueBtn.addEventListener('click', function () {
+        const tagInput = document.getElementById('tag-ip');
+        sessionStorage.setItem('tagInputValue3', tagInput.value);
+        sessionStorage.removeItem('tagInputValue4_1');
     });
 
     if (savedValue !== null) {
