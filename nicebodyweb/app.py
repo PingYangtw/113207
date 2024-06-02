@@ -19,6 +19,7 @@ from services.goal.app import goal_bp
 from services.community.app import community_bp
 from services.task.app import task_bp
 from services.profile.app import profile_bp
+from services.login.app import login_bp
 
 #-------------------------
 # 產生主程式, 加入主畫面
@@ -114,6 +115,7 @@ app.register_blueprint(goal_bp, url_prefix='/goal')
 app.register_blueprint(community_bp, url_prefix='/community')
 app.register_blueprint(task_bp, url_prefix='/task')
 app.register_blueprint(profile_bp, url_prefix='/profile')
+app.register_blueprint(login_bp, url_prefix='/login')
 
 #-------------------------
 # 啟動主程式

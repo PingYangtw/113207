@@ -26,6 +26,7 @@ nav .area .logo {
   flex: 1;
   margin-left: 5%;
   cursor: pointer;
+  text-decoration: none;
 }
 
 nav .area .logo h1 {
@@ -103,17 +104,20 @@ nav .alreadyLogin {
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
+}
+
+.alreadyLogin .toprofile {
   flex-grow: 1;
 }
 
-.alreadyLogin a img {
+.alreadyLogin .toprofile img {
   max-width: 100%;
   max-height: 100%;
   width: 15%;
   height: auto;
 }
 
-.alreadyLogin a h3 {
+.alreadyLogin .toprofile h3 {
   font-size: 1em;
   color: #6E3D0D;
   margin: 0 5%;

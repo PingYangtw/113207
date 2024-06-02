@@ -2,10 +2,10 @@ let renderNav = function() {
   let navStr = `
   <nav>
     <div class="area">
-      <div class="logo">
+      <a href="/" class="logo">
         <img src="/static/images/logo.jpg" alt="nicebodylogo">
         <h1>Nice巴底</h1>
-      </div>
+      </a>
       <div class="middle">
         <div class="wrap">
           <a href="/" class="nav-link">Home</a>
@@ -24,11 +24,13 @@ let renderNav = function() {
         <a href="">Sign up</a>
       </div>
       <div class="alreadyLogin">
-        <a href="/profile/profilePage">
+        <a href="/profile/profilePage" class="toprofile">
           <img src="/static/images/user1.png" alt="">
           <h3>${messageText}</h3>
         </a>
-        <i class="fa-solid fa-right-from-bracket"></i>
+        <a href="/login/loginPage">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
       </div>
     </div>
   </nav>

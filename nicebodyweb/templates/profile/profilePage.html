@@ -17,6 +17,7 @@
   <script src="/static/components/mousemove.js" defer></script>
 	<script src="/static/components/layout/navbar.js" defer></script>
   <script src="/static/components/layout/footer.js" defer></script>
+  <script src="/static/js/proflie/profliePage.js"></script>
   <title>個人檔案</title>
 </head>
 <body>
@@ -26,8 +27,80 @@
   <nav id="nav-container"></nav>
 
   <article>
-    <a href="/profile/followList">關注列表</a>
-    <a href="/profile/collectionList">收藏列表</a>
+    <section class="sectionwrap">
+      <section class="profile">
+        <img src="/static/images/user1.png" alt="Profile Picture" class="profile-picture" id="profile-picture">
+        <input type="file" id="upload-picture" accept="image/*" style="display: none;">
+        <div class="title">
+          <input type="text" id="name">
+          <i class="fa-solid fa-lock lock-icon"></i>
+        </div>
+        <a href="/profile/followList">
+          <button class="button">關注列表</button>
+        </a>
+        <a href="/profile/collectionList">
+          <button class="button">收藏列表</button>
+        </a>
+      </section>
+  
+      <section class="settings">
+        <div class="progress-bar">
+          <div class="level">
+            <span>LV.</span>3
+          </div>
+          <form action="test.aspx" method="get">
+            <progress value="0.5"></progress>
+          </form>
+        </div>
+
+        <div class="container">
+          <div class="out1">
+            <div class="out2">
+              <div class="mail">
+                <div class="title">
+                  <p>電子郵件</p>
+                  <i class="fa-solid fa-lock lock-icon"></i>
+                </div>
+                <input type="text" id="email">
+              </div>
+              <div class="gender">
+                <div class="title">
+                  <p>性別</p>
+                  <i class="fa-solid fa-lock lock-icon"></i>
+                </div>    
+                <div class="gbt">
+                  <button type="button" id="maleButton" class="gender-button" onclick="selectGender('male')">男性</button>
+                  <button type="button" id="femaleButton" class="gender-button" onclick="selectGender('female')">女性</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="out2">
+              <div class="password">
+                <div class="title">
+                  <p>密碼</p>
+                  <i class="fa-solid fa-lock lock-icon"></i>
+                </div>
+                <input type="password" id="password">
+              </div>
+              <div class="birthday">
+                <div class="title">
+                  <p>生日</p>
+                  <i class="fa-solid fa-lock lock-icon"></i>
+                </div>   
+                <div>
+                  <input type="date" id="birthday">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="closesetting">
+            <button class="button">變更個資</button>
+          </div>
+        </div>
+      </section>
+    </section>
   </article>
 
   <footer id="footer-container"></footer>
