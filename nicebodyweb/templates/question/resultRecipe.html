@@ -7,16 +7,20 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/base/reset.css">
+    	<link rel="stylesheet" href="/static/css/base/reset.css">
 		<link rel="stylesheet" href="/static/css/base/global.css">
 		<link rel="stylesheet" href="/static/css/components/mousemove.css">
 		<link rel="stylesheet" href="/static/css/layout/navbar.css">
 		<link rel="stylesheet" href="/static/css/layout/footer.css">
 		<link rel="stylesheet" href="/static/css/robott/shareResults.css">
+		<link rel="stylesheet" href="/static/css/fancybox/jquery.fancybox.css"/>
+    	<link rel="stylesheet" href="/static/css/fancybox/my.jquery.fancybox.css"/>
 		<script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
 		<script src="/static/components/mousemove.js" defer></script>
 		<script src="/static/components/layout/navbar.js" defer></script>
-  	<script src="/static/components/layout/footer.js" defer></script>
+  		<script src="/static/components/layout/footer.js" defer></script>
+		<script src="/static/js/jquery.fancybox.js"></script> 
+
 		<title>食譜</title>
 	</head>
 
@@ -28,7 +32,9 @@
 
 		<article>
 			<div class="banner">
-				<img src="{{ Recipes_image_path }}/{{ image_name }}" alt="">
+				<a data-fancybox="gallery" href="{{ Recipes_image_path }}/{{ image_name }}">
+					<img src="{{ Recipes_image_path }}/{{ image_name }}" alt="">
+				</a>
 			</div>
 			
 			<section class="receipe">
@@ -81,7 +87,7 @@
 					</div>
 						
 					<div class="content">
-						<h2>食材準備 - {{ data2['total'] }}元</h2>
+						<h2>食材預算 - {{ data2['total'] }}元</h2>
 						<ol>
 							{% for item in data2['prepareMoney'] %}
 							<li>{{ item }}</li>

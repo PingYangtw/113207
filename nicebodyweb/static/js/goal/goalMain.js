@@ -25,8 +25,6 @@ document.getElementById('savecheck').addEventListener('click', function() {
     alert('請選擇一個圖示！');
     } else if (textValue === '') {
     alert('請輸入打卡目標！');
-    } else if (textValue.length > 10) {
-        alert('打卡目標不能超過10個字！');
     } else {
         savecheck.disabled = true;
 

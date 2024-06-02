@@ -17,6 +17,7 @@ section {
     width: 75vw;
     height: 80vh;
     padding: 2%;
+    box-sizing: border-box;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
@@ -72,7 +73,6 @@ section {
 }
 
 .up {
-    height: 100%;
     width: 100%;
 }
 
@@ -84,7 +84,7 @@ section {
 
 .hide {
     visibility: hidden;
-  }
+}
 
 
 .top-2 {
@@ -137,8 +137,10 @@ section .title i {
     letter-spacing: 5px;
 }
 
-.top .input .text-border{
-    border-radius: 10px;
+.top .input input {
+    width: 100%;
+    border-radius: 30px;
+    padding: 1%;
 }
 
 .top .input label{
@@ -162,7 +164,7 @@ section .title i {
     height: 10%;
 }
 
-.top .input div #tag-ip{
+.top .input #tag-ip{
     padding: 10px;
     width: 100%;
     height: 50px;
@@ -174,10 +176,44 @@ section .title i {
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
+section .diet-tag {
+    width: 100%;
+    height: 60%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin: 2% 0;
+}
+
+section .diet-tag a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #d6e1db;
+    padding: 1%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    text-decoration: none;
+    gap: 30px;
+    font-size: 25px;
+    color: #495057;
+    transition: all 0.3s;
+}
+
+section .diet-tag a:hover {
+    background-color: #92ae9e;
+    color: #FFF;
+}
+
+section .diet-tag a i {
+    font-size: 70px;
+}
+
 /* tag-list */
 
-section .tag-list{
-    height: 58%;
+section .tag-list {
+    height: 60%;
     display: flex;
     gap: 18px;
     background-color: #d6e1db;
@@ -187,7 +223,7 @@ section .tag-list{
     flex-direction: column; /* 新增的屬性 */
     align-content: flex-start;
     justify-content: start; 
-    margin-top: 1.5%;
+    margin: 1.5% 0;
 }
 
 section .tag-list .line{ 
@@ -217,7 +253,7 @@ section .tag-list-item4{
     color: #495057;
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
     font-size: 16px;
-    border: none;
+    border: 3px #FFF solid;
 }
 
 section .item-select {
@@ -232,7 +268,7 @@ section .tag-list-sub{
     padding: 15px;
     width: 100%;
     align-content: flex-start;
-    margin-top: 1%;
+    margin: 1% 0;
 }
 
 section  .tag-list-title{
@@ -268,7 +304,7 @@ section .tag-list-sub .list-item > * {
 
 /* tag-list-4 */
 section .tag-list-4{
-    height: 40%;
+    height: 60%;
     gap: 22px;
     background-color: #d6e1db;
     border-radius: 10px;
@@ -298,7 +334,6 @@ section .tag-list-4 .score-range{
 }
 
 section .tag-list-4 .metric-block{
-    height: 20%;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -318,13 +353,13 @@ section .tag-list-4 .metric-description{
 }
 
 section .tag-list-4 .score-input{
-    height: 100%;
     width: 6%;
     border: none;
     border-radius: 10px;
     align-self: stretch;
     font-size: 20px;
     text-indent: 10px;
+    padding: 0.5%;
 }
 /* tag-list-group */
 section .tag-list-group{

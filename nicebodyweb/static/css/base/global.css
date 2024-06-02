@@ -4,6 +4,10 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+input {
+  outline: none;
+}
+
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;

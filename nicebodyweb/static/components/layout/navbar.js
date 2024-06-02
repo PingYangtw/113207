@@ -24,13 +24,11 @@ let renderNav = function() {
         <a href="">Sign up</a>
       </div>
       <div class="alreadyLogin">
-        <a href="/profile/profile">
+        <a href="/profile/profilePage">
           <img src="/static/images/user1.png" alt="">
           <h3>${messageText}</h3>
         </a>
-       <a href="/profile/login">
-    <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
-</a>
+        <i class="fa-solid fa-right-from-bracket"></i>
       </div>
     </div>
   </nav>

@@ -14,10 +14,13 @@
 		<link rel="stylesheet" href="/static/css/layout/navbar.css">
 		<link rel="stylesheet" href="/static/css/layout/footer.css">
 		<link rel="stylesheet" href="/static/css/robott/shareResults.css">
+    <link rel="stylesheet" href="/static/css/components/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="/static/css/components/fancybox/my.jquery.fancybox.css"/>
 		<script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
 		<script src="/static/components/mousemove.js" defer></script>
 		<script src="/static/components/layout/navbar.js" defer></script>
   	<script src="/static/components/layout/footer.js" defer></script>
+    <script src="/static/js/jquery.fancybox.js"></script> 
 		<title>食譜</title>
 	</head>
 
@@ -29,7 +32,9 @@
 
 		<article>
 			<div class="banner">
-				<img src="{{ Recipes_image_path }}/{{ data[7] }}" alt="">
+        <a data-fancybox="gallery" href="{{ Recipes_image_path }}/{{ data[7] }}">
+          <img src="{{ Recipes_image_path }}/{{ data[7] }}" alt="">
+        </a>
 			</div>
 			
 			<section class="receipe">
@@ -82,24 +87,21 @@
 					</div>
 						
 					<div class="content">
-						<h2>食材準備</h2>
+						<h2>食材預算 - {{data[10]}}元</h2>
 						<ol>
-							<li>新鮮番茄2顆</li>
-							<li>新鮮香菜1把 , 切碎</li>
-							<li>橄欖油2湯匙</li>
-							<li>鹽和胡椒調味</li>
+							{% for item in data[3].split(', ') %}
+							<li>{{ item }}</li>
+							{% endfor %}
 						</ol>
-
+						
 						<h2>烹調時間</h2>
 						<p>{{data[4]}}分</p>
 
 						<h2>料理步驟</h2>
 						<ol>
-							<li>將番茄切成小丁狀備用 。</li>
-							<li>在鍋中用橄欖油加熱，加入切碎的番茄煮至軟爛 。</li>
-							<li>打入蛋，蓋上鍋蓋，用中小火蒸煮約5分鐘，直到蛋白凝固，但蛋黃仍然微嫩。</li>
-							<li>撒上切碎的香菜, 撒上適量的鹽和胡椒調味。</li>
-							<li>輕輕攪拌混合 , 即可上桌享用。</li>
+							{% for item in data[5].split(', ') %}
+							<li>{{ item }}</li>
+							{% endfor %}
 						</ol>
 
 						<h2>營養配比</h2>
@@ -108,13 +110,21 @@
 
 					<div class="button">
 						{% if data[8] == '0' %}
-							<button>發佈食譜</button>
+							<button id="openrelease">發佈食譜</button>
 						{% else %}
 							<button>已發佈</button>
 						{% endif %}
 					</div>
 				</div>
 		</article>
+
+		<dialog id="release">
+			<h1>確定發佈食譜?</h1>
+			<div class="contentsave">
+				<button id="closerelease" class="closebtn">cancel</button>
+				<button id="saverelease" class="savebtn">confirm</button>
+			</div>
+		</dialog>
 
 		<footer id="footer-container"></footer>
 
@@ -135,6 +145,17 @@
 			})
 			closeinfor.addEventListener("click", function(){
 				infor.close();
+			})
+
+			// 彈跳視窗 確認發佈
+			let openrelease=document.getElementById('openrelease');
+			let release=document.getElementById('release');
+			let closerelease=document.getElementById('closerelease');
+			openrelease.addEventListener("click", function(){
+				release.showModal();
+			})
+			closerelease.addEventListener("click", function(){
+				release.close();
 			})
 		</script>
 	</body>

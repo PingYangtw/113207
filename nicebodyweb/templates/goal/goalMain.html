@@ -18,7 +18,7 @@
   <script src="/static/components/mousemove.js" defer></script>
 	<script src="/static/components/layout/navbar.js" defer></script>
   <script src="/static/components/layout/footer.js" defer></script>
-  <script src="/static/js/goalMain.js" async></script>
+  <script src="/static/js/goal/goalMain.js" async></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <title>目標</title>
 </head>
@@ -43,20 +43,20 @@
         {% for d in data %}
         <div class="item">
             <input type="checkbox" id="checkbox-{{ loop.index }}" {% if d[3] == 1 %}checked{% endif %} data-id="{{ d[0] }}"/>
-            <label for="checkbox-{{ loop.index }}">
-                &ensp;
-                {% if d[2] == 1 %}
-                <i class="fa-solid fa-droplet"></i>
-                {% elif d[2] == 2 %}
-                <i class="fa-solid fa-seedling"></i>
-                {% elif d[2] == 3 %}
-                <i class="fa-solid fa-apple-whole"></i>
-                {% elif d[2] == 4 %}
-                <i class="fa-solid fa-cookie-bite"></i>
-                {% elif d[2] == 5 %}
-                <i class="fa-solid fa-martini-glass"></i>
-                {% endif %}
-                {{ d[1] }}
+            <label for="horns">
+              &ensp;
+              {% if d[2] == '1' %}
+              <i class="fa-solid fa-droplet"></i>
+              {% elif d[2] == '2' %}
+              <i class="fa-solid fa-seedling"></i>
+              {% elif d[2] == '3' %}
+              <i class="fa-solid fa-martini-glass"></i>
+              {% elif d[2] == '4' %}
+              <i class="fa-solid fa-cookie-bite"></i>
+              {% elif d[2] == '5' %}
+              <i class="fa-solid fa-apple-whole"></i>
+              {% endif %}
+              {{ d[1] }}
             </label>
         </div>
         {% endfor %}
@@ -116,8 +116,8 @@
 
       <div class="input">
         請輸入今日體重(kg) :&ensp;
-        <input type="text">&ensp;
-        <button><i class="fa-solid fa-check"></i></button>
+        <input type="text" id="weightInput">&ensp;
+        <button id="submitButton"><i class="fa-regular fa-paper-plane"></i></button>
       </div>
 
       <canvas id="myChart"></canvas>
@@ -189,25 +189,90 @@
   <script>
     let messageText = "chiaoyu";
 
+    let weight_data= "{{ weight }}";
+    let weight_list = JSON.parse(weight_data);
+
+    // 體重變化表輸入設定
+    document.getElementById('submitButton').addEventListener('click', function() {
+      let input = document.getElementById('weightInput');
+      let value = input.value.trim();
+
+      if (value === "") {
+        alert("請輸入數字或浮點數");
+        input.value = "";
+      } else if (isNaN(value)) {
+        alert("請輸入數字或浮點數");
+        input.value = "";
+      } else {
+        input.style.backgroundColor = "#CCC5B9";
+        input.disabled = true;
+        this.innerHTML = '<i class="fa-solid fa-check"></i>';
+        localStorage.setItem('inputState', 'disabled');
+      }
+    });
+
+    function resetInputAndButton() {
+      let input = document.getElementById('weightInput');
+      let button = document.getElementById('submitButton');
+      input.disabled = false;
+      input.style.backgroundColor = "#FFF";
+      input.value = "";
+      button.innerHTML = '<i class="fa-regular fa-paper-plane"></i>';
+      localStorage.removeItem('inputState');
+    }
+
+    setInterval(function() {
+      let now = new Date();
+      if (now.getHours() === 0 && now.getMinutes() === 0) {
+        resetInputAndButton();
+      }
+    }, 60000);
+
     window.onload = function() {
       renderNav();
       renderFooter();
+
+      let inputState = localStorage.getItem('inputState');
+      if (inputState === 'disabled') {
+        let input = document.getElementById('weightInput');
+        let button = document.getElementById('submitButton');
+        input.style.backgroundColor = "#CCC5B9";
+        input.disabled = true;
+        button.innerHTML = '<i class="fa-solid fa-check"></i>';
+      }
     };
 
     // 體重變化表
     let chartElement = document.getElementById('myChart');
-    let data = {
-      labels: [
-        '星期一', '星期二', '星期三', '星期四', '星期五' ,'星期六' ,'星期日',
-      ],
+
+    let today = new Date();
+
+    let labels = [];
+
+    for (let i = 6; i >= 0; i--) {
+      let date = new Date(today);
+      date.setDate(today.getDate() - i);
+      
+      let formattedDate = (date.getMonth() + 1) + '/' + date.getDate();
+      labels.push(formattedDate);
+    }
+
+    let originalData = weight_list;
+    let data = originalData.map(value => value !== 0 ? value : null);
+
+    let chartData = {
+      labels: labels,
       datasets: [{
         label: 'weight',
-        data: [160, 130, 140, 160, 170, 200, 180],
+        data: data,
+        pointRadius: data.map(value => value !== null ? 3 : 0), 
+        pointBackgroundColor: data.map(value => value !== null ? 'blue' : 'rgba(0,0,0,0)'), 
       }]
     };
+
     new Chart(chartElement, {
       type: 'line',
-      data: data,
+      data: chartData,
     });
 
     // 前後對照圖
@@ -298,10 +363,10 @@
     })
 
     // icon變換顏色
-    var lastClickedElement = null;
+    let lastClickedElement = null;
 
     function changeColor(element) {
-      var iconName = element.classList[1].replace("iconbtn-", "");
+      let iconName = element.classList[1].replace("iconbtn-", "");
       element.style.backgroundColor = getColor(iconName);
       element.querySelector("i").style.color = "#ffffff";
 
@@ -314,7 +379,7 @@
     }
 
     function resetColor(element) {
-      var iconName = element.classList[1].replace("iconbtn-", "");
+      let iconName = element.classList[1].replace("iconbtn-", "");
       element.style.backgroundColor = '';
       element.querySelector("i").style.color = '';
     }
@@ -335,7 +400,6 @@
           return "#ffffff";
       }
     }
-
   </script>
 </body>
 </html>

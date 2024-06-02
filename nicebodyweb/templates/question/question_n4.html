@@ -1,92 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>機器人問題四</title>
-    <link href="/static/images/favicon.ico" rel="shortcut icon"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/base/reset.css">
-    <link rel="stylesheet" href="/static/css/base/global.css">
-    <link href="/static/css/question/question_main.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/static/css/components/mousemove.css">
+  <meta charset="UTF-8">
+  <title>機器人問題四</title>
+  <link href="/static/images/favicon.ico" rel="shortcut icon"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/base/reset.css">
+  <link rel="stylesheet" href="/static/css/base/global.css">
+  <link href="/static/css/question/question_main.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/components/mousemove.css">
 	<link rel="stylesheet" href="/static/css/layout/navbar.css">
-    <script src="/static/js/question/question_n4.js" async></script>
-    <script src="/static/components/mousemove.js" defer></script>
+  <script src="/static/js/question/question_n4.js" async></script>
+  <script src="/static/components/mousemove.js" defer></script>
 	<script src="/static/components/layout/navbar.js" defer></script>
-    <script src="https://kit.fontawesome.com/ff1f69f5b7.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/ff1f69f5b7.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="myCursor"></div>
+  <div id="myCursor"></div>
   <div id="circle"></div>
 
   <nav id="nav-container"></nav>
 
-    <article>
-        <section>
-            <div class="gray">
-                <div class="green-four"></div>
-            </div>
-            
-            <div class="up">
-                <div class="top">
-                    <div class="title">
-                        <img
-                            loading="lazy"
-                            srcset="/static/images/question/question_banana.png 100w, 
-                            /static/images/question/question_banana.png 200w, 
-                            /static/images/question/question_banana.png 400w, 
-                            /static/images/question/question_banana.png 800w,
-                            /static/images/question/question_banana.png 1200w, 
-                            /static/images/question/question_banana.png 1600w, 
-                            /static/images/question/question_banana.png 2000w,"
-                        />
-                        <div>烹調時間</div>
-                    </div>
-                    <div class="input">
-                        <p class="question">
-                            你對烹飪的時間有特別的考量嗎？
-                        </p>
-                    </div>
-                </div>
+  <article>
+    <section>
+      <div class="gray">
+        <div class="green-four"></div>
+      </div>
 
-                <div class="tag-list-4">
-                    <div class="score-item">
-                        <input type="checkbox" class="checkbox_class" id="checkbox1">
-                        <div class="metric-description">無需求</div>
-                    </div>
-                    <div class="metric-block">
-                        <input type="checkbox" class="checkbox_class" id="checkbox2"> 
-                        <input type="number" class="score-input" min="0" value="0" id="min_1">
-                        <div class="metric-description">分鐘內完成</div>
-                    </div>
-                    <div class="score-item">
-                        <input type="checkbox" class="checkbox_class hide">
-                        <div class="score-range">例如：30分鐘內完成</div>
-                    </div>
-                    
-                </div>
-            </div>
+      <div class="up">
+        <div class="top">
+          <div class="title">
+            <img
+              loading="lazy"
+              srcset="/static/images/question/question_banana.png 100w, 
+              /static/images/question/question_banana.png 200w, 
+              /static/images/question/question_banana.png 400w, 
+              /static/images/question/question_banana.png 800w,
+              /static/images/question/question_banana.png 1200w, 
+              /static/images/question/question_banana.png 1600w, 
+              /static/images/question/question_banana.png 2000w,"
+            />
 
-            <div class="next">
-                <div class="line"></div>
-                <div class="btn">
-                    <a href="/question/question_n3">
-                        <i class="fa-solid fa-circle-arrow-left"></i>
-                    </a>
-                    <a id="continue-btn" class = "continue-btn">
-                        繼續
-                    </a>
-                </div>
+            <div class = "title_icon">
+              <div>烹調時間</div>
             </div>
-        </section>
-    </article>
+          </div>
 
-    <script>
+          <div class="input">
+            <p class = "question">你對烹飪的時間有特別的考量嗎？</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tag-list-4">
+        <div class="score-item">
+          <input type="checkbox" class="checkbox_class" id="checkbox1">
+          <div class="metric-description">無需求</div>
+        </div>
+        <div class="metric-block">
+          <input type="checkbox" class="checkbox_class" id="checkbox2"> 
+          <input type="number" class="score-input" min="0" value="0" id="min_1">
+          <div class="metric-description">分鐘內完成</div>
+        </div>
+        <div class="score-item">
+          <input type="checkbox" class="checkbox_class hide">
+          <div class="score-range">例如：30分鐘內完成</div>
+        </div>
+      </div>
         
-            
-        
-    </script>
+      <div class="next">
+        <div class="line"></div>
+        <div class="btn">
+          <a id = "back" href="/question/question_n3">
+            <i class="fa-solid fa-circle-arrow-left"></i>
+          </a>
+          <a id="continue-btn" class = "continue-btn">繼續</a>
+        </div>
+      </div>
+    </section>
+  </article>
 </body>
 </html>

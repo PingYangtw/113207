@@ -114,7 +114,7 @@
 
 .wrap > .content > ol {
     list-style: decimal;
-    padding-left: 20px;
+    padding-left: 30px;
     margin-bottom: 5%;
 }
 
@@ -160,6 +160,7 @@
     align-items: center;
     width: 100%;
     margin: 10% 0 5%;
+    color: #464646;
 }
 
 .comment > .wrap > .title >.share {
@@ -167,17 +168,36 @@
 }
 
 /* each */
-.comment .each {
+.comment .each,
+.comment .message {
   width: 100%;
-  display: flex;
   background-color: #FFF;
   padding: 1%; 
   box-sizing: border-box;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   border-radius: 10px;
   margin-bottom: 20px;
+}
+
+.comment .message > input {
+  border: none;
+  flex-grow: 1;
+  font-size: 15px;
+  color: #464646;
+}
+
+.comment .message > i {
+  font-size: 20px;
+  color: #6E3D0D;
+  margin-left: 3%;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.comment .message > i:hover {
+  color: #D4A373;
 }
 
 .each .left {
@@ -191,7 +211,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin: 0 1% 0 3%;
+  margin-left: 3%;
 }
 
 .left .like {
@@ -204,6 +224,7 @@
     font-size: 25px;
     color: #ff3333bb;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 .left p {
