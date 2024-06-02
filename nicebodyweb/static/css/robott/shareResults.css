@@ -138,6 +138,10 @@
     font-size: 1.125em;
 }
 
+.button  .published {
+  background-color: #86BAA1;
+}
+
 /* comment */
 .comment {
     width: 100%;

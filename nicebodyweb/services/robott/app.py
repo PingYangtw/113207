@@ -1,6 +1,6 @@
 # 匯入Blueprint模組
 import logging
-from flask import render_template
+from flask import jsonify, render_template
 from flask import Blueprint
 from flask import request
 
@@ -52,25 +52,37 @@ def robott_everyList():
 
 
 #生成食譜 > 了解更多 & 食譜天地 > 了解更多
-@robott_bp.route('/detailedRecipe', methods=['GET'])
+@robott_bp.route('/detailedRecipe', methods=['GET', 'POST'])
 def robott_selfList_more(): 
-    #取得資料庫連線 
-    connection = db.get_connection() 
-    
-    #產生執行sql命令的物件, 再執行sql   
-    cursor = connection.cursor()     
+    if request.method == 'POST':
+        try:
+            data = request.get_json()
 
-    recipe_id = request.args.get('recipe_id')
+            recipe_id = data['id']
+            connection = db.get_connection() 
+            cursor = connection.cursor()
 
-    cursor.execute('SELECT title, TO_CHAR(create_time, \'MM.DD.YYYY\'), summary, "prepare", "cookTime", "cookStep", nutrition, "cookImage", "isPublish", diet, "prepareMoney" FROM body."cookbook" where "Cookid" =%s', (recipe_id,))
-    
-    #取出資料
-    data = cursor.fetchone()
-    #關閉資料庫連線    
-    connection.close()
+            cursor.execute('UPDATE body."cookbook" SET "isPublish"=1 WHERE "Cookid"=%s;', (recipe_id,))
+            response = {'message': f'update successfully.'}
 
-    return render_template('/robott/detailedRecipe.html', data=data, Recipes_image_path=Recipes_image_path)
+            connection.commit()
+            connection.close()
 
+            return jsonify(response)
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+    else:
+        try:    
+            connection = db.get_connection() 
+            cursor = connection.cursor()     
+            recipe_id = request.args.get('recipe_id')
+            cursor.execute('SELECT title, TO_CHAR(create_time, \'MM.DD.YYYY\'), summary, "prepare", "cookTime", "cookStep", nutrition, "cookImage", "isPublish", diet, "prepareMoney", "Cookid" FROM body."cookbook" where "Cookid" =%s', (recipe_id,))
+            data = cursor.fetchone()
+            connection.close()
+
+            return render_template('/robott/detailedRecipe.html', data=data, Recipes_image_path=Recipes_image_path)
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
 #發佈食譜
 @robott_bp.route('/shareResults', methods=['GET'])
 def robott_share():

@@ -7,28 +7,30 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/base/reset.css">
+    	<link rel="stylesheet" href="/static/css/base/reset.css">
 		<link rel="stylesheet" href="/static/css/base/global.css">
 		<link rel="stylesheet" href="/static/css/components/mousemove.css">
 		<link rel="stylesheet" href="/static/css/components/dialog.css">
 		<link rel="stylesheet" href="/static/css/layout/navbar.css">
 		<link rel="stylesheet" href="/static/css/layout/footer.css">
 		<link rel="stylesheet" href="/static/css/robott/shareResults.css">
-    <link rel="stylesheet" href="/static/css/components/fancybox/jquery.fancybox.css"/>
-    <link rel="stylesheet" href="/static/css/components/fancybox/my.jquery.fancybox.css"/>
+    	<link rel="stylesheet" href="/static/css/components/fancybox/jquery.fancybox.css"/>
+    	<link rel="stylesheet" href="/static/css/components/fancybox/my.jquery.fancybox.css"/>
+		<link rel="stylesheet" href="/static/css/components/loading.css">
 		<script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
 		<script src="/static/components/mousemove.js" defer></script>
 		<script src="/static/components/layout/navbar.js" defer></script>
-  	<script src="/static/components/layout/footer.js" defer></script>
-    <script src="/static/js/jquery.fancybox.js"></script> 
+  		<script src="/static/components/layout/footer.js" defer></script>
+    	<script src="/static/components/jquery.fancybox.js"></script> 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<title>食譜</title>
 	</head>
 
 	<body>
 		<div id="myCursor"></div>
-  <div id="circle"></div>
+  	<div id="circle"></div>
 
-  <nav id="nav-container"></nav>
+  	<nav id="nav-container"></nav>
 
 		<article>
 			<div class="banner">
@@ -80,10 +82,7 @@
 					<div class="summary">
 						<p>{{data[1]}}</p>
 						<h2>摘要</h2>
-						<p>
-							{{data[2]}}
-						</p>
-						
+						<p>{{data[2]}}</p>
 					</div>
 						
 					<div class="content">
@@ -112,10 +111,11 @@
 						{% if data[8] == '0' %}
 							<button id="openrelease">發佈食譜</button>
 						{% else %}
-							<button>已發佈</button>
+							<button class="published">已發佈</button>
 						{% endif %}
 					</div>
 				</div>
+			</section>
 		</article>
 
 		<dialog id="release">
@@ -124,7 +124,12 @@
 				<button id="closerelease" class="closebtn">cancel</button>
 				<button id="saverelease" class="savebtn">confirm</button>
 			</div>
+
+			<div id="loading" style="display: none;">
+				<div class="loader2"></div>
+			</div>	
 		</dialog>
+
 
 		<footer id="footer-container"></footer>
 
@@ -157,6 +162,33 @@
 			closerelease.addEventListener("click", function(){
 				release.close();
 			})
+			saverelease.addEventListener("click", function(){
+				saverelease.disabled = true;
+				document.getElementById('loading').style.display = 'flex';
+				$.ajax({
+					type: "POST",
+					url: "/robott/detailedRecipe",
+					data: JSON.stringify({ "id": "{{ data[11] }}" }),
+					contentType: "application/json",
+					success: function(response) {
+						console.log(response);
+						release.close();
+
+						// 替換按鈕內容
+						let buttonContainer = document.querySelector('.button');
+						buttonContainer.innerHTML = '<button class="published">已發佈</button>';
+					},
+					error: function(xhr, status, error) {
+						console.error(error);
+						alert('出現錯誤，請稍後再試！');
+					},
+					complete: function() {
+						document.getElementById('loading').style.display = 'none';
+						saverelease.disabled = false;
+					}
+				});
+			})
+
 		</script>
 	</body>
 </html>
