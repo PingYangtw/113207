@@ -12,11 +12,12 @@
   <link rel="stylesheet" href="/static/css/components/mousemove.css">
   <link rel="stylesheet" href="/static/css/components/dialog.css">
 	<link rel="stylesheet" href="/static/css/layout/navbar.css">
-  <link rel="stylesheet" href="/static/css/layout/footer.css">
   <link rel="stylesheet" href="/static/css/goal/checkList.css">
   <script src="https://kit.fontawesome.com/d9f27795c1.js" crossorigin="anonymous"></script>
   <script src="/static/components/mousemove.js" defer></script>
 	<script src="/static/components/layout/navbar.js" defer></script>
+  <script src="/static/js/goal/checkList.js" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <title>打卡目標列表</title>
 </head>
 <body>
@@ -29,7 +30,7 @@
     <main>
       <h1>打卡目標列表</h1>
       <div class="search">
-        <input type="text" placeholder="關鍵字查詢">
+        <input type="text" placeholder="關鍵字查詢" id="searchInput">
         <button><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
       <table>
@@ -39,69 +40,63 @@
           <th></th>
           <th></td>
         </tr>
-        <tr>
-          <td><i class="fa-solid fa-droplet"></i></td>
-          <td>喝水1000公升</td>
-          <td ><i class="fa-solid fa-pen" id="opencheck"></i></td>
-          <td><i class="fa-regular fa-trash-can"></i></td>
+        {% for d in data %}
+        <tr data-id="{{ d[0] }}">
+          <td class="icon-cell">
+            {% if d[2] == '1' %}
+            <i class="fa-solid fa-droplet" data-icon="droplet"></i>
+            {% elif d[2] == '2' %}
+            <i class="fa-solid fa-seedling" data-icon="seedling"></i>
+            {% elif d[2] == '3' %}
+            <i class="fa-solid fa-martini-glass" data-icon="martini-glass"></i>
+            {% elif d[2] == '4' %}
+            <i class="fa-solid fa-cookie-bite" data-icon="cookie-bite"></i>
+            {% elif d[2] == '5' %}
+            <i class="fa-solid fa-apple-whole" data-icon="apple-whole"></i>
+            {% endif %}
+          </td>
+          <td class="goal-cell">{{ d[1] }}</td>
+          <td><i class="fa-solid fa-pen opencheck" data-id="{{ d[0] }}" data-goal="{{ d[1] }}" data-icon="{{ d[2] }}"></i></td>
+          <td><i class="fa-regular fa-trash-can opendelete" data-id="{{ d[0] }}"></i></td>
         </tr>
-        <tr>
-          <td><i class="fa-solid fa-droplet"></i></td>
-          <td>喝水1000公升</td>
-          <td><i class="fa-solid fa-pen" id="opencheck"></i></td>
-          <td><i class="fa-regular fa-trash-can"></i></td>
-        </tr>
-        <tr>
-          <td><i class="fa-solid fa-droplet"></i></td>
-          <td>喝水1000公升</td>
-          <td><i class="fa-solid fa-pen" id="opencheck"></i></td>
-          <td><i class="fa-regular fa-trash-can"></i></td>
-        </tr>
-        <tr>
-          <td><i class="fa-solid fa-droplet"></i></td>
-          <td>喝水1000公升</td>
-          <td><i class="fa-solid fa-pen" id="opencheck"></i></td>
-          <td><i class="fa-regular fa-trash-can"></i></td>
-        </tr>
+        {% endfor %}
       </table>
       <dialog id="check">
         <h1>修改打卡目標</h1>
         <div class="content">
           <h2>icon</h2>
           <div class="icons">
-            <div class="iconbtn iconbtn-droplet" onclick="changeColor(this)"><i class="fa-solid fa-droplet"></i></div>
-            <div class="iconbtn iconbtn-seedling" onclick="changeColor(this)"><i class="fa-solid fa-seedling"></i></div>
-            <div class="iconbtn iconbtn-martini-glass" onclick="changeColor(this)"><i class="fa-solid fa-martini-glass"></i></div>
-            <div class="iconbtn iconbtn-cookie-bite" onclick="changeColor(this)"><i class="fa-solid fa-cookie-bite"></i></div>
-            <div class="iconbtn iconbtn-apple-whole" onclick="changeColor(this)"><i class="fa-solid fa-apple-whole"></i></div>
+            <div class="iconbtn iconbtn-droplet" onclick="changeColor(this)" data-icon="1"><i class="fa-solid fa-droplet"></i></div>
+            <div class="iconbtn iconbtn-seedling" onclick="changeColor(this)" data-icon="2"><i class="fa-solid fa-seedling"></i></div>
+            <div class="iconbtn iconbtn-martini-glass" onclick="changeColor(this)" data-icon="3"><i class="fa-solid fa-martini-glass"></i></div>
+            <div class="iconbtn iconbtn-cookie-bite" onclick="changeColor(this)" data-icon="4"><i class="fa-solid fa-cookie-bite"></i></div>
+            <div class="iconbtn iconbtn-apple-whole" onclick="changeColor(this)" data-icon="5"><i class="fa-solid fa-apple-whole"></i></div>
           </div>
           <h2>打卡目標</h2>
-          <input type="text">
+          <input type="text" id="goalInput" class="input">
         </div>
         <div class="save">
           <button id="closecheck" class="closebtn">close</button>
           <button id="savecheck" class="savebtn">save</button>
         </div>
       </dialog>
+
+      <dialog id="delete">
+        <h1>確定刪除打卡目標?</h1>
+        <div class="contentsave">
+          <button id="closedelete" class="closebtn">cancel</button>
+          <button id="savedelete" class="savebtn">confirm</button>
+        </div>
+      </dialog>
     </main>
   </article>
-
+  
   <script>
-    let messageText = "{{data}}";
-
+    let messageText = "chiaoyu";
+    
     window.onload = function() {
       renderNav();
     };
-
-    let opencheck=document.getElementById('opencheck');
-    let check=document.getElementById('check');
-    let closecheck=document.getElementById('closecheck');
-    opencheck.addEventListener("click", function(){
-      check.showModal();
-    })
-    closecheck.addEventListener("click", function(){
-      check.close();
-    })
   </script>
 </body>
 </html>
