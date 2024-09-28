@@ -183,11 +183,36 @@ def robott_share():
     
     data3 = cursor.fetchall()
 
+    # 獲取前 7 個最喜歡的食譜
+    cursor.execute('''
+        WITH first_query AS (
+            SELECT "cookImage", title, "Cookid" 
+            FROM body."v_recipeWorld" 
+            WHERE main_req = (SELECT main_req FROM body.cookbook WHERE "Cookid" = %s) 
+            AND "Cookid" != %s
+            ORDER BY likecount DESC
+            LIMIT 7
+        )
+
+        SELECT * FROM first_query
+
+        UNION ALL
+
+        -- 只在 first_query 的結果少於 7 筆時從這裡補足
+        select "cookImage", title, "Cookid" from (
+        SELECT "cookImage", title, "Cookid", likecount 
+        FROM body."v_recipeWorld"
+        WHERE "Cookid" NOT IN (SELECT "Cookid" FROM first_query) -- 避免重複
+        ORDER BY likecount DESC
+        LIMIT 7 - (SELECT COUNT(*) FROM first_query)) as a;
+    ''', (recipe_id, recipe_id))
+    recipe_data = cursor.fetchall()
+
     connection.close()
 
     has_non_zero = any(d[2] != 0 for d in data3)
 
-    return render_template('/robott/shareResults.html', data=data, data2=data2, data3=data3, Recipes_image_path=Recipes_image_path, user_image_path=user_image_path, name=name, userImage=userImage, has_non_zero=has_non_zero, uid=uid)
+    return render_template('/robott/shareResults.html', data=data, data2=data2, data3=data3, Recipes_image_path=Recipes_image_path, user_image_path=user_image_path, name=name, userImage=userImage, has_non_zero=has_non_zero, uid=uid, recipe_data=recipe_data)
 
 #發佈食譜 - 按讚
 @robott_bp.route('/likeAdd', methods=['POST'])

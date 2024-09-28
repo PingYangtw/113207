@@ -101,7 +101,6 @@ article {
 }
 
 .recipe-avatarFrame {
-  background-image: url(/static/images/nutritionistFrame.png);
   width: 60px;
   aspect-ratio: 1;
   background-size: contain;

@@ -409,7 +409,7 @@ audio {
 
 @media screen and (max-width:1024px) {
   .receipe {
-    padding: 7% 10% 5% 10%;
+    padding: 7% 10%;
   }
 
   .receipe > .wrap > .title {
@@ -473,11 +473,19 @@ audio {
     width: 300px;
     aspect-ratio: 1;
   }
+
+  .button {
+    margin-top: 10%;
+  }
 }
 
 /* Small 768px */
 
 @media screen and (max-width:768px) {
+  .receipe {
+    padding: 7% 10%;
+  }
+
   .button button {
     padding: 2% 4%;
   }

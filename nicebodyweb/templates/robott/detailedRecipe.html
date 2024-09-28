@@ -137,13 +137,18 @@
 				</div>
 			</section>
 
-			<section class="carousel">
+			<section class="carousel related-carousel">
+				<div class="carouseltitle">
+					<i class="fa-solid fa-signs-post"></i>
+					<h1>猜你也喜歡...</h1>
+					<i class="fa-solid fa-signs-post"></i>
+				</div>
 				<div class="reel">
 					{% for d in recipe_data %}
 					<div class="food">
 						<form action="/robott/shareResults" method="get">
 							<input type="hidden" name="recipe_id" value="{{ d[2] }}">
-							<button type="submit" class="image featured" style="border: none; background: none; padding: 0;">
+							<button type="submit" class="image featured">
 								<img src="{{ Recipes_image_path }}/{{ d[0] }}" alt="">
 								<h3>{{ d[1] }}</h3>
 							</button>
@@ -168,7 +173,11 @@
 
 		<footer id="footer-container"></footer>
 
+		<script src="/static/js/jquery.scrolly.min.js"></script>
 		<script src="/static/js/jquery.scrollex.min.js"></script>
+		<script src="/static/js/browser.min.js"></script>
+		<script src="/static/js/breakpoints.min.js"></script>
+		<script src="/static/js/main.js"></script>
 		<script>
 			let messageText = "{{name}}";
 			let userImage = "{{userImage}}"

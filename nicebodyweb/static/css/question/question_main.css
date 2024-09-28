@@ -376,14 +376,11 @@ section .title i {
 /* Large 1200px */
 
 @media screen and (max-width: 1200px) {
-  section .diet-tag a,
-  section .mainingredients-tag a {
+  section .diet-tag a {
     font-size: 25px;
-    gap: 30px;
   }
 
-  section .diet-tag a i,
-  section .mainingredients-tag a i {
+  section .diet-tag a i {
     font-size: 50px;
   }
 }
@@ -404,14 +401,12 @@ section .title i {
 /* Small 768px */
 
 @media screen and (max-width: 768px) {
-  section .diet-tag a,
-  section .mainingredients-tag a {
+  section .diet-tag a {
     font-size: 20px;
     gap: 20px;
   }
 
-  section .diet-tag a i,
-  section .mainingredients-tag a i {
+  section .diet-tag a i {
     font-size: 40px;
   }
 

@@ -58,7 +58,7 @@
         <p onclick="sortContent('likecount')" unselectable="on">最熱門</p>
         <p onclick="sortContent('messagecount')" unselectable="on">分享最多</p>
       </div>
-      <section class="{% if data|length == 2 or data|length == 0 %}fewcontent{% else %}content{% endif %}" id="content">
+      <section class="{% if data|length >= 0 and data|length <= 2 %}fewcontent{% else %}content{% endif %}" id="content">
         {% for d in data %}
         <div class="ai-recipe-share" data-likecount="{{ d[4] }}" data-messagecount="{{ d[5] }}" data-timestamp="{{ loop.index }}">
           <img class="recipe-img" src="{{ Recipes_image_path }}/{{ d[3] }}" alt="recipeImg">

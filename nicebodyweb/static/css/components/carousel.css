@@ -5,6 +5,28 @@
   margin-bottom: 0;
 }
 
+.related-carousel {
+  background: linear-gradient(#FCFAF1 0%, #f4fff5 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 4em 0 6em;
+}
+
+.carouseltitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  color: #6E3D0D;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.carouseltitle i {
+  color: #D4A373;
+}
+
 .carousel .forward,
 .carousel .backward {
   position: absolute;
@@ -86,38 +108,6 @@
   padding: 0 2em 0 2em;
 }
 
-.carousel article {
-  display: inline-block;
-  width: 18em;
-  background: #fff;
-  text-align: center;
-  padding: 0 1em 3em 1em;
-  margin: 0 2em 0 0;
-  white-space: normal;
-  opacity: 1;
-  -moz-transition: opacity 0.75s ease-in-out;
-  -webkit-transition: opacity 0.75s ease-in-out;
-  -ms-transition: opacity 0.75s ease-in-out;
-  transition: opacity 0.75s ease-in-out;
-}
-
-.carousel article.loading {
-  opacity: 0;
-}
-
-.carousel article .image {
-  position: relative;
-  left: -1em;
-  top: 0;
-  width: auto;
-  margin-right: -2em;
-  margin-bottom: 3em;
-}
-
-.carousel article p {
-  text-align: center;
-}
-
 .food {
   border-radius: 10px;
   display: inline-block;
@@ -127,6 +117,7 @@
   margin: 0 1.25em 0 0;
   white-space: normal;
   opacity: 1.0;
+  box-shadow: 0 0 10px 5px #be98711e;
   transition: opacity 0.75s ease-in-out;
 }
 
@@ -136,16 +127,23 @@
   padding: 0;
   overflow: hidden;
   border-radius: 10px;
+  border: none;
+  background: none;
 }
 
 .featured img {
-  transition: transform  0.3s;
+  transition: all 0.3s;
+  width: 100%;
+  display: block;
 }
 
 .featured h3 {
   margin: 10% 0;
   font-weight: bold;
-  transition: font-size  0.3s;
+  transition: all 0.3s;
+  font-size: 1.25em;
+  line-height: 1.25em;
+  color: #483949;
 }
 
 .image.featured:hover img {
@@ -155,4 +153,38 @@
 .image.featured:hover h3 {
   font-size: 1.5em;
   color: #BC6C25;
+}
+
+/* Medium 1024px */
+
+@media screen and (max-width:1024px) {
+  .related-carousel {
+    padding: 4em 0;
+  }
+
+  .carouseltitle {
+    gap: 30px;
+  }
+}
+
+/* X-Small 480px */
+
+@media screen and (max-width:480px) {
+  .carousel,
+  .related-carousel {
+    padding: 2em 0;
+  }
+
+  .related-carousel {
+    gap: 30px;
+  }
+
+  .carouseltitle {
+    gap: 20px;
+    font-size: 20px;
+  }
+
+  .food {
+    width: 15em;
+  }
 }

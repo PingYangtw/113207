@@ -210,9 +210,9 @@ def update_post():
             image_files = os.listdir(base_folder)
             # 將檔案名稱清單加入到 question 中
             question = question + (image_files,)
-        else:
-            # 資料夾不存在，則附加空清單
-            question = question + ([],)
+    else:
+        # 資料夾不存在，則附加空清單
+        question = question + ([],)
 
     connection.close()
                    
@@ -332,7 +332,11 @@ def post_question():
                     # 創建唯一的資料夾
                     folder_path_uid = os.path.join(base_path, str(uid))
                     os.makedirs(folder_path_uid)
-                
+
+                nowtime = datetime.now()
+                create_time = nowtime.strftime("%Y-%m-%d %H:%M:%S")
+                create_time_str = create_time.replace(" ", "_").replace(":", "-")
+                    
                 random_str = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
                 folder_name = f"{uid}_{create_time_str}_{random_str}"
                 folder_path = os.path.join(base_path, str(uid), folder_name)
@@ -384,41 +388,65 @@ def update_question():
             folderName = request.form.get('folderName')
             files = request.files.getlist('files[]')
 
-            print(files)
-
             base_path = "static/images/community/"
-            folder_path = os.path.join(base_path, str(uid), folderName)
 
-            # 清空檔案，但是保留跟files裡面的檔案名稱一樣的檔案
-            for file in os.listdir(folder_path):
-                if file not in [f.filename for f in files]:
-                    os.remove(os.path.join(folder_path, file))
+            print(folderName, files)
 
-            # 取得資料夾中的所有檔案名稱
-            existing_files = set(os.listdir(folder_path))
-            
-            print(existing_files)
+            if folderName=='None' and files:
+                # 檢查資料夾是否存在，若不存在則創建
+                base_path = "static/images/community/"
+                uid_folders = [d for d in os.listdir(base_path) if d.startswith(str(uid))]
+                
+                if uid_folders:
+                    folder_path_uid = os.path.join(base_path, uid_folders[0])  # 返回找到的第一個資料夾
+                    folder_name = uid_folders[0]
+                else:
+                    # 創建唯一的資料夾
+                    folder_path_uid = os.path.join(base_path, str(uid))
+                    os.makedirs(folder_path_uid)
 
-            # 新增新的檔案
-            for index, file in enumerate(files, start=1):
-
+                nowtime = datetime.now()
+                create_time = nowtime.strftime("%Y-%m-%d %H:%M:%S")
+                create_time_str = create_time.replace(" ", "_").replace(":", "-")
+                
                 random_str = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
+                folderName = f"{uid}_{create_time_str}_{random_str}"
+                folder_path = os.path.join(base_path, str(uid), folderName)
+                os.makedirs(folder_path)
 
-                new_filename = f"{index}_{random_str}.jpg"
+            if folderName!='None': 
+                folder_path = os.path.join(base_path, str(uid), folderName)
 
-                if file.filename not in existing_files:  # 檢查檔案是否已存在
-                    print(file.filename)
-                    file.save(os.path.join(folder_path, new_filename))
-                    existing_files.add(new_filename)  # 更新存在的檔案列表
+                # 清空檔案，但是保留跟files裡面的檔案名稱一樣的檔案
+                for file in os.listdir(folder_path):
+                    if file not in [f.filename for f in files]:
+                        os.remove(os.path.join(folder_path, file))
+
+                # 取得資料夾中的所有檔案名稱
+                existing_files = set(os.listdir(folder_path))
+                
+                print(existing_files)
+
+                # 新增新的檔案
+                for index, file in enumerate(files, start=1):
+
+                    random_str = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
+
+                    new_filename = f"{index}_{random_str}.jpg"
+
+                    if file.filename not in existing_files:  # 檢查檔案是否已存在
+                        print(file.filename)
+                        file.save(os.path.join(folder_path, new_filename))
+                        existing_files.add(new_filename)  # 更新存在的檔案列表
 
             connection = db.get_connection()
             cursor = connection.cursor()
 
             cursor.execute('''
                 UPDATE body.question 
-                SET title = %s, "content" = %s, update_time = now()
+                SET title = %s, "content" = %s, update_time = now(), question_image = %s
                 WHERE "Qid" = %s and "Uid" = %s;
-                ''', (title, content, qid, uid))
+                ''', (title, content, folderName, qid, uid))
 
             response = {'message': 'Question posted successfully.'}
             connection.commit()

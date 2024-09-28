@@ -35,7 +35,7 @@
       <a class="recipe-world" href="/robott/recipeWorld">食譜天地</a>
     </div>
 
-    <section class="{% if data|length == 2 or data|length == 0 %}fewcontent{% else %}content{% endif %}">
+    <section class="{% if data|length >= 0 and data|length <= 2 %}fewcontent{% else %}content{% endif %}">
       <div id="generate-btn" class="AI">
         <div class="add">
           <img src="/static/images/addcricle.png" class="addcricle" alt="addcricle">
