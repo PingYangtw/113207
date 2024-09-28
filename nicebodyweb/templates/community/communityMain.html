@@ -50,7 +50,7 @@
 
     {% for question in question %}
     <form id="QnADetailForm" action="/community/detailedPost" method="get">
-    <section class="question-item" data-uid="{{ question[0] }}" data-uid2="{{ question[1] }}">
+    <section class="question-item" data-uid="{{ question[0] }}" data-uid2="{{ question[1] }}" style="display: block;">
       <div class="eachpo">
         <img class="photostickers" src="/static/images/userImage/{{question[1]}}/{{question[8]}}" alt="">
         <div class="pocontent">
@@ -81,7 +81,7 @@
             <div class="textcontent detailQnA">
               <p>{{ question[3] }}</p>
             </div>
-            {% if question[4] %}
+            {% if question[4] and question[14] %}
             <div class="carousel" data-flickity='{ "cellAlign": "left" }'>
               {% for image in question[14] %}
               <div class="carousel-cell">
@@ -359,28 +359,41 @@
       });
 
       // 更新問題顯示
-      function updateQuestions() {
-        const query = keywordQuery.value.toLowerCase();
+      // 更新問題顯示
+function updateQuestions() {
+  const query = keywordQuery.value.toLowerCase();
 
-        questionItems.forEach(item => {
-          const uidMatch = filter === 'all' || item.getAttribute('data-uid2') === uid;
-          const textMatch = [
-              item.querySelector('.middle h1').textContent, 
-              item.querySelector('.textcontent p').textContent, 
-              item.querySelector('.bottom') ? item.querySelector('.bottom').textContent : ''
-          ].some(text => text.toLowerCase().includes(query));
+  // 取得所有的 form 元素
+  const forms = document.querySelectorAll('form#QnADetailForm');
+  
+  forms.forEach(form => {
+    let hasVisibleItems = false;
+    
+    // 取得 form 裡的 section
+    const questionItem = form.querySelector('.question-item');
+    
+    // 檢查篩選條件
+    const uidMatch = filter === 'all' || questionItem.getAttribute('data-uid2') === uid;
+    const textMatch = [
+      questionItem.querySelector('.middle h1').textContent, 
+      questionItem.querySelector('.textcontent p').textContent, 
+      questionItem.querySelector('.bottom') ? questionItem.querySelector('.bottom').textContent : ''
+    ].some(text => text.toLowerCase().includes(query));
+    
+    // 判斷是否顯示 form
+    if (uidMatch && textMatch) {
+      form.style.display = 'block';
+      hasVisibleItems = true;
+    } else {
+      form.style.display = 'none';
+    }
+  });
 
-          if (uidMatch && textMatch) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
+  // 更新 Flickity
+  initializeFlickity();
+  updateFlickity();
+}
 
-        // 更新 Flickity
-        initializeFlickity();
-        updateFlickity();
-      }
 
       // 初始載入時顯示所有問題並初始化 Flickity
       updateQuestions();
