@@ -20,7 +20,14 @@ window.onload = function() {
 
     const savedValue = sessionStorage.getItem('tagInputValue5');
 
-
+    // Lottie
+    var animation = bodymovin.loadAnimation({
+        container: document.getElementById('animation-container'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/static/json/fruitJump.json' // 請替換為你的 JSON 動畫檔案路徑
+    });
 
     // 初始化標籤
     defaultTags.forEach((tag) => {
