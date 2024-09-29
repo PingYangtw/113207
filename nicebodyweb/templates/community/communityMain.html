@@ -49,7 +49,7 @@
     </a>
 
     {% for question in question %}
-    <form id="QnADetailForm" action="/community/detailedPost" method="get">
+    <form id="QnADetailForm" action="/community/detailedPost" method="get" data-uid="{{ question[0] }}">
     <section class="question-item" data-uid="{{ question[0] }}" data-uid2="{{ question[1] }}" style="display: block;">
       <div class="eachpo">
         <img class="photostickers" src="/static/images/userImage/{{question[1]}}/{{question[8]}}" alt="">
@@ -222,6 +222,19 @@
     function showModal() {
       document.getElementById("loginModal").style.display = "flex";
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 取得所有包含問題內容的元素
+      const questions = document.querySelectorAll('.textcontent.detailQnA p');
+
+      questions.forEach(question => {
+        // 取得問題的文本內容並將 <br> 替換為換行符號
+        let formattedText = question.innerHTML.replace(/<br\s*\/?>/gi, '\n');
+
+        // 將替換後的文本顯示到頁面
+        question.innerText = formattedText;
+      });
+    });
 
     // detail頁面
     document.addEventListener('DOMContentLoaded', () => {
@@ -676,10 +689,9 @@ function updateQuestions() {
         });
 
         deleteDialog.close();
-
-        // 刪除該篇文章
-        const questionItem = document.querySelector(`.question-item[data-uid="${questionId}"]`);
-        questionItem.remove();
+        
+        // form 移除
+        document.querySelector(`form[data-uid="${questionId}"]`).remove();
 
       });
     });

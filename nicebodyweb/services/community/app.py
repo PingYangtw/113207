@@ -210,6 +210,9 @@ def update_post():
             image_files = os.listdir(base_folder)
             # 將檔案名稱清單加入到 question 中
             question = question + (image_files,)
+        else:
+            # 資料夾不存在，則附加空清單
+            question = question + ([],)
     else:
         # 資料夾不存在，則附加空清單
         question = question + ([],)
