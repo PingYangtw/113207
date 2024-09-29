@@ -53,9 +53,7 @@
             <label for="fileInput" class="add-file-btn"><i class="fa-solid fa-plus"></i></label>
             <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
           </div>
-          <div class="carousel" id="carousel">
-            <!-- 圖片預覽會顯示在這裡 -->
-          </div>
+          <div class="carousel" id="carousel"></div>
         </div>
 
         <div class="btn">
@@ -67,11 +65,6 @@
     <div id="loading" style="display: none;">
       <div class="loader2"></div>
     </div>
-
-    <!-- <form id="QnAPageForm" method="get" style="display: none;">
-      <button type="submit" hidden>提交</button>
-    </form> -->
-
   </article>
 
   <footer id="footer-container"></footer>
@@ -107,7 +100,7 @@
           return;
         }
 
-        let newIndex = flkty.cells.length; // 新圖片將被添加到現有圖片的後面
+        let newIndex = flkty.cells.length;
         for (let i = 0; i < files.length; i++) {
           const file = files[i];
           const reader = new FileReader();
@@ -158,9 +151,8 @@
             cellDiv.appendChild(removeBtn);
             flkty.append(cellDiv);
 
-            // 滾動到新添加的圖片位置
             if (i === files.length - 1) {
-              flkty.selectCell(newIndex, true); // true 參數表示平滑過渡
+              flkty.selectCell(newIndex, true);
             }
           };
 
@@ -178,7 +170,6 @@
         const title = form.querySelector('input[type="text"]').value;
         const content = form.querySelector('textarea').value;
         
-        // 取得carousel-cell 裡面的 img src
         const imgElements = document.querySelectorAll('.carousel-cell img');
 
         const formData = new FormData();
@@ -216,7 +207,6 @@
             document.getElementById("loading").style.display = "flex";
           },
           success: function(data) {
-            // const Qid = data.Qid;
             window.location.href = `/community/communityMain`;
           },
           error: function() {
@@ -225,7 +215,6 @@
         });
       });
     });
-
   </script>
 </body>
 </html>

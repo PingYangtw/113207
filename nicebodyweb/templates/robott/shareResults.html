@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="/static/css/layout/navbar.css">
 		<link rel="stylesheet" href="/static/css/layout/footer.css">
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-		<link rel="stylesheet" href="/static/css/robott/shareResults.css">
+		<link rel="stylesheet" href="/static/css/robott/singleRecipe.css">
 		<link rel="stylesheet" href="/static/css/components/carousel.css">
 		<link rel="stylesheet" href="/static/css/components/fancybox/jquery.fancybox.css"/>
 		<link rel="stylesheet" href="/static/css/components/fancybox/my.jquery.fancybox.css"/>
@@ -182,6 +182,11 @@
 
 			
 			<section class="carousel related-carousel">
+				<div class="carouseltitle">
+					<i class="fa-solid fa-signs-post"></i>
+					<h1>猜你也喜歡...</h1>
+					<i class="fa-solid fa-signs-post"></i>
+				</div>
 				<div class="reel">
 					{% for d in recipe_data %}
 					<div class="food">
@@ -261,7 +266,11 @@
 
 		<footer id="footer-container"></footer>
 
+		<script src="/static/js/jquery.scrolly.min.js"></script>
 		<script src="/static/js/jquery.scrollex.min.js"></script>
+		<script src="/static/js/browser.min.js"></script>
+		<script src="/static/js/breakpoints.min.js"></script>
+		<script src="/static/js/main.js"></script>
 		<script>
 			let messageText = "{{name}}";
 			let userImage = "{{userImage}}"
