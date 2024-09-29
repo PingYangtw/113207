@@ -53,7 +53,7 @@
         </div>
         <div class="middle">
           <h1>{{ question[2] }}</h1>
-          <div class="textcontent">
+          <div class="textcontent detailQnA">
             <p>{{ question[3] }}</p>
           </div>
         </div>
@@ -187,6 +187,16 @@
       renderNav();
       renderFooter();
     };
+
+    // 文章可以顯示斷行
+    document.addEventListener('DOMContentLoaded', () => {
+      const questions = document.querySelectorAll('.textcontent.detailQnA p');
+
+      questions.forEach(question => {
+        let formattedText = question.innerHTML.replace(/<br\s*\/?>/gi, '\n');
+        question.innerText = formattedText;
+      });
+    });
 	
     // 收藏
     document.addEventListener('DOMContentLoaded', function() {
@@ -199,11 +209,9 @@
       let oldSelect = [];
       let newSelect = [];
 
-      // 當打開 dialog 時，記錄當前的勾選狀態
       openCollectButton.addEventListener('click', function() {
         collect.showModal();
         collect.scrollTop = 0;
-        // 清空 previous selections
         oldSelect = [];
         document.querySelectorAll('#collect .eachclass input[type="checkbox"]').forEach(checkbox => {
           if (checkbox.checked) {
@@ -212,7 +220,6 @@
         });
       });
 
-      // 當點擊 save 按鈕時，執行以下操作
       saveCollectButton.addEventListener('click', function() {
         newSelect = [];
         const itemsToUpdate = {};
@@ -221,7 +228,6 @@
           const label = checkbox.parentElement.querySelector('label').textContent;
           if (checkbox.checked) {
             newSelect.push(label);
-            // 記錄需要增加計數的項目
             itemsToUpdate[label] = (itemsToUpdate[label] || 0) + 1;
           }
         });
@@ -232,7 +238,6 @@
         console.log('addedItems', addedItems);
         console.log('removedItems', removedItems);
 
-        // 更新收藏符號的樣式
         if (newSelect.length > 0) {
           bookmarkIcon.classList.remove('fa-regular');
           bookmarkIcon.classList.add('fa-solid');
@@ -241,7 +246,6 @@
           bookmarkIcon.classList.add('fa-regular');
         }
 
-        // 更新 num 數字
         addedItems.forEach(item => {
           const numElement = Array.from(document.querySelectorAll('#collect .eachclass'))
             .find(div => div.querySelector('label').textContent === item)
@@ -261,7 +265,6 @@
             },
             error: function(xhr, status, error) {
               console.error(error);
-              //alert(error, '出現錯誤，請稍後再試！');
             }
           });
         });
@@ -288,7 +291,6 @@
             },
             error: function(xhr, status, error) {
               console.error(error);
-              //alert(error, '出現錯誤，請稍後再試！');
             }
           });
         });
@@ -296,7 +298,6 @@
         collect.close();
       });
 
-      // 當關閉 dialog 時，保留勾選狀態
       closeCollectButton.addEventListener('click', function() {
         collect.close();
       });
@@ -313,17 +314,14 @@
         reportDialog.showModal();
         reportDialog.scrollTop = 0;
 
-        // 將檢舉原因清空
         reportDialog.querySelectorAll('#report .eachreason input[type="checkbox"]').forEach(checkbox => {
           checkbox.checked = false;
         });
         reportDialog.querySelector('#report textarea').value = '';
         
-        // 當檢舉原因textarea輸入文字時，即時的將"otherScale"的checkbox打勾
         reportDialog.querySelector('#report textarea').addEventListener('input', function() {
           reportDialog.querySelector('#report .eachreason input[name="otherScales"]').checked = true;
 
-          // 如果textarea為空，則取消勾選
           if (reportDialog.querySelector('#report textarea').value === '') {
             reportDialog.querySelector('#report .eachreason input[type="checkbox"]').checked = false;
           }
@@ -331,28 +329,23 @@
       });
 
       saveReportButton.addEventListener('click', function() {
-        // 提醒未勾選檢舉原因
         if (!reportDialog.querySelector('#report .eachreason input[type="checkbox"]:checked')) {
           alert('請選擇檢舉原因！');
           return;
         }
 
-        // 如果勾選其他原因，但未填寫原因
         if (reportDialog.querySelector('#report .eachreason input[type="checkbox"]:checked').nextElementSibling.textContent === '其他(請填在下方空格)' && reportDialog.querySelector('#report textarea').value === '') {
           alert('請填寫檢舉原因！');
           return;
         }
 
-        // 取得檢舉原因的name
         const reasons = [];
         reportDialog.querySelectorAll('.reasons input').forEach(input => {
-          // 排除其他原因的checkbox
           if (input.name !== 'otherScales' && input.checked) {
             reasons.push(input.name);
           }
         });
 
-        // 取得其他原因，去除前後空白
         const otherReason = reportDialog.querySelector('#report textarea').value.trim();
 
         $.ajax({
@@ -369,7 +362,6 @@
           },
           error: function(xhr, status, error) {
             console.error(error);
-            //alert(error, '出現錯誤，請稍後再試！');
           }
         });
 
@@ -410,7 +402,6 @@
           },
           error: function(xhr, status, error) {
             console.error(error);
-            //alert(error, '出現錯誤，請稍後再試！');
           }
         });
       });
@@ -444,13 +435,11 @@
           },
           error: function(xhr, status, error) {
             console.error(error);
-            //alert(error, '出現錯誤，請稍後再試！');
           }
         });
 
         messageInput.value = '';
 
-        // 如果有最佳解加入留言到第二個
         if (document.querySelector('.bestoptimal')) {
           const newComment = document.createElement('div');
           newComment.classList.add('each');
@@ -489,37 +478,27 @@
 
     // 設為最佳解
     document.addEventListener('DOMContentLoaded', function() {
-      // 儲存最佳解的留言元素
       let bestAnswerElement = null;
 
-      // 檢查是否已經有最佳解
       const bestAnswer = document.querySelector('.bestoptimal');
       if (bestAnswer) {
         bestAnswerElement = bestAnswer.closest('.each');
       }
 
-      // 當點選「設為最佳解」按鈕時
       document.querySelectorAll('.optimal').forEach(button => {
         button.addEventListener('click', function() {
-          // 獲取當前按鈕所在的留言元素
           const answerElement = this.closest('.each');
           const answerId = answerElement.dataset.id;
 
-          // 檢查是否已經有最佳解
           if (bestAnswerElement) {
-            // 移除原有的最佳解標籤
             bestAnswerElement.querySelector('.bestoptimal')?.remove();
-            // 恢復原有的按鈕
             bestAnswerElement.querySelector('.optimal').style.display = 'inline-block';
           }
 
-          // 設為最佳解
           bestAnswerElement = answerElement;
           answerElement.querySelector('.top').insertAdjacentHTML('afterbegin', '<div class="bestoptimal"><i class="fa-solid fa-crown"></i>最佳解</div>');
-          // 隱藏「設為最佳解」按鈕
           this.style.display = 'none';
 
-          // 進行伺服器端更新
           $.ajax({
             type: "POST",
             url: "/community/setBestAnswer",
@@ -537,8 +516,6 @@
         });
       });
     });
-
-    
   </script>
 </body>
 </html>

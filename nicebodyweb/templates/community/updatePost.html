@@ -37,7 +37,6 @@
       </div>
 
       <form>
-        <!-- 表單內容 -->
         <div class="pen">
           <h3>標題(30字以內)</h3>
           <input type="text"  required value="{{ question[2] }}">
@@ -58,9 +57,9 @@
           <div class="carousel" id="carousel">
             {% for image in question[8] %}
             <div class="carousel-cell">
-                <img src="/static/images/community/{{question[1]}}/{{question[4]}}/{{image}}" alt="">
-                <button class="edit-btn" type="button"><i class="fa-solid fa-edit" aria-hidden="true"></i></button>
-                <button class="remove-btn" type="button"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+              <img src="/static/images/community/{{question[1]}}/{{question[4]}}/{{image}}" alt="">
+              <button class="edit-btn" type="button"><i class="fa-solid fa-edit" aria-hidden="true"></i></button>
+              <button class="remove-btn" type="button"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
           	</div>
           	{% endfor %}
 					{% else %}
@@ -79,7 +78,6 @@
     <div id="loading" style="display: none;">
       <div class="loader2"></div>
     </div>
-
   </article>
 
   <footer id="footer-container"></footer>
@@ -100,7 +98,6 @@
       const carouselElement = document.getElementById('carousel');
       const maxFiles = 5;
 
-      // 初始化 Flickity
       const flkty = new Flickity(carouselElement, {
         cellAlign: 'left',
         contain: true,
@@ -109,19 +106,16 @@
         imagesLoaded: true
       });
 
-      // 為現有的圖片綁定編輯和刪除事件
       function bindButtonEvents(cellDiv) {
         const removeBtn = cellDiv.querySelector('.remove-btn');
         const editBtn = cellDiv.querySelector('.edit-btn');
         const imgElement = cellDiv.querySelector('img');
 
-        // 綁定刪除按鈕事件
         removeBtn.addEventListener('click', () => {
           flkty.remove(cellDiv);
           flkty.reloadCells();
         });
 
-        // 綁定編輯按鈕事件
         editBtn.addEventListener('click', () => {
           const newFileInput = document.createElement('input');
           newFileInput.type = 'file';
@@ -145,13 +139,11 @@
         });
       }
 
-      // 為所有現有的圖片綁定事件
       const existingCells = document.querySelectorAll('.carousel-cell');
       existingCells.forEach(cellDiv => {
         bindButtonEvents(cellDiv);
       });
 
-      // 為新添加的圖片綁定事件
       document.getElementById('fileInput').addEventListener('change', function(event) {
         const files = event.target.files;
         if (flkty.cells.length + files.length > maxFiles) {
@@ -159,7 +151,7 @@
           return;
         }
 
-        let newIndex = flkty.cells.length; // 新圖片將被添加到現有圖片的後面
+        let newIndex = flkty.cells.length;
         for (let i = 0; i < files.length; i++) {
           const file = files[i];
           const reader = new FileReader();
@@ -186,12 +178,10 @@
 
             flkty.append(cellDiv);
 
-            // 綁定新添加圖片的編輯和刪除按鈕事件
             bindButtonEvents(cellDiv);
 
-            // 滾動到新添加的第一張圖片位置
-            if (i === 0) { // 只在添加第一張新圖片時進行滾動
-              flkty.selectCell(newIndex, true); // true 表示平滑過渡
+            if (i === 0) {
+              flkty.selectCell(newIndex, true);
             }
           };
 
@@ -211,11 +201,9 @@
         const Qid = "{{ question[0] }}";
         const folderName = "{{ question[4] }}";
         
-        // 取得carousel-cell 裡面的 img src
         const imgElements = document.querySelectorAll('.carousel-cell img');
         const newImages = Array.from(imgElements).map(img => img.src);
 
-        // 比對 title、content 和 img
         const originalTitle = "{{ question[2] }}";
         const originalContent = "{{ question[3] }}";
         const originalImages = JSON.parse('{{ question[8]|tojson|safe }}');
@@ -241,10 +229,8 @@
 
           let imgFile;
           if (imgSrc.startsWith('data:image')) {
-            // 如果是 dataURL 格式的圖片
             imgFile = dataURLtoFile(imgSrc);
           }else {
-            // 如果是從伺服器取得的圖片
             imgFile = new File([], imgSrc.split('/').pop());
           } 
 
@@ -274,7 +260,6 @@
             document.getElementById("loading").style.display = "flex";
           },
           success: function(data) {
-            // const Qid = data.Qid;
             window.location.href = `/community/communityMain`;
           },
           error: function() {
@@ -283,7 +268,6 @@
         });
       });
     });
-
   </script>
 </body>
 </html>

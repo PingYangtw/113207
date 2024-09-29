@@ -223,23 +223,18 @@
       document.getElementById("loginModal").style.display = "flex";
     }
 
+    // 文章可以顯示斷行
     document.addEventListener('DOMContentLoaded', () => {
-      // 取得所有包含問題內容的元素
       const questions = document.querySelectorAll('.textcontent.detailQnA p');
 
       questions.forEach(question => {
-        // 取得問題的文本內容並將 <br> 替換為換行符號
         let formattedText = question.innerHTML.replace(/<br\s*\/?>/gi, '\n');
-
-        // 將替換後的文本顯示到頁面
         question.innerText = formattedText;
       });
     });
 
     // detail頁面
     document.addEventListener('DOMContentLoaded', () => {
-
-      // 點擊事件處理
       function handleClick(event) {
         const questionId = event.target.closest('.question-item').getAttribute('data-uid');
         const action = event.target.classList[1].replace('fa-', '');
@@ -268,25 +263,21 @@
         }
       }
 
-      // 對指定的圖示添加點擊事件處理
       const icons = document.querySelectorAll('.fa-trash-can, .fa-pen-to-square, .fa-bookmark, .fa-triangle-exclamation');
       icons.forEach(icon => icon.addEventListener('click', handleClick));
 
-      // 對 Flickity 按鈕和 dot 添加點擊事件處理
       const flickityButtons = document.querySelectorAll('.flickity-button');
       const dots = document.querySelectorAll('.dot');
       [...flickityButtons, ...dots].forEach(element => element.addEventListener('click', handleClick));
 
-      // 點擊內容時提交表單
       document.querySelectorAll('.detailQnA').forEach(po => {
-          po.addEventListener('click', (event) => {
-            //尋找最近的form，id為QnADetailForm，並提交
-            event.target.closest('form').submit();
-          });
+        po.addEventListener('click', (event) => {
+          event.target.closest('form').submit();
+        });
       });
     });
 
-    // 當點選fa-pen-to-square後，將該篇文章的data-uid放入upddatePostForm的input裡面，並提交
+    // 前往編輯頁面
     document.addEventListener('DOMContentLoaded', () => {
       const updatePostButtons = document.querySelectorAll('.fa-regular.fa-pen-to-square');
       const updatePostForm = document.getElementById('updatePostForm');
@@ -329,18 +320,14 @@
       const questionItems = document.querySelectorAll('.question-item');
       const keywordQuery = document.getElementById('keywordQuery');
       
-      let filter = 'all'; // 初始篩選狀態為 'all'
+      let filter = 'all';
 
-      // Flickity 變數
       let flickityInstances = [];
 
-      // 初始化 Flickity
       function initializeFlickity() {
-        // 停止所有 Flickity 實例
         flickityInstances.forEach(instance => instance.destroy());
         flickityInstances = [];
         
-        // 尋找每個輪播並初始化 Flickity
         document.querySelectorAll('.carousel').forEach(carousel => {
           const flickity = new Flickity(carousel, {
             cellAlign: 'left',
@@ -350,11 +337,10 @@
         });
       }
 
-      // 更新 Flickity 位置
       function updateFlickity() {
         flickityInstances.forEach(instance => {
-          instance.resize(); // 確保 Flickity 重新計算其顯示內容
-          instance.reposition(); // 更新 Flickity 顯示位置
+          instance.resize();
+          instance.reposition();
         });
       }
 
@@ -366,49 +352,39 @@
         });
       });
 
-      // 關鍵字查詢
       keywordQuery.addEventListener('input', () => {
         updateQuestions();
       });
 
       // 更新問題顯示
-      // 更新問題顯示
-function updateQuestions() {
-  const query = keywordQuery.value.toLowerCase();
+      function updateQuestions() {
+        const query = keywordQuery.value.toLowerCase();
 
-  // 取得所有的 form 元素
-  const forms = document.querySelectorAll('form#QnADetailForm');
-  
-  forms.forEach(form => {
-    let hasVisibleItems = false;
-    
-    // 取得 form 裡的 section
-    const questionItem = form.querySelector('.question-item');
-    
-    // 檢查篩選條件
-    const uidMatch = filter === 'all' || questionItem.getAttribute('data-uid2') === uid;
-    const textMatch = [
-      questionItem.querySelector('.middle h1').textContent, 
-      questionItem.querySelector('.textcontent p').textContent, 
-      questionItem.querySelector('.bottom') ? questionItem.querySelector('.bottom').textContent : ''
-    ].some(text => text.toLowerCase().includes(query));
-    
-    // 判斷是否顯示 form
-    if (uidMatch && textMatch) {
-      form.style.display = 'block';
-      hasVisibleItems = true;
-    } else {
-      form.style.display = 'none';
-    }
-  });
+        const forms = document.querySelectorAll('form#QnADetailForm');
+        
+        forms.forEach(form => {
+          let hasVisibleItems = false;
+          
+          const questionItem = form.querySelector('.question-item');
+          
+          const uidMatch = filter === 'all' || questionItem.getAttribute('data-uid2') === uid;
+          const textMatch = [
+            questionItem.querySelector('.middle h1').textContent, 
+            questionItem.querySelector('.textcontent p').textContent, 
+            questionItem.querySelector('.bottom') ? questionItem.querySelector('.bottom').textContent : ''
+          ].some(text => text.toLowerCase().includes(query));
+          
+          if (uidMatch && textMatch) {
+            form.style.display = 'block';
+            hasVisibleItems = true;
+          } else {
+            form.style.display = 'none';
+          }
+        });
 
-  // 更新 Flickity
-  initializeFlickity();
-  updateFlickity();
-}
-
-
-      // 初始載入時顯示所有問題並初始化 Flickity
+        initializeFlickity();
+        updateFlickity();
+      }
       updateQuestions();
     });
 
@@ -424,24 +400,19 @@ function updateQuestions() {
           reportDialog.showModal();
           reportDialog.scrollTop = 0;
 
-          // 將檢舉原因清空
           reportDialog.querySelectorAll('.reasons input').forEach(input => input.checked = false);
           reportDialog.querySelector('textarea').value = '';
 
-          // 當檢舉原因textarea輸入文字時，即時的將"otherScale"的checkbox打勾
           reportDialog.querySelector('textarea').addEventListener('input', () => {
             reportDialog.querySelector('.eachreason input[name="otherScales"]').checked = true;
 
-            // 如果textarea為空，則取消勾選
             if (reportDialog.querySelector('textarea').value === '') {
               reportDialog.querySelector('.eachreason input[name="otherScales"]').checked = false;
             }
           });
 
-          // 檢舉data-uid
           const questionId = button.closest('.question-item').getAttribute('data-uid');
 
-          // 將檢舉的data-uid放入dialog的data-uid
           reportDialog.setAttribute('data-uid', questionId);
         });
       });
@@ -451,34 +422,27 @@ function updateQuestions() {
       });
 
       saveReportButton.addEventListener('click', () => {
-        // 提醒未勾選檢舉原因
         if (!reportDialog.querySelector('.reasons input:checked')) {
           alert('請選擇檢舉原因');
           return;
         }
 
-        // 如果勾選其他原因，但未填寫原因
         if (reportDialog.querySelector('.eachreason input[name="otherScales"]:checked') && reportDialog.querySelector('textarea').value === '') {
           alert('請填寫其他原因');
           return;
         }
 
-        // 取得檢舉原因的name
         const reasons = [];
         reportDialog.querySelectorAll('.reasons input').forEach(input => {
-          // 排除其他原因的checkbox
           if (input.name !== 'otherScales' && input.checked) {
             reasons.push(input.name);
           }
         });
 
-        // 取得其他原因，去除前後空白
         const otherReason = reportDialog.querySelector('textarea').value.trim();
 
-        // 取得檢舉的data-uid
         const questionId = reportDialog.getAttribute('data-uid');
         
-        // jquery ajax
         $.ajax({
           type: 'POST',
           url: '/community/report',
@@ -494,8 +458,6 @@ function updateQuestions() {
             console.error(error);
           }
         });
-
-
         reportDialog.close();
       });
     });
@@ -515,10 +477,8 @@ function updateQuestions() {
           collectDialog.showModal();
           collectDialog.scrollTop = 0;
 
-          // 將打勾的checkbox清空
           collectDialog.querySelectorAll('.eachclass input').forEach(input => input.checked = false);
 
-          // 打開的section data-uid 出現在 data-keepid 裡面的話，就打勾
           const keepIds = collectDialog.querySelectorAll('.eachclass label').forEach(label => {
             if (label.getAttribute('data-keepid').split(',').includes(button.closest('.question-item').getAttribute('data-uid'))) {
               label.previousElementSibling.checked = true;
@@ -527,10 +487,8 @@ function updateQuestions() {
 
           collectDialog.setAttribute('data-uid', button.closest('.question-item').getAttribute('data-uid'));
 
-          // 清空oldSelect
           oldSelect = [];
 
-          // 記錄當前的勾選狀態的data-id
           collectDialog.querySelectorAll('.eachclass input').forEach(input => {
             if (input.checked) {
               oldSelect.push(input.nextElementSibling.getAttribute('data-id'));
@@ -551,7 +509,6 @@ function updateQuestions() {
           const label = checkbox.parentElement.querySelector('label').getAttribute('data-id');
           if (checkbox.checked) {
             newSelect.push(label);
-            // 記錄需要增加計數的項目
             itemsToUpdate[label] = (itemsToUpdate[label] || 0) + 1;
           }
         });
@@ -605,17 +562,14 @@ function updateQuestions() {
         });
         }
 
-        // 如果對應的newSelect長度為0，則將該篇文章的icon改為空心
         if (newSelect.length === 0) {
           document.querySelector(`.question-item[data-uid="${collectDialog.getAttribute('data-uid')}"] .fa-solid.fa-bookmark`)?.classList.replace('fa-solid', 'fa-regular');
         }
 
-        // 如果對應的newSelect長度不為0，則將該篇文章的icon改為實心，但是如果原本是空心的話，就不改變
         if (newSelect.length !== 0) {
           document.querySelector(`.question-item[data-uid="${collectDialog.getAttribute('data-uid')}"] .fa-regular.fa-bookmark`)?.classList.replace('fa-regular', 'fa-solid');
         }
 
-        // 更新加減num的數量，透過整數不是+1就是-1
         document.querySelectorAll('.eachclass').forEach(eachclass => {
           const label = eachclass.querySelector('label').getAttribute('data-id');
           const num = eachclass.querySelector('.num');
@@ -627,20 +581,17 @@ function updateQuestions() {
             num.textContent = `(${currentNum - 1}篇)`;
           }
 
-          // 如果removeitems裡面有的話，就將data-id從data-keepid裡面移除
           if (removedItems.includes(label)) {
             const keepId = eachclass.querySelector('label').getAttribute('data-keepid').split(',');
             const newKeepId = keepId.filter(id => id !== collectDialog.getAttribute('data-uid'));
             eachclass.querySelector('label').setAttribute('data-keepid', newKeepId.join(','));
           }
 
-          // 如果addedItems裡面有的話，就將data-id加入data-keepid裡面
           if (addedItems.includes(label)) {
             const keepId = eachclass.querySelector('label').getAttribute('data-keepid').split(',');
             keepId.push(collectDialog.getAttribute('data-uid'));
             eachclass.querySelector('label').setAttribute('data-keepid', keepId.join(','));
           }
-
         });
 
         collectDialog.close();
@@ -670,10 +621,8 @@ function updateQuestions() {
       });
 
       saveDeleteButton.addEventListener('click', () => {
-        // 取得檢舉的data-uid
         const questionId = deleteDialog.getAttribute('data-uid');
         
-        // jquery ajax
         $.ajax({
           type: 'POST',
           url: '/community/deleteQuestion',
@@ -689,10 +638,8 @@ function updateQuestions() {
         });
 
         deleteDialog.close();
-        
-        // form 移除
-        document.querySelector(`form[data-uid="${questionId}"]`).remove();
 
+        document.querySelector(`form[data-uid="${questionId}"]`).remove();
       });
     });
   
@@ -711,7 +658,6 @@ function updateQuestions() {
             return;
           }
 
-          // jquery ajax
           $.ajax({
             type: 'POST',
             url: '/community/addAnswer',
@@ -727,7 +673,6 @@ function updateQuestions() {
             }
           });
 
-          // 新增解說內容，不是最佳解
           const bottom = button.closest('.bottom');
           const newExplanation = document.createElement('div');
           newExplanation.classList.add('each');
@@ -745,7 +690,6 @@ function updateQuestions() {
           bottom.insertAdjacentElement('beforebegin', newExplanation);
 
           input.value = '';
-          
         });
       });
     });
