@@ -52,7 +52,7 @@
       <dialog id="howToGenerate">
         <h1>選擇食譜的生成方式</h1>
         <div class="plot">
-          <a class="selectbtn" href="/question/question_n1">
+          <a class="selectbtn" href="/question/question_n1" id="selectRecipe">
             <i class="fa-solid fa-hand-pointer"></i>
             <h3>手動</h3>
           </a>
@@ -217,6 +217,15 @@
           dialog.scrollTop = 0;
         }
       }
+    });
+
+    // selectRecipe
+    document.getElementById('selectRecipe').addEventListener('click', function() {
+      sessionStorage.removeItem('tagInputValue');
+      sessionStorage.removeItem('tagInputValue2');
+      sessionStorage.removeItem('tagInputValue3');
+      sessionStorage.removeItem('tagInputValue4_1');
+      sessionStorage.removeItem('tagInputValue5');
     });
   </script>
 </body>
