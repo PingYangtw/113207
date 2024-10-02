@@ -197,6 +197,15 @@
         question.innerText = formattedText;
       });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const bottomElements = document.querySelectorAll('.bottom');
+
+      bottomElements.forEach(bottomElement => {
+        let formattedText = bottomElement.innerHTML.replace(/\n/g, '<br>');
+        bottomElement.innerHTML = formattedText;
+      });
+    });
 	
     // 收藏
     document.addEventListener('DOMContentLoaded', function() {

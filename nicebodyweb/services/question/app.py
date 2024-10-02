@@ -279,7 +279,7 @@ def resultRecipe_selfList():
                     model="dall-e-3",
                     prompt="食物在畫面的正中心，不能出現未說明的食材" + imagedescribe,
                     n=1,
-                    quality="standard",
+                    quality="hd",
                     size="1024x1024",
                 )
                 image_url = response.data[0].url
