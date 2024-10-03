@@ -27,9 +27,39 @@ window.onload = function () {
         drink: ["水", "紅茶", "抹茶", "烏龍茶", "綠茶", "包種茶", "普洱茶", "咖啡", "奶茶", "珍珠奶茶", "果汁", "汽水", "啤酒", "紅酒", "白酒", "威士忌", "伏特加", "龍舌蘭"],
         other: ["餅乾", "蛋糕", "巧克力", "糖果", "冰淇淋", "壽司", "豆花", "滷味", "沙拉", "湯", "臭豆腐", "滷肉飯", "健康餐盒", "可愛造型便當", "月餅"]
     };
-
-    // 根據類別來選擇標籤
     const defaultTags = tagData[category] || tagData['main_food'];
+
+    // 根據 category 來決定要插入的文字內容
+    const contentMap = {
+        'main_food': '<div>主食類</div>',
+        'meat': '<div>肉類</div>',
+        'vegetable': '<div>蔬菜</div>',
+        'fruit': '<div>水果</div>',
+        'egg': '<div>蛋類</div>',
+        'nut': '<div>堅果類</div>',
+        'dairy': '<div>乳製品</div>',
+        'seasoning': '<div>調味料</div>',
+        'drink': '<div>飲料</div>',
+        'other': '<div>其他</div>'
+    };
+    const subTitle = document.getElementById('subtitle');
+    subTitle.innerHTML = contentMap[category];
+
+    // 定義不同 category 對應的 icon class
+    const iconClassMap = {
+        'main_food': 'fa-solid fa-bowl-food',
+        'meat': 'fa-solid fa-drumstick-bite',
+        'vegetable': 'fa-solid fa-carrot',
+        'fruit': 'fa-solid fa-lemon',
+        'egg': 'fa-solid fa-egg',
+        'nut': 'fa-solid fa-cubes-stacked',
+        'dairy': 'fa-solid fa-glass-water',
+        'seasoning': 'fa-solid fa-wine-bottle',
+        'drink': 'fa-solid fa-martini-glass-citrus',
+        'other': 'fa-solid fa-flask'
+    };
+    const subIcon = document.getElementById('subicon');
+    subIcon.className = iconClassMap[category];
 
     // 變數
     let tags = [];
@@ -62,7 +92,7 @@ window.onload = function () {
             } else {
                 removeTagFromInput(tag); // 使用按鈕上存儲的標籤值
                 tagButton.classList.remove("item-select");
-                selectedTagCounts[tacategoryg]--;
+                selectedTagCounts[category]--;
             }
 
             sessionStorage.setItem('selectedTagCounts', JSON.stringify(selectedTagCounts));
