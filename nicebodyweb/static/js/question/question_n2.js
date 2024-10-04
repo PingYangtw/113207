@@ -13,12 +13,12 @@ window.onload = function() {
 
     const savedValue = sessionStorage.getItem('tagInputValue2');
 
-    const savedSelectedTag1Count = sessionStorage.getItem('selectedTag1Count');
+    const savedSelectedTagCounts = JSON.parse(sessionStorage.getItem('selectedTagCounts')) || {};
 
     // 检查输入框中是否有文本，并根据情况更新按钮状态和样式
     function checkInput() {
         const continueBtn = document.getElementById('continue-btn');
-        if (inputField.value.trim() !== '' || tags.length > 0) {
+        if (inputField.value.trim() !== '' || Object.values(savedSelectedTagCounts).some(count => count > 0)) {
             continueBtn.classList.add('button-brwon');
             continueBtn.setAttribute('href', '/question/question_n3');
         } else {
@@ -45,13 +45,16 @@ window.onload = function() {
         } 
     });
 
-    if (savedSelectedTag1Count !== null) {
-        const selectedTag1Count = parseInt(savedSelectedTag1Count);
-        const tag1Button = document.getElementById('n2_1');
-        const tag1Div = tag1Button.querySelector('div');
-        if (selectedTag1Count > 0) {
-            tag1Div.textContent += `+${selectedTag1Count}`;
-            tag1Button.classList.add('select');
+    // 更新顯示標籤的數量
+    console.log(savedSelectedTagCounts);
+    for (const [category, count] of Object.entries(savedSelectedTagCounts)) {
+        const tagButton = document.getElementById(category);
+        if (tagButton) {
+            const tagDiv = tagButton.querySelector('div');
+            if (count > 0) {
+                tagDiv.textContent += `+${count}`;
+                tagButton.classList.add('select');
+            }
         }
     }
 
@@ -62,10 +65,12 @@ window.onload = function() {
         sessionStorage.removeItem('tagInputValue3');
     });
 
-    
-    document.getElementById('n2_1').addEventListener('click', function() {
-        const tagInput = document.getElementById('tag-ip');
-        sessionStorage.setItem('tagInputValue2', tagInput.value);
+    // 每次點任一a標籤時，將tagInput的值存入sessionStorage
+    document.querySelectorAll('.tag').forEach(tag => {
+        tag.addEventListener('click', function() {
+            const tagInput = document.getElementById('tag-ip');
+            sessionStorage.setItem('tagInputValue2', tagInput.value);
+        });
     });
 
     if (savedValue !== null) {

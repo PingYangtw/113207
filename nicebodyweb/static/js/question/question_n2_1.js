@@ -7,14 +7,63 @@ window.onload = function () {
         document.getElementById('loginDialog').scrollTop = 0;
     }
 
+    // 解析 URL 中的 `category` 參數來決定標籤顯示
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category') || 'main_food'; // 默認類別為 'main_food'
+
+    // 定義不同類別對應的標籤
+    const tagData = {
+        main_food: ["白米", "糙米", "黑米", "紅米", "糯米", "香米", "小米",
+                    "寬麵", "細麵", "刀削麵", "拉麵", "義大利麵",
+                    "餃子", "餛飩", "麵包",
+                    "馬鈴薯", "玉米", "地瓜", "紅薯"],
+        meat: ["牛肉", "豬肉", "雞肉", "雞胸肉", "雞腿肉", "羊肉", "鴨肉", "魚肉", "蝦仁", "蛤蜊", "鮭魚", "鱈魚", "魷魚", "章魚", "螃蟹", "培根", "火腿", "香腸", "熱狗"],
+        vegetable: ["菠菜", "青江菜", "空心菜", "大白菜", "高麗菜", "胡蘿蔔", "馬鈴薯", "芋頭", "白花菜", "青菜花", "青椒", "苦瓜", "高麗菜", "茄子", "金針菇", "洋蔥", "青椒", "金針菇", "洋蔥"],
+        fruit: ["香蕉", "芭樂", "番茄", "草莓", "蓮霧", "枇杷", "桃子", "櫻桃", "西瓜", "釋迦", "百香果", "鳳梨", "芒果", "柚子", "柿子", "火龍果", "楊桃", "梨子", "柳丁", "蘋果", "葡萄", "橘子","荔枝", "龍眼"],
+        egg: ["班尼迪克蛋 ", "歐姆蛋", "玉子燒 ", "溏心蛋", "滷蛋", "鐵蛋", "太陽蛋", "荷包蛋", "炒蛋", "鹹蛋", "皮蛋", "茶葉蛋", "糖心蛋", "水煮蛋", "炸蛋", "蛋餅", "蛋捲"],
+        nut: ["杏仁", "核桃", "腰果", "榛果", "開心果", "南瓜子", "花生", "松子", "蓮子", "巴西堅果", "夏威夷果", "胡桃", "黑芝麻", "白芝麻", "葵花子"],
+        dairy: ["鮮乳", "低脂乳", "植物奶", "燕麥奶", "脫脂乳", "保久乳", "奶粉", "優酪乳", "優格", "乳酪", "起司", "奶油", "乳清蛋白", "煉乳", "奶昔"],
+        seasoning: ["醬油", "醋", "糖", "鹽", "胡椒", "辣椒", "香料", "調味料", "油", "香油", "辣醬", "蒜", "番茄醬", "沙拉醬", "蜂蜜芥末醬", "和風醬", "泰式酸辣醬"],
+        drink: ["水", "紅茶", "抹茶", "烏龍茶", "綠茶", "包種茶", "普洱茶", "咖啡", "奶茶", "珍珠奶茶", "果汁", "汽水", "啤酒", "紅酒", "白酒", "威士忌", "伏特加", "龍舌蘭"],
+        other: ["餅乾", "蛋糕", "巧克力", "糖果", "冰淇淋", "壽司", "豆花", "滷味", "沙拉", "湯", "臭豆腐", "滷肉飯", "健康餐盒", "可愛造型便當", "月餅"]
+    };
+    const defaultTags = tagData[category] || tagData['main_food'];
+
+    // 根據 category 來決定要插入的文字內容
+    const contentMap = {
+        'main_food': '<div>主食類</div>',
+        'meat': '<div>肉類</div>',
+        'vegetable': '<div>蔬菜</div>',
+        'fruit': '<div>水果</div>',
+        'egg': '<div>蛋類</div>',
+        'nut': '<div>堅果類</div>',
+        'dairy': '<div>乳製品</div>',
+        'seasoning': '<div>調味料</div>',
+        'drink': '<div>飲料</div>',
+        'other': '<div>其他</div>'
+    };
+    const subTitle = document.getElementById('subtitle');
+    subTitle.innerHTML = contentMap[category];
+
+    // 定義不同 category 對應的 icon class
+    const iconClassMap = {
+        'main_food': 'fa-solid fa-bowl-food',
+        'meat': 'fa-solid fa-drumstick-bite',
+        'vegetable': 'fa-solid fa-carrot',
+        'fruit': 'fa-solid fa-lemon',
+        'egg': 'fa-solid fa-egg',
+        'nut': 'fa-solid fa-cubes-stacked',
+        'dairy': 'fa-solid fa-glass-water',
+        'seasoning': 'fa-solid fa-wine-bottle',
+        'drink': 'fa-solid fa-martini-glass-citrus',
+        'other': 'fa-solid fa-flask'
+    };
+    const subIcon = document.getElementById('subicon');
+    subIcon.className = iconClassMap[category];
+
     // 變數
     let tags = [];
-    let selectedTag1Count = sessionStorage.getItem('selectedTag1Count');
-
-    const defaultTags = ["白米", "糙米", "黑米", "紅米", "糯米", "香米", "小米",
-        "寬麵", "細麵", "刀削麵", "拉麵", "義大利麵",
-        "餃子", "餛飩", "麵包",
-        "馬鈴薯", "玉米", "地瓜", "紅薯"];
+    let selectedTagCounts = JSON.parse(sessionStorage.getItem('selectedTagCounts')) || {};
 
     const tagListContainer1 = document.querySelector('.tag-list-item');
     const tagListContainer2 = document.querySelector('.tag-list-item2');
@@ -39,15 +88,16 @@ window.onload = function () {
             if (!isSelected) {
                 addTagToInput(tag); // 使用按鈕上存儲的標籤值
                 tagButton.classList.add("item-select");
-                selectedTag1Count++;
+                selectedTagCounts[category] = (selectedTagCounts[category] || 0) + 1;
             } else {
                 removeTagFromInput(tag); // 使用按鈕上存儲的標籤值
                 tagButton.classList.remove("item-select");
-                selectedTag1Count--;
+                selectedTagCounts[category]--;
             }
 
-            sessionStorage.setItem('selectedTag1Count', selectedTag1Count);
-            console.log('selectedTag1Count 的值為：', selectedTag1Count);
+            sessionStorage.setItem('selectedTagCounts', JSON.stringify(selectedTagCounts));
+            console.log('selectedTagCounts 的值為：', selectedTagCounts);
+
             
             // 每次点击标签后检查输入框
             checkInput();
@@ -124,6 +174,7 @@ window.onload = function () {
     document.getElementById('back').addEventListener('click', function () {
         const tagInput = document.getElementById('tag-ip');
         sessionStorage.setItem('tagInputValue2', tagInput.value);
+        sessionStorage.setItem()
     });
 
    if (savedValue !== null) {

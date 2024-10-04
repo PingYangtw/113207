@@ -198,6 +198,8 @@
 
         const title = form.querySelector('input[type="text"]').value;
         const content = form.querySelector('textarea').value;
+        content.replace(/\n/g, '\\n').replace(/\r/g, '\\r');
+        
         const Qid = "{{ question[0] }}";
         const folderName = "{{ question[4] }}";
         
@@ -205,13 +207,17 @@
         const newImages = Array.from(imgElements).map(img => img.src);
 
         const originalTitle = "{{ question[2] }}";
-        const originalContent = "{{ question[3] }}";
+
+        //question[3] 可能會有換行，不要導致 Invalid or unexpected token
+        const originalContent = `{{ question[3]}}`;
+        
         const originalImages = JSON.parse('{{ question[8]|tojson|safe }}');
 
         const isTitleSame = title === originalTitle;
-        const isContentSame = content === originalContent;
+        const isContentSame = content.replace(/\n/g, '\\n').replace(/\r/g, '\\r') === originalContent.replace(/\n/g, '\\n').replace(/\r/g, '\\r');
         const areImagesSame = newImages.length === originalImages.length && newImages.every((img, index) => img.includes(originalImages[index]));
 
+        console.log(isTitleSame, isContentSame, areImagesSame);
         if (isTitleSame && isContentSame && areImagesSame) {
             window.history.back();
             return;
