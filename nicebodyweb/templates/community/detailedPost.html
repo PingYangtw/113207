@@ -57,7 +57,7 @@
             <p>{{ question[3] }}</p>
           </div>
         </div>
-        {% if question[4] %}
+        {% if question[4] and question[14] %}
         <div class="carousel" data-flickity='{ "cellAlign": "left" }'>
           {% for image in question[10] %}
           <div class="carousel-cell">
