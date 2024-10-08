@@ -506,6 +506,10 @@ audio {
     width: 250px;
     aspect-ratio: 1;
   }
+
+  audio {
+    flex: 1;
+  }
 }
 
 /* X-Small 480px */

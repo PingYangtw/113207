@@ -110,16 +110,18 @@ article {
 
 /* content */
 
-.content {
-  display: grid;
-  grid-gap: 50px;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  margin-top: 2%;
-}
-
+.content,
 .fewcontent {
   display: grid;
   grid-gap: 50px;
+  margin-top: 2%;
+}
+
+.content {
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+
+.fewcontent {
   grid-template-columns: repeat(auto-fit, minmax(270px, 300px));
 }
 
