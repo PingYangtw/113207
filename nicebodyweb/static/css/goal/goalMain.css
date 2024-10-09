@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'ChenYuluoyan-Thin';
+  src: url('/static/fonts/ChenYuluoyan-Thin.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ChenYuluoyan-Thin-Monospaced';
+  src: url('/static/fonts/ChenYuluoyan-Thin-Monospaced.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 article {
   background-color: #F0EAD2;
   padding: 150px 20% 5%;
