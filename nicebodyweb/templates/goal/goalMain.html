@@ -289,57 +289,74 @@
       if (img1.src && img2.src) {
         const img1Element = new Image();
         const img2Element = new Image();
+        const coverImage = new Image();
 
         img1Element.src = img1.src;
         img2Element.src = img2.src;
+        coverImage.src = '/static/images/cover.png';
 
-        img1Element.onload = () => {
-          img2Element.onload = () => {
-            const canvasWidth = 1920;
-            const canvasHeight = 960;
-            canvas.width = canvasWidth;
-            canvas.height = canvasHeight;
+        document.fonts.load('40px ChenYuluoyan-Thin').then(() => {
+          img1Element.onload = () => {
+            img2Element.onload = () => {
+              coverImage.onload = () => {
+                const canvasWidth = 1920;
+                const canvasHeight = 960;
+                canvas.width = canvasWidth;
+                canvas.height = canvasHeight;
 
-            const ctx = canvas.getContext('2d');
+                const ctx = canvas.getContext('2d');
 
-            const targetSize = 960;
+                const targetSizeX = img1Element.width < img1Element.height ? 830 : 700;
+                const targetSizeY = img2Element.width < img2Element.height ? 830 : 700;
 
-            let img1Scale = targetSize / Math.min(img1Element.width, img1Element.height);
-            let img1Width = img1Element.width * img1Scale;
-            let img1Height = img1Element.height * img1Scale;
+                let img1Scale = targetSizeX / Math.min(img1Element.width, img1Element.height);
+                let img1Width = img1Element.width * img1Scale;
+                let img1Height = img1Element.height * img1Scale;
 
-            let img2Scale = targetSize / Math.min(img2Element.width, img2Element.height);
-            let img2Width = img2Element.width * img2Scale;
-            let img2Height = img2Element.height * img2Scale;
+                let img2Scale = targetSizeY / Math.min(img2Element.width, img2Element.height);
+                let img2Width = img2Element.width * img2Scale;
+                let img2Height = img2Element.height * img2Scale;
 
-            let img1X = (targetSize - img1Width) / 2;
-            let img1Y = (canvasHeight - img1Height) / 2;
+                let img1X = 80 + (830 - img1Width) / 2;
+                let img1Y = 80 + (700 - img1Height) / 2;
 
-            let img2X = targetSize + (targetSize - img2Width) / 2;
-            let img2Y = (canvasHeight - img2Height) / 2;
+                let img2X = 1010 + (830 - img2Width) / 2;
+                let img2Y = 80 + (700 - img2Height) / 2;
 
-            ctx.drawImage(img1Element, img1X, img1Y, img1Width, img1Height);
+                ctx.drawImage(img1Element, img1X, img1Y, img1Width, img1Height);
+                ctx.drawImage(img2Element, img2X, img2Y, img2Width, img2Height);
+                ctx.drawImage(coverImage, 0, 0, canvasWidth, canvasHeight);
 
-            ctx.drawImage(img2Element, img2X, img2Y, img2Width, img2Height);
+                ctx.font = '500 60px ChenYuluoyan-Thin';
+                ctx.fillStyle = '#495057';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
 
-            ctx.font = '10px Arial';
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
+                const textX = canvasWidth / 2;
+                const textY = canvasHeight - 70;
 
-            const textX = canvasWidth / 2;
-            const textY = canvasHeight - 10;
+                const textArray = [
+                  '夢想不會發光，實踐才能閃耀。',
+                  '勇敢追夢，努力總會有收穫。',
+                  '成功來自堅持與拼搏。',
+                  '現在不努力，以後怎麼發光？',
+                  '夢想源於心，成功成於行。'
+                ];
 
-            ctx.fillText('@Nice巴底版權所有', textX, textY);
+                const randomText = textArray[Math.floor(Math.random() * textArray.length)];
 
-            const mergedImage = canvas.toDataURL('image/png');
+                ctx.fillText(randomText, textX, textY);
 
-            const a = document.createElement('a');
-            a.href = mergedImage;
-            a.download = 'merged_image.png';
-            a.click();
+                const mergedImage = canvas.toDataURL('image/png');
+
+                const a = document.createElement('a');
+                a.href = mergedImage;
+                a.download = 'Before_after.png';
+                a.click();
+              };
+            };
           };
-        };
+        });
       } else {
         alert("請先選擇兩張圖片！");
       }
@@ -379,7 +396,6 @@
         chart.data.datasets[0].pointRadius[6] = 3;
         chart.data.datasets[0].pointBackgroundColor[6] = 'blue';
         
-        // 更新圖表
         chart.update();
 
         console.log(data);
@@ -455,7 +471,7 @@
         isEditing[type] = true;
         const fileInput = document.getElementById(`${type}fileInput`);
         fileInput.disabled = false;
-        fileInput.click(); // Trigger the file input click event
+        fileInput.click();
         fileInput.disabled = true;
       }
     }
@@ -482,7 +498,7 @@
           previewImage.src = "";
           previewImage.style.display = 'none';
           const fileInput = document.getElementById(`${type}fileInput`);
-          fileInput.value = "";  // Reset the file input value
+          fileInput.value = "";
           fileInput.disabled = false;
           const inputLabel = document.querySelector(`.${type} .custom-input`);
           inputLabel.style.pointerEvents = 'auto';
@@ -573,7 +589,6 @@
       element.style.backgroundColor = getColor(iconName);
       element.querySelector("i").style.color = "#ffffff";
 
-      // Reset color of last clicked element
       if (lastClickedElement && lastClickedElement !== element) {
         resetColor(lastClickedElement);
       }
@@ -660,7 +675,7 @@
       // 格式化日期到只包含年月日，忽略時間
       let formattedDate = new Date(date);
       let formattedDateStr = formattedDate.toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '-');
-      let formattedDateDisplay = (formattedDate.getMonth() + 1) + '/' + formattedDate.getDate(); // 'MM/DD'
+      let formattedDateDisplay = (formattedDate.getMonth() + 1) + '/' + formattedDate.getDate();
 
       // 獲取今天的日期和七天前的日期，僅日期部分
       let today = new Date();
@@ -703,14 +718,13 @@
         chart.data.datasets[0].pointRadius[index] = 3;
         chart.data.datasets[0].pointBackgroundColor[index] = 'blue';
 
-        // // 重新排序日期和數據
+        // 重新排序日期和數據
         let combined = chart.data.labels.map((label, i) => ({ label, data: chart.data.datasets[0].data[i] }))
           .sort((a, b) => new Date(a.label) - new Date(b.label));
 
         chart.data.labels = combined.map(item => item.label);
         chart.data.datasets[0].data = combined.map(item => item.data);
 
-        // // 更新圖表
         chart.update();
 
         document.getElementById('weight').close();
@@ -767,7 +781,6 @@
         chart.data.labels = combined.map(item => item.label);
         chart.data.datasets[0].data = combined.map(item => item.data);
 
-        // 更新圖表
         chart.update();
         
         document.getElementById('weight').close();
@@ -787,23 +800,22 @@
 
     // contrast dialog
     document.getElementById('closebeforedelete').addEventListener('click', function() {
-        document.getElementById('beforedelete').close();
+      document.getElementById('beforedelete').close();
     });
 
     document.getElementById('closeafterdelete').addEventListener('click', function() {
-        document.getElementById('afterdelete').close();
+      document.getElementById('afterdelete').close();
     });
 
     document.getElementById('savebeforedelete').addEventListener('click', function() {
-        clearImage_confirm('before');
-        document.getElementById('beforedelete').close();
+      clearImage_confirm('before');
+      document.getElementById('beforedelete').close();
     });
 
     document.getElementById('saveafterdelete').addEventListener('click', function() {
-        clearImage_confirm('after');
-        document.getElementById('afterdelete').close();
+      clearImage_confirm('after');
+      document.getElementById('afterdelete').close();
     });
-      
   </script>
 </body>
 </html>
