@@ -58,6 +58,7 @@
           <i class="fa-regular fa-trash-can opencollectdelete" data-name="{{ collection[1] }}"></i>
         </div>
       </div>
+      {% if collection_details[collection[0]] %}
       <div class="collectcontent">
         {% for item in collection_details[collection[0]] %}
         <div class="eachcollect">
@@ -70,6 +71,7 @@
         </div>
         {% endfor %}
       </div>
+      {% endif %}
     </section>
     {% endfor %}
   </article>
