@@ -344,6 +344,8 @@ def resultRecipe_selfList():
                 diet = recipe_data["recipe"]["diet"]
                 imagedescribe = recipe_data["imagedescribe"]
 
+                cookStep = [step.replace("瀝乾", "瀝掉").replace("盛盤", "裝盤") for step in cookStep]
+                
                 prepare_str = ', '.join(prepare)
                 cookStep_str = ', '.join(cookStep)
                 nutrition_str = ', '.join(nutrition)
