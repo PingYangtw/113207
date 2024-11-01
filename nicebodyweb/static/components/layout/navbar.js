@@ -3,8 +3,8 @@ let renderNav = function() {
   <nav>
     <div class="area">
       <a href="/" class="logo">
-        <img src="/static/images/logo.jpg" alt="nicebodylogo">
-        <h1>Nice巴底</h1>
+        <img src="/static/images/logo2.png" alt="nicebodylogo">
+        <h1>名food奇食</h1>
       </a>
       <div class="middle">
         <div class="wrap">
