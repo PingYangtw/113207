@@ -4,7 +4,7 @@ let renderNav = function() {
     <div class="area">
       <a href="/" class="logo">
         <img src="/static/images/logo.jpg" alt="nicebodylogo">
-        <h1>nice巴底</h1>
+        <h1>Nice巴底</h1>
       </a>
       <div class="middle">
         <div class="wrap">
